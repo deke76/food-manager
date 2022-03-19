@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'react-rails', '~> 2.6', '>= 2.6.1'
 
 # Allow CORS requests
-gem rack-cors
+gem 'rack-cors'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
