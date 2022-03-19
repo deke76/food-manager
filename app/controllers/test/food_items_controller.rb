@@ -1,8 +1,4 @@
-class FoodItemsController < ApplicationController
-  def index
-    @food_items = FoodItem.all
-  end
-  
+class Test::FoodItemsController < ApplicationController
   def reset_database
     tables = ActiveRecord::Base.connection.tables
     tables.delete 'schema.migrations'

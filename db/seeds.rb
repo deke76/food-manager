@@ -51,3 +51,7 @@ FoodItem.create({
   purchased: '2022-02-14',
   expires: '2023-02-14'
 })
+
+# setup rails test seed data
+# if Rails.env.test?
+# FoodItem.create ...

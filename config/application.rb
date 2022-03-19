@@ -11,12 +11,13 @@ module FoodManager
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    if Rails.env.test?
+      config.middleware.insert_before 0, Rack::Cors do
+        allow do
+          origins '*'
+          resource '*', headers: :any, methods: %i[post]
+        end
+      end
+    end
   end
 end
