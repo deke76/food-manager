@@ -52,6 +52,30 @@ FoodItem.create({
   expires: '2023-02-14'
 })
 
+# create users
+User.destroy_all
+
+puts 'Creating users...'
+User.create({
+  first_name: "Riley",
+  last_name: "Paul",
+  email: "rileypaul96@gmail.com",
+  password: '123456'
+})
+
+User.create({
+  first_name: "Stanislav",
+  last_name: "Plotnick",
+  email: "splotnikov74@gmail.com",
+  password: "123456"
+})
+
+User.create({
+  first_name: "Darcy",
+  last_name: "Lauder",
+  email: "darcy.lauder@shaw.ca",
+  password: "123456"
+})
 # setup rails test seed data
 # if Rails.env.test?
 # FoodItem.create ...
