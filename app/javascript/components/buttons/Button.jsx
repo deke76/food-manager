@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import "./buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+import { solid } from "@fortawesome/fontawesome-svg-core"; // <-- import styles to be used
 
 export default function Button(props) {
   const { onClick, icon, text, open} = props;
