@@ -1,0 +1,26 @@
+@import "../../styles/mixins.scss";
+
+.location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 15px;
+  padding: 3px;
+
+  &:hover {
+    background-color: rgba($color: #777777, $alpha: 0.1);
+  }
+
+  .group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    * {
+      margin: 2px;
+    }
+
+  }
+}

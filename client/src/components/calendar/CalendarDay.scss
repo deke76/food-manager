@@ -1,0 +1,57 @@
+td.day {
+  border: 1px solid silver;
+
+  div.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .day-num {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+  
+  .day-add {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+
+  // font-size: 12px;
+  // height: 80px;
+  // padding: 4px;
+  // position: relative;
+
+  .event-container {
+    margin-top: 22px;
+    width: 100%;
+    padding: 4px;
+
+    * {
+      margin-top: 4px;
+    }
+  }
+
+
+  &.weekend {
+    background-color: rgba(235, 235, 235, 0.301);
+  }
+
+  div.day-num {
+    height: 14px;
+    width: 14px;
+    width: fit-content;
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  &.today div.day-num {
+    color: whitesmoke;
+    background-color: red;
+    font-weight: bolder;
+  }
+}
