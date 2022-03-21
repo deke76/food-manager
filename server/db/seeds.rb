@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Only run on development (local) instances not on production, etc.
 unless Rails.env.development?
   puts "Development seeds only (for now)!"
   exit 0
