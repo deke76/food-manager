@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: food-manager-development
+  database: food_manager_development
   username: development
   password: development
 
