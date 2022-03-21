@@ -6,7 +6,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  viewport: {
-    defaultViewport: "Small mobile",
-  },
+  // viewport: {
+  //   defaultViewport: "Small mobile",
+  // },
 };
