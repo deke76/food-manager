@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_025143) do
+ActiveRecord::Schema.define(version: 2022_03_21_213651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,34 @@ ActiveRecord::Schema.define(version: 2022_03_20_025143) do
     t.float "price"
     t.date "purchased"
     t.date "expires"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "name"
+    t.text "street_address"
+    t.text "postal"
+    t.text "province"
+    t.text "city"
+    t.text "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shelves", force: :cascade do |t|
+    t.text "name"
+    t.integer "location_id"
+    t.float "temp"
+    t.boolean "full"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_locations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

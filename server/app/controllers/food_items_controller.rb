@@ -1,6 +1,6 @@
 class FoodItemsController < ApplicationController
   def index
-    @food_items = FoodItem.all
+    @food_items = FoodItems.all
   end
   
   def reset_database
