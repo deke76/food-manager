@@ -15,11 +15,16 @@ export default function Calendar(props) {
   const [firstDay, setFirstDay] = useState(moment().startOf("week"));
 
   // Day names for header
-  const weekdayShort = moment.weekdaysShort().map((day) => (
-    <th key={day} className="week-day">
-      {day}
-    </th>
-  ));
+  const weekdayShort = moment.weekdaysShort().map((day, index) => {
+    const classes = classNames("week-day", {
+      weekend: index === 0 || index === 6,
+    });
+    return (
+      <th key={day} className={classes}>
+        {day}
+      </th>
+    );
+  });
 
   // iterate over four weeks and each day of week to build table
   const weekElements = [];
@@ -33,16 +38,13 @@ export default function Calendar(props) {
       // Create a new date object for current day in week
       const day = thisWeek.day(d);
 
-      const thisDayEvents = events.filter((e) =>
-        day.isSame(moment(e.date), "day")
-      );
+      const dayEvents = events.filter((e) => day.isSame(moment(e.date), "day"));
 
       dayElements.push(
         <CalendarDay
           key={d}
           day={day.format()}
-          events={thisDayEvents}
-          isCalendarStart={w === 0 && d === 0}
+          hasEvents={dayEvents.length > 0}
         />
       );
     }
@@ -54,7 +56,7 @@ export default function Calendar(props) {
     <div className="calendar">
       <header className="header">
         <div className="group">
-          <div className="year">{firstDay.format("YYYY")}</div>
+          <div className="month-year">{firstDay.format("MMM YYYY")}</div>
         </div>
         <div className="group">
           <Button

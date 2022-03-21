@@ -1,57 +1,37 @@
 td.day {
-  border: 1px solid silver;
+  border-top: 1px solid silver;
+  cursor: pointer;
+
+  &:hover {
+    background-color: whitesmoke;
+  }
 
   div.container {
     display: flex;
     flex-direction: column;
-    min-height: 80px;
-    align-items: flex-start;
-    position: relative;
+    min-height: 50px;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
   .day-num {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-  }
-  
-  .day-add {
-    position: absolute;
-    top: 4px;
-    left: 4px;
+    font-size: large;
   }
 
-  // font-size: 12px;
-  // height: 80px;
-  // padding: 4px;
-  // position: relative;
+  .day-event-indicator {
+    color: slategray;
+    opacity: 0;
 
-  .event-container {
-    margin-top: 22px;
-    width: 100%;
-    padding: 4px;
-
-    * {
-      margin-top: 4px;
+    svg {
+      height: 0.8em;
     }
   }
 
-
-  &.weekend {
-    background-color: rgba(235, 235, 235, 0.301);
+  &.event .day-event-indicator {
+    opacity: 0.5;
   }
 
-  div.day-num {
-    height: 14px;
-    width: 14px;
-    width: fit-content;
-    padding: 4px;
-    border-radius: 8px;
-  }
-
-  &.today div.day-num {
-    color: whitesmoke;
-    background-color: red;
-    font-weight: bolder;
+  &.today .day-num {
+    color: red;
   }
 }

@@ -14,20 +14,25 @@
       align-items: center;
     }
 
-    .year {
+    .month-year {
       font-weight: bold;
     }
   }
 
+  .weekend {
+    color: slategray;
+  }
+
   table {
+    margin-top: 5px;
     table-layout: fixed;
     border-collapse: collapse;
     width: 100%;
   }
 
-  th {
-    font-size: smaller;
-    color: silver;
-  }
+  // th {
+  //   font-size: smaller;
+  //   color: silver;
+  // }
 
 }
