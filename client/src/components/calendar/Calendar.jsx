@@ -13,6 +13,7 @@ export default function Calendar(props) {
 
   // First day of calendar
   const [firstDay, setFirstDay] = useState(moment().startOf("week"));
+  const [selectedDay, setSelectedDay] = useState(moment().format());
 
   // Day names for header
   const weekdayShort = moment.weekdaysShort().map((day, index) => {
@@ -30,14 +31,13 @@ export default function Calendar(props) {
   const weekElements = [];
   const firstWeek = firstDay.week();
 
-  for (let w = 0; w < 4; w++) {
+  for (let w = 0; w < 6; w++) {
     const dayElements = [];
     const thisWeek = moment().week(firstWeek + w);
 
     for (let d = 0; d < 7; d++) {
       // Create a new date object for current day in week
       const day = thisWeek.day(d);
-
       const dayEvents = events.filter((e) => day.isSame(moment(e.date), "day"));
 
       dayElements.push(
@@ -45,6 +45,8 @@ export default function Calendar(props) {
           key={d}
           day={day.format()}
           hasEvents={dayEvents.length > 0}
+          onClick={() => setSelectedDay(day.format())}
+          selected={moment(selectedDay).isSame(day, "day")}
         />
       );
     }
