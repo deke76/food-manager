@@ -7,7 +7,9 @@ export default function CreateFood(props) {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    const url = "https://api.spoonacular.com/food/ingredients/autocomplete";
+    // const url = "https://api.spoonacular.com/food/ingredients/autocomplete";
+    const url = "https://api.spoonacular.com/food/products/suggest"
+
     axios
       .get(url, {
         params: {
@@ -16,7 +18,7 @@ export default function CreateFood(props) {
           apiKey: "45cfcf8729b94e80adb967ba76fd883f",
         },
       })
-      .then((response) => setSuggestions(response.data))
+      .then((response) => setSuggestions(response.data.results))
       .catch((e) => {
         console.error(e.stack);
         setSuggestions([]);
@@ -34,7 +36,7 @@ export default function CreateFood(props) {
       <div className="suggestions">
         {suggestions.map((suggestion, index) => (
           <div key={index} className="suggestion">
-            <div className="suggestion--name">{suggestion.name}</div>
+            <div className="suggestion--name">{suggestion.title}</div>
             <Button icon="plus" />
           </div>
         ))}
