@@ -7,6 +7,7 @@ class Foods < ActiveRecord::Migration[6.1]
       t.float :price
       t.date :purchased
       t.date :expires
+      t.integer :shelf
       t.timestamps
     end
   end

@@ -1,7 +1,19 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Foods.all
+    @foods = Food.all
+    render json: @foods
   end
+
+  def show
+    @food = Food.find(params[:id])
+    render json: @food
+  end
+
+  def create
+    render json: params
+  end
+
+
   
   def reset_database
     tables = ActiveRecord::Base.connection.tables
