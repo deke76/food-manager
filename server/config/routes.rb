@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  
-  root 'pages#home'
-  
-  resources :users
-  resources :food_items
+  get 'locations/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  if Rails.env.test?
-    namespace :test do
-      post 'reset_database', to: 'food_items#reset_database'
-    end
+  resources :foods, only: [:show, :create]
+  
+  resources :users do
+    resources :locations, only: [:index]
+    resources :foods, only: [:index]
+  end
+
+  resources :locations do
+    resources :shelves, only: [:index]
   end
 end
