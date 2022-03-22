@@ -20,6 +20,14 @@ FoodItem.create({name: 'Cheddar', quantity: '1', quantity_units: 'each', price: 
 FoodItem.create({name: 'Banana',quantity: '6',quantity_units: 'each',price: '0.45',purchased: '2022-03-01',expires: '2022-03-08'})
 FoodItem.create({name: 'Mushroom Soup',quantity: '1',quantity_units: 'each',price: '1.29',purchased: '2022-02-14',expires: '2023-02-14'})
 
+puts 'Re-creating foods'
+Food.destroy_all
+
+Food.create({name: 'Milk', quantity: '1', quantity_units: 'each', price: '4.29', purchased: '2022-02-14', expires: '2022-02-25'})
+Food.create({name: 'Cheddar', quantity: '1', quantity_units: 'each', price: '8.49', purchased: '2022-02-14', expires: '2022-04-25'})
+Food.create({name: 'Banana',quantity: '6',quantity_units: 'each',price: '0.45',purchased: '2022-03-01',expires: '2022-03-08'})
+Food.create({name: 'Mushroom Soup',quantity: '1',quantity_units: 'each',price: '1.29',purchased: '2022-02-14',expires: '2023-02-14'})
+
 # create users
 puts 'Creating users...'
 User.destroy_all
