@@ -2,7 +2,7 @@ import Calendar from "./../../calendar";
 import Toggle from "../../toggle";
 import useState from "react";
 
-export default function FoodIndex(props) {
+export default function FoodBrowse(props) {
   const [view, setView] = useState(0);
 
   return (

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import moment from "moment";
 import { useState } from "react";
 
-import Button from "../../buttons";
+import Button from "../../buttons/Button";
 import CalendarDay from "./CalendarDay";
 
 import "./Calendar.scss";
