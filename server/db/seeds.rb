@@ -28,6 +28,7 @@ User.create({first_name: "Stanislav", last_name: "Plotnick", email: "splotnikov7
 User.create({first_name: "Darcy", last_name: "Lauder", email: "darcy.lauder@shaw.ca", password: "123456"})
 
 #create locations
+puts 'Creating locations...'
 Location.destroy_all
 Location.create({user_id: 1, name: 'Home' })
 Location.create({user_id: 1, name: 'Cabin' })
@@ -35,6 +36,7 @@ Location.create({user_id: 2, name: 'Lake' })
 Location.create({user_id: 3, name: 'Home' })
 
 #create shelves
+puts 'Creating shelves...'
 Shelf.destroy_all
 Shelf.create({location_id: 1, name: 'Fridge', full: false})
 Shelf.create({location_id: 2, name: 'Pantry', full: false})
