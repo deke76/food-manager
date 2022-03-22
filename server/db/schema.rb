@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_03_22_004322) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
+    t.integer "user_id"
     t.text "name"
     t.integer "quantity"
     t.text "quantity_units"

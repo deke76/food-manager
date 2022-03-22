@@ -6,41 +6,127 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'faker'
+
 unless Rails.env.development?
   puts "Development seeds only (for now)!"
   exit 0
 end
 
-# create simple foods
-puts 'Creating foods'
-Food.destroy_all
-Food.create!({name: 'Milk', quantity: '1', quantity_units: 'each', price: '4.29', purchased: '2022-02-14', expires: '2022-02-25', shelf: 1})
-Food.create!({name: 'Cheddar', quantity: '1', quantity_units: 'each', price: '8.49', purchased: '2022-02-14', expires: '2022-04-25', shelf: 3})
-Food.create!({name: 'Banana',quantity: '6',quantity_units: 'each',price: '0.45',purchased: '2022-03-01',expires: '2022-03-08', shelf: 2})
-Food.create!({name: 'Mushroom Soup',quantity: '1',quantity_units: 'each',price: '1.29',purchased: '2022-02-14',expires: '2023-02-14', shelf: 2})
-
 # create users
 puts 'Creating users...'
 User.destroy_all
-User.create({first_name: "Riley", last_name: "Paul", email: "rileypaul96@gmail.com", password: '123456'})
-User.create({first_name: "Stanislav", last_name: "Plotnick", email: "splotnikov74@gmail.com", password: "123456"})
-User.create({first_name: "Darcy", last_name: "Lauder", email: "darcy.lauder@shaw.ca", password: "123456"})
+50.times do
+  User.create!({
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: '123456'
+  })
+end
 
 #create locations
 puts 'Creating locations...'
 Location.destroy_all
-Location.create({user_id: 1, name: 'Home' })
-Location.create({user_id: 1, name: 'Cabin' })
-Location.create({user_id: 2, name: 'Lake' })
-Location.create({user_id: 3, name: 'Home' })
+20.times do
+  Location.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),
+    name: 'Home',
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    country: Faker::Address.country_code 
+  })
+  Location.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),
+    name: 'Lake',
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    country: Faker::Address.country_code 
+  })
+  Location.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),
+    name: 'Cabin',
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    country: Faker::Address.country_code 
+  })
+end
 
 #create shelves
 puts 'Creating shelves...'
 Shelf.destroy_all
-Shelf.create({location_id: 1, name: 'Fridge', full: false})
-Shelf.create({location_id: 2, name: 'Pantry', full: false})
-Shelf.create({location_id: 3, name: 'Fridge', full: false})
-Shelf.create({location_id: 3, name: 'Freezer', full: false})
+18.times do
+  Shelf.create({
+    location_id: Faker::Number.between(from: 1, to: 60), 
+    name: 'Pantry',
+    temp: 20.0, 
+    full: false
+  })
+  Shelf.create({
+    location_id: Faker::Number.between(from: 1, to: 60), 
+    name: 'Fridge',
+    temp: 3.5, 
+    full: false
+  })
+  Shelf.create({
+    location_id: Faker::Number.between(from: 1, to: 60), 
+    name: 'Freezer',
+    temp: -18.0, 
+    full: false
+  })
+end
+
+# create simple foods
+puts 'Creating foods...'
+Food.destroy_all
+50.times do
+  Food.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),  
+  name: Faker::Food.fruits,
+    quantity: Faker::Number.between(from: 1, to: 6),
+    quantity_units: 'each',
+    price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
+    purchased: Faker::Date.backward(days: 5),
+    expires: Faker::Date.forward(days: 10),
+    shelf: Faker::Number.between(from: 1, to: 54)
+  })
+  Food.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),  
+  name: Faker::Food.vegetables,
+    quantity: Faker::Number.between(from: 1, to: 6),
+    quantity_units: 'each',
+    price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
+    purchased: Faker::Date.backward(days: 5),
+    expires: Faker::Date.forward(days: 10),
+    shelf: Faker::Number.between(from: 1, to: 54)
+  })
+  Food.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),  
+  name: Faker::Food.ingredient,
+    quantity: Faker::Number.between(from: 1, to: 6),
+    quantity_units: 'each',
+    price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
+    purchased: Faker::Date.backward(days: 5),
+    expires: Faker::Date.forward(days: 10),
+    shelf: Faker::Number.between(from: 1, to: 54)
+  })
+  Food.create!({
+    user_id: Faker::Number.between(from: 1, to: 50),  
+  name: Faker::Food.spice,
+    quantity: Faker::Number.between(from: 1, to: 6),
+    quantity_units: 'each',
+    price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
+    purchased: Faker::Date.backward(days: 5),
+    expires: Faker::Date.forward(days: 10),
+    shelf: Faker::Number.between(from: 1, to: 54)
+  })
+end
 
 # setup rails test seed data
 # if Rails.env.test?
