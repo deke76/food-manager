@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-import Button from "../buttons/Button";
+import Button from "../../buttons/Button";
 
 import "./LocationListItem.scss";
 
