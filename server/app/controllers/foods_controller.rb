@@ -12,7 +12,6 @@ class FoodsController < ApplicationController
   end
 
   def new
-    # render json: params
     uri = URI('https://api.spoonacular.com/food/ingredients/autocomplete')
     spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
     uri.query = URI.encode_www_form(spoonacular_query)
