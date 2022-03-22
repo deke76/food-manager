@@ -23,16 +23,9 @@ default: &default
 
 development:
   <<: *default
-<<<<<<< HEAD
   database: <%= ENV['LOCAL_DB'] %>
   username: <%= ENV['LOCAL_DB_USER'] %>
   password: <%= ENV['LOCAL_DB_PWD'] %>
-=======
-  url: <%= ENV['DATABASE_URL'] %>
-  database: food-manager
-  # username: development
-  # password: development
->>>>>>> 681ad91cf5f523d30f15e4faaacef31d5740ee34
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -92,5 +85,5 @@ production:
   <<: *default
   database: server_production
   username: server
-  url: <%= ENV['DATABASE_URL'] %>
-  password: <%= ENV['DATABASE_PWD'] %>
+  # url: <%= ENV['DATABASE_URL'] %>
+  # password: <%= ENV['DATABASE_PWD'] %>

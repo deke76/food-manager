@@ -94,7 +94,7 @@ Food.destroy_all
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
     purchased: Faker::Date.backward(days: 5),
     expires: Faker::Date.forward(days: 10),
-    shelf: Faker::Number.between(from: 1, to: 54)
+    shelf_id: Faker::Number.between(from: 1, to: 54)
   })
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
@@ -104,7 +104,7 @@ Food.destroy_all
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
     purchased: Faker::Date.backward(days: 5),
     expires: Faker::Date.forward(days: 10),
-    shelf: Faker::Number.between(from: 1, to: 54)
+    shelf_id: Faker::Number.between(from: 1, to: 54)
   })
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
@@ -114,7 +114,7 @@ Food.destroy_all
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
     purchased: Faker::Date.backward(days: 5),
     expires: Faker::Date.forward(days: 10),
-    shelf: Faker::Number.between(from: 1, to: 54)
+    shelf_id: Faker::Number.between(from: 1, to: 54)
   })
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
@@ -124,7 +124,7 @@ Food.destroy_all
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
     purchased: Faker::Date.backward(days: 5),
     expires: Faker::Date.forward(days: 10),
-    shelf: Faker::Number.between(from: 1, to: 54)
+    shelf_id: Faker::Number.between(from: 1, to: 54)
   })
 end
 
