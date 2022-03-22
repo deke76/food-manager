@@ -1,4 +1,4 @@
-import CreateFood from "./create";
+import CreateFood from "./search";
 
 export default {
   component: CreateFood,

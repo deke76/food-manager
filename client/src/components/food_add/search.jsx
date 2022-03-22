@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "../../buttons/Button"
+import Button from "../buttons/Button"
 
 export default function CreateFood(props) {
   const [searchValue, setSearchValue] = useState("");
