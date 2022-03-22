@@ -1,7 +1,7 @@
 export default function FoodList(props) {
   const { items } = props;
   return (
-    <div>
+    <div className="food-item-list">
       {items.map((item) => (
         <div className="food-item">
           <div className="food-item--name">{item.name}</div>
