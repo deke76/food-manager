@@ -1,3 +1,5 @@
+
+
 class FoodsController < ApplicationController
   def index
     @foods = Food.where(user_id: params[:user_id])
@@ -9,12 +11,15 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
-  def create
-    render json: params
+  def new
+    # render json: params
+    uri = URI('https://api.spoonacular.com/food/ingredients/autocomplete')
+    spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
+    uri.query = URI.encode_www_form(spoonacular_query)
+    res = Net::HTTP.get_response(uri)
+    render json: res.body
   end
 
-
-  
   def reset_database
     tables = ActiveRecord::Base.connection.tables
     tables.delete 'schema.migrations'

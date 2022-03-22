@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'locations/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :foods, only: [:show, :create]
+  resources :foods, only: [:show, :new]
   
   resources :users do
     resources :locations, only: [:index]
