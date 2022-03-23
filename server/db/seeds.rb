@@ -62,20 +62,26 @@ end
 puts 'Creating shelves...'
 Shelf.destroy_all
 18.times do
+  location = Faker::Number.between(from: 1, to: 60)
   Shelf.create({
-    location_id: Faker::Number.between(from: 1, to: 60), 
+    location_id: location, 
+    user_id: Location.find(location).user_id,
     name: 'Pantry',
     temp: 20.0, 
     full: false
   })
+  location = Faker::Number.between(from: 1, to: 60)
   Shelf.create({
-    location_id: Faker::Number.between(from: 1, to: 60), 
+    location_id: location, 
+    user_id: Location.find(location).user_id,
     name: 'Fridge',
     temp: 3.5, 
     full: false
   })
+  location = Faker::Number.between(from: 1, to: 60)
   Shelf.create({
-    location_id: Faker::Number.between(from: 1, to: 60), 
+    location_id: location, 
+    user_id: Location.find(location).user_id,
     name: 'Freezer',
     temp: -18.0, 
     full: false

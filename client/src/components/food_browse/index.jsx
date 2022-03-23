@@ -1,18 +1,15 @@
-import Calendar from "./../../calendar";
-import Toggle from "../../toggle";
-import useState from "react";
+import useFetchServer from "../../hooks/useFetchServer";
+import FoodList from "./list";
+import UserProvider from "../../providers/UserProvider";
 
 export default function FoodBrowse(props) {
-  const [view, setView] = useState(0);
+  const { responseData } = useFetchServer("foods");
 
   return (
     <div>
-      <Toggle
-        options={["List", "Calendar"]}
-        option={view}
-        setOption={setView}
-      />
-      {view === 0 && <Calendar />}
+      <UserProvider>
+        <FoodList items={responseData} />
+      </UserProvider>
     </div>
   );
 }

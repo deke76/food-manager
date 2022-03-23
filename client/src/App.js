@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-function App() {
+import UserProvider from "./providers/UserProvider";
+import FoodBrowse from "./components/food_browse/index";
+import HeaderBar from "./components/header";
+
+export default function App() {
+  const HOME = "HOME";
+  const FOOD_BROWSE = "FOOD_BROWSE";
+  const FOOD_READ = "FOOD_READ";
+  const FOOD_ADD = "FOOD_ADD";
+  const LOCATION_BROWSE = "LOCATION_BROWSE";
+  const LOCATION_READ = "LOCATION_READ";
+  const LOCATION_ADD = "LOCATION_ADD";
+
+  const [view, setView] = useState(HOME);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserProvider>
+        <HeaderBar />
+        <FoodBrowse />
+        {view === FOOD_ADD && <FoodBrowse />}
+        {view === FOOD_BROWSE && <FoodBrowse />}
+      </UserProvider>
     </div>
   );
 }
-
-export default App;

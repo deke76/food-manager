@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :foods, only: [:show, :new]
   
-  resources :users do
+  resources :users, only: [:show] do
     resources :locations, only: [:index]
     resources :foods, only: [:index]
   end

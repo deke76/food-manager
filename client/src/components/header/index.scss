@@ -1,0 +1,66 @@
+.header {
+  background-color: #03045e;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 8px;
+
+  .app-title {
+    font-weight: bold;
+    font-size: larger;
+  }
+
+  .location-path {
+    font-style: italic;
+    font-size: smaller;
+    color: rgba(255, 255, 255, 0.747);
+  }
+
+  .group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .profile-image {
+    background-color: white;
+    color: #e63946;
+    height: 30px;
+    width: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    svg {
+      height: 20px;
+    }
+  }
+
+  .profile-switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    svg {
+      height: 20px;
+    }
+    
+    .user-number {
+      text-align: center;
+      width: 25px;
+    color: #e63946;
+    font-weight: bold;
+    }
+  }
+}
+
+.location-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
