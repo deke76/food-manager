@@ -94,7 +94,7 @@ Food.destroy_all
 50.times do
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
-  name: Faker::Food.fruits,
+    name: Faker::Food.fruits,
     quantity: Faker::Number.between(from: 1, to: 6),
     quantity_units: 'each',
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
@@ -104,7 +104,7 @@ Food.destroy_all
   })
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
-  name: Faker::Food.vegetables,
+    name: Faker::Food.vegetables,
     quantity: Faker::Number.between(from: 1, to: 6),
     quantity_units: 'each',
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),
@@ -114,7 +114,7 @@ Food.destroy_all
   })
   Food.create!({
     user_id: Faker::Number.between(from: 1, to: 50),  
-  name: Faker::Food.ingredient,
+    name: Faker::Food.ingredient,
     quantity: Faker::Number.between(from: 1, to: 6),
     quantity_units: 'each',
     price: Faker::Number.between(from: 1.0, to: 20.0).truncate(2),

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../buttons/Button';
+import Button from '../buttons/actions/Button';
 import './ListItem.scss';
 
 export default function ListItem(props) {

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "../buttons/Button";
+import Select from "../buttons/select/Select";
+import './FoodSearch.scss';
 
-export default function CreateFood(props) {
+export default function FoodSearch(props) {
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -20,7 +21,7 @@ export default function CreateFood(props) {
   }, [searchValue]);
 
   return (
-    <div>
+    <div className='food-search'>
       <input
         type="text"
         value={searchValue}
@@ -30,10 +31,11 @@ export default function CreateFood(props) {
         {suggestions.map((suggestion, index) => (
           <div key={index} className="suggestion">
             <div className="suggestion--name">{suggestion.name}</div>
-            {/* <Button icon="plus" /> */}
           </div>
         ))}
       </div>
+      <Select name={'Scan Barcode'} />
+      
     </div>
   );
 }
