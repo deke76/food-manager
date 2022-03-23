@@ -3,6 +3,7 @@ import "./App.css";
 
 import UserProvider from "./providers/UserProvider";
 import FoodBrowse from "./components/food_browse/index";
+import HeaderBar from "./components/header";
 
 export default function App() {
   const HOME = "HOME";
@@ -16,8 +17,8 @@ export default function App() {
   const [view, setView] = useState(HOME);
   return (
     <div className="App">
-      <h1>Hello</h1>
       <UserProvider>
+        <HeaderBar />
         <FoodBrowse />
         {view === FOOD_ADD && <FoodBrowse />}
         {view === FOOD_BROWSE && <FoodBrowse />}
