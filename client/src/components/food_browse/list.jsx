@@ -1,14 +1,22 @@
+import FoodListItem from "./listItem";
+
 export default function FoodList(props) {
   const { items } = props;
   return (
-    <div className="food-item-list">
-      {items.map((item) => (
-        <div className="food-item">
-          <div className="food-item--name">{item.name}</div>
-          <div className="food-item--location">{item.location}</div>
-          <div className="food-item--date-expired">{item.dateExpired}</div>
-        </div>
-      ))}
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Location</th>
+          <th>Expiry Date</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item, index) => (
+          <FoodListItem key={index} item={item} />
+        ))}
+      </tbody>
+    </table>
   );
 }

@@ -1,4 +1,5 @@
 import useFetchServer from "../../hooks/useFetchServer";
+import FoodList from "./list";
 
 export default function FoodBrowse(props) {
   const { responseData } = useFetchServer("foods");
@@ -6,9 +7,7 @@ export default function FoodBrowse(props) {
   return (
     <div>
       <h2>Hello from FoodBrowse</h2>
-      {responseData.map((item) => (
-        <div>{item.name}</div>
-      ))}
+      <FoodList items={responseData} />
     </div>
   );
 }
