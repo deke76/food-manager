@@ -5,4 +5,6 @@ export default {
   component: List
 };
 
-export const Default = () => <List />
+export const Location_List = () => <List />
+export const Shelf_list = () => <List />
+export const Food_List = () => <List />
