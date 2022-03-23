@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: server_test
+  database: <%= ENV['LOCAL_DB_TEST'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,7 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: server_production
-  username: server
+  # database: server_production
+  # username: server
   # url: <%= ENV['DATABASE_URL'] %>
   # password: <%= ENV['DATABASE_PWD'] %>
