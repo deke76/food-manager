@@ -15,5 +15,6 @@ export default function useFetchServer(route) {
       .catch((err) => setReponseError(err));
   }, [route, user]);
 
+  if (responseError) console.log(responseError)
   return { responseData, responseError };
 }

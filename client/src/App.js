@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 
 import UserProvider from "./providers/UserProvider";
-
 import FoodBrowse from "./components/food_browse/index";
 
 export default function App() {
