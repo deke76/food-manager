@@ -17,8 +17,9 @@ export default function App() {
   const [view, setView] = useState(HOME);
   return (
     <div className="App">
+      <h1>Hello</h1>
       <UserProvider>
-        {view === FOOD_BROWSE && <FoodBrowse />}
+        <FoodBrowse />
         {view === FOOD_ADD && <FoodBrowse />}
         {view === FOOD_BROWSE && <FoodBrowse />}
       </UserProvider>

@@ -1,21 +1,12 @@
-import  { useState,useEffect } from "react";
-import axios from "axios";
+import useFetchServer from "../../hooks/useFetchServer";
 
 export default function FoodBrowse(props) {
-  const [view, setView] = useState(0);
-  const [foodItems, setFoodItems] = useState([]);
-
-  useEffect(() => {
-    const url = "http://localhost:3000/users/1/foods";
-    axios.get(url).then((response) => {
-      console.log(response.data)
-      setFoodItems(response.data)
-    });
-  },[]);
-
+  const { responseData } = useFetchServer("foods");
+  
   return (
     <div>
-      {foodItems.map((item) => (
+      <h2>Hello from FoodBrowse</h2>
+      {responseData.map((item) => (
         <div>{item.name}</div>
       ))}
     </div>

@@ -27,3 +27,4 @@
 /server/config/master.key
 /server/.env
 .DS_store
+.env
