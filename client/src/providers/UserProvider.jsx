@@ -9,7 +9,7 @@ export default function UserProvider(props) {
   const decrementUser = () => setUser((prev) => prev > 0 ? prev - 1 : prev);
 
   const providerData = { user, incrementUser, decrementUser };
-
+  
   return (
     <userContext.Provider value={providerData}>
       {props.children}

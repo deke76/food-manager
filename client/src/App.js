@@ -4,8 +4,7 @@ import { getUserData } from "./helpers/selector";
 
 import UserProvider from "./providers/UserProvider";
 import HeaderBar from "./components/header";
-import FoodBrowse from "./components/food_browse";
-import List from "./components/lists/List";
+import FoodBrowse from "./components/Food/Browse";
 
 // Main application file
 export default function App() {
@@ -22,6 +21,7 @@ export default function App() {
     <div className="App">
       <UserProvider>
         <HeaderBar />
+        <FoodBrowse />
         
       </UserProvider>
     </div>
