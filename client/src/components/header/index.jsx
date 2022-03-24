@@ -11,10 +11,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.scss";
+import SelectOneDropdown from "../buttons/selectOne";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
     useFetchServer("locations");
+
+  const addLocation = () => {
+    console.log("new location");
+  };
 
   const { user, incrementUser, decrementUser } = useContext(userContext);
 
@@ -49,32 +54,13 @@ export default function HeaderBar(props) {
         </div>
       </nav>
       {showLocationDropdown && (
-        <ul className="location-dropdown">
-          {locations &&
-            locations.map((location, index) => {
-              const classes = classNames({
-                selected: index === currentLocation,
-              });
-              return (
-                <li
-                  key={index}
-                  className={classes}
-                  onClick={() => setCurrentLocation(index)}
-                >
-                  {location.name}
-                </li>
-              );
-            })}
-          <li
-            className="add-location"
-            onClick={() => {
-              setShowLocationDropdown(false);
-              console.log("Add a location");
-            }}
-          >
-            Add a Location...
-          </li>
-        </ul>
+        <SelectOneDropdown
+          selected={currentLocation}
+          setSelected={setCurrentLocation}
+          choices={locations.map(location => location.name)}
+          newChoiceText="Add a new Location..."
+          newChoiceCallback={addLocation}
+        />
       )}
     </>
   );

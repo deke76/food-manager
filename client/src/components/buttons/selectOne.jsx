@@ -1,3 +1,5 @@
+import "./selectOne.scss"
+
 export default function SelectOneDropdown(props) {
   const { selected, setSelected, choices, newChoiceText, newChoiceCallback } =
     props;
