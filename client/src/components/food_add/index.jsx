@@ -37,6 +37,7 @@ export default function FoodAdd(props) {
 
   return (
     <div className="food-add">
+      <h3>Add a Food Item</h3>
       <div className="food-add__input">
         <input
           type="text"

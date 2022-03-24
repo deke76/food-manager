@@ -18,8 +18,8 @@ export default function Counter(props) {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: "0.5em",
-    width: "3em"
+    justifyContent: "space-between",
+    width: "2.5em"
   }
   
   return (
