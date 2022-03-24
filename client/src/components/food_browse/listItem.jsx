@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import Button from "./../buttons/Button"
+// import classNames from "classnames";
+// import Button from "../buttons/actions/Button"
 
 export default function FoodListItem(props) {
   const { item } = props;
-  const classes = classNames("food-list--item", "group");
+  // const classes = classNames("food-list--item", "group");
 
   return (
     <tr>
