@@ -10,6 +10,5 @@ const locations = [
   {name: 'Lake', city: 'Sylvan', province: 'AB'},
   {name: 'Shed', city: 'Calgary', province: 'AB'}
 ]
-console.log(locations);
 
 export const Location_List = () => <LocationList data={locations} />;

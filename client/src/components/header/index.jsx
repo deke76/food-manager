@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import useFetchServer from "../../hooks/useFetchServer";
+import { useFetchServer } from "../../constants";
 import { userContext } from "../../providers/UserProvider";
 import classNames from "classnames";
 
@@ -15,7 +15,7 @@ import SelectOneDropdown from "../buttons/selectOne";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
-    useFetchServer("locations");
+    useFetchServer('locations');
 
   const addLocation = () => {
     console.log("new location");
