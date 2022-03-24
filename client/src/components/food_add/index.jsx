@@ -26,6 +26,7 @@ export default function FoodAdd(props) {
   );
   const [foodQtyNum, setFoodQtyNum] = useState(1);
   const [foodQtyUnit, setFoodQtyUnit] = useState(0);
+  const [showFoodQty, setShowFoodQty] = useState(false);
   const foodUnitOptions = [
     "each",
     "ounce",
@@ -52,12 +53,16 @@ export default function FoodAdd(props) {
   useEffect(() => {
     suggestions &&
       selectedSuggestion !== null &&
-      setFoodName(suggestions[selectedSuggestion].name);
+      setFoodName(suggestions[selectedSuggestion].name.toUpperCase());
   }, [selectedSuggestion, suggestions]);
+
+  useEffect(() => {
+    searchValue === "" && setSuggestions([])
+  },[searchValue])
 
   return (
     <div className="food-add">
-      <h3>{foodName}</h3>
+      <h1>{foodName}</h1>
       <div className="food-add__input">
         <input
           type="text"
@@ -100,13 +105,24 @@ export default function FoodAdd(props) {
         <div className="group">
           <label>Quantity</label>
 
-          <Counter
-            value={foodQtyNum}
-            setValue={setFoodQtyNum}
-            minValue={0}
-            maxValue={100}
-          />
+          <div className="group">
+            <Counter
+              value={foodQtyNum}
+              setValue={setFoodQtyNum}
+              minValue={0}
+              maxValue={100}
+            />
+            <div onClick={() => setShowFoodQty(prev => !prev)}>{foodUnitOptions[foodQtyUnit]}</div>
+          </div>
         </div>
+          {showFoodQty && (
+            <SelectOneDropdown
+              selected={foodQtyUnit}
+              setSelected={setFoodQtyUnit}
+              choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
+              onClickCallback={() => setShowFoodQty(false)}
+            />
+          )}
       </div>
     </div>
   );
