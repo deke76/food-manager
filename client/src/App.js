@@ -4,6 +4,7 @@ import "./App.css";
 import UserProvider from "./providers/UserProvider";
 import HeaderBar from "./components/header";
 import FoodBrowse from "./components/Food/Browse";
+import LocationBrowse from "./components/Locations/Browse/index"
 
 // Main application file
 export default function App() {
