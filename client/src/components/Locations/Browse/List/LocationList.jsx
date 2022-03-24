@@ -2,7 +2,7 @@ import React from "react";
 import LocationListItem from "./LocationListItem";
 
 
-export default function List(props) {
+export default function LocationList(props) {
 
   // Setup the list using the array passed in
   const items = 

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../../buttons/actions/Button';
 import './LocationListItem.scss';
 
-export default function ListItem(props) {
+export default function LocationListItem(props) {
   const { name, detailHeader, detailFooter, quantity } = props
   const empty = props;
   console.log(empty);

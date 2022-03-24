@@ -1,25 +1,22 @@
 @import '../../../../styles/reset.scss';
+@import '../../../../styles/variables.scss';
 
 .list-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  border-bottom-style: solid;
+  border-width: 1px;
+  padding:0.5em;
 
-  &__left {
+  &__description {
     display: flex;
     flex-direction: row;
-    align-items:flex-start;
-
-    &__quantity {
-      padding-left: 1em;
-    }
+    align-items: baseline;
   }
+}
 
-  &__right {
-    display: flex;
-    flex-direction: column;
-    align-items:flex-end;
-    font-style: italic;
-  }
+.expired {
+  background-color: $danger-color;
 }
