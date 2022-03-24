@@ -5,4 +5,4 @@ export default {
   component: LocationListItem
 };
 
-export const With_Items = () => <LocationListItem empty={false} name={'Lake'} detailHeader={'Invermere'} detailFooter={'BC'} />;
+export const With_Items = () => <LocationListItem empty={false} name={'Lake'} city={'Invermere'} province={'BC'} />;

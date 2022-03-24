@@ -10,8 +10,8 @@ export default function LocationList(props) {
    <LocationListItem
      key={index}
      name={d.name}
-     detailHeader={d.city}
-     detailFooter={d.province}
+     city={d.city}
+     province={d.province}
    />
   ))
   console.log(props.data);

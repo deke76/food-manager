@@ -3,7 +3,7 @@ import Button from '../../../buttons/actions/Button';
 import './LocationListItem.scss';
 
 export default function LocationListItem(props) {
-  const { name, detailHeader, detailFooter, quantity } = props
+  const { name, city, province, quantity } = props
   const empty = props;
   console.log(empty);
   return (
@@ -16,8 +16,8 @@ export default function LocationListItem(props) {
         </div>
       </div>
       <div className='list-item__right'>
-        <h4>{detailHeader}</h4>
-        <h6>{detailFooter}</h6>
+        <h5>{city}</h5>
+        <h6>{province}</h6>
       </div>
     </section>
   )
