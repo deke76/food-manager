@@ -1,8 +1,8 @@
-import useFetchServer from "../../../hooks/useFetchServer";
+import { URL, useFetchServer } from '../../../constants'
 import LocationList from "./List/LocationList";
 
 export default function LocationBrowse(props) {
-  const { responseData } = useFetchServer('locations');
+  const { responseData } = useFetchServer(URL.USER_LOCATIONS);
   const { locations } = responseData
   console.log(responseData);
   return (

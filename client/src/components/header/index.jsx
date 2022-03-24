@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import useFetchServer from "../../hooks/useFetchServer";
+import { URL, useFetchServer } from "../../constants";
 import { userContext } from "../../providers/UserProvider";
 import classNames from "classnames";
 
@@ -14,7 +14,7 @@ import "./index.scss";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
-    useFetchServer("locations");
+    useFetchServer(URL.USER_LOCATIONS);
 
   const { user, incrementUser, decrementUser } = useContext(userContext);
 

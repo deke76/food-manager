@@ -2,13 +2,12 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../providers/UserProvider";
 
-export default function useFetchServer(route) {
+export default function useFetchServer(url) {
   const [responseData, setResponseData] = useState(null);
   const [responseError, setReponseError] = useState(null);
   const { user } = useContext(userContext);
 
   useEffect(() => {
-    const url = `http://localhost:3000/users/${user}/${route}`;
     return axios
       .get(url)
       .then((res) => setResponseData(res.data))

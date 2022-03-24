@@ -1,8 +1,8 @@
-import useFetchServer from "../../../hooks/useFetchServer";
+import {URL, useFetchServer } from "../../../constants";
 import FoodList from "./List/FoodList";
 
 export default function FoodBrowse(props) {
-  const { responseData } = useFetchServer('foods');
+  const { responseData } = useFetchServer(URL.USER_FOODS);
   const { foods } = responseData
   console.log(responseData);
   return (
