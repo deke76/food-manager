@@ -3,12 +3,12 @@ import FoodList from "./list";
 import UserProvider from "../../providers/UserProvider";
 
 export default function FoodBrowse(props) {
-  const { responseData } = useFetchServer("foods");
+  const { responseData } = useFetchServer();
 
   return (
     <div>
       <UserProvider>
-        <FoodList items={responseData} />
+        <FoodList items={responseData.foods} />
       </UserProvider>
     </div>
   );

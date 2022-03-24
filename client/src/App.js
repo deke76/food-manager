@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./App.css";
+import { getUserData } from "./helpers/selector";
 
 import UserProvider from "./providers/UserProvider";
-import FoodBrowse from "./components/food_browse/index";
 import HeaderBar from "./components/header";
+import FoodBrowse from "./components/food_browse";
+import List from "./components/lists/List";
 
 // Main application file
 export default function App() {
@@ -15,15 +17,12 @@ export default function App() {
   const LOCATION_READ = "LOCATION_READ";
   const LOCATION_ADD = "LOCATION_ADD";
   const [view, setView] = useState(HOME);
-  const urlUsersObject = 'localhost:3000/users/'
 
   return (
     <div className="App">
       <UserProvider>
         <HeaderBar />
-        <FoodBrowse />
-        {view === FOOD_ADD && <FoodBrowse />}
-        {view === FOOD_BROWSE && <FoodBrowse />}
+        
       </UserProvider>
     </div>
   );

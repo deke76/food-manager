@@ -23,9 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: 'food_manager_development'
-  username: 'development'
-  password: 'development'
+  database: <%= ENV['LOCAL_DB'] %>
+  username: <%= ENV['LOCAL_DB_USER'] %>
+  password: <%= ENV['LOCAL_DB_PWD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
