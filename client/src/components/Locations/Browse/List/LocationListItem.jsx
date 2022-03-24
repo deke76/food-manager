@@ -7,9 +7,9 @@ export default function LocationListItem(props) {
   const empty = props;
   console.log(empty);
   return (
-    <section className='location'>
+    <section className='list-item'>
       <div className='list-item__left'>
-        <Button icon = { !empty ? 'caret' : 'plus' }/>
+        <Button icon = {'caret'}/>
         <div>
           <h4>{name}</h4>
           <h6 className='list-item__left__quantity'>{quantity !== 0 && quantity}</h6>
