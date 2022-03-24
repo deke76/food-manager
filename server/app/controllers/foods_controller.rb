@@ -1,14 +1,26 @@
 
 
 class FoodsController < ApplicationController
+  def all
+    @foods = Food.all
+    render json: @foods
+  end
+
   def index
-    @foods = Food.where(user_id: params[:user_id])
+    @foods = Food.where(location_id: params[:location_id])
     render json: @foods
   end
 
   def show
     @food = Food.find(params[:id])
     render json: @food
+  end
+
+  def user
+    @foods = Food
+      .left_outer_joins(:location)
+      .where(location: {user_id: params[:user_id]})
+    render json: @foods
   end
 
   def new

@@ -22,7 +22,6 @@ export default function App() {
       <UserProvider>
         <HeaderBar />
         <FoodBrowse />
-        
       </UserProvider>
     </div>
   );
