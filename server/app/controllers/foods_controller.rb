@@ -1,5 +1,3 @@
-
-
 class FoodsController < ApplicationController
   def all
     @foods = Food.all

@@ -12,7 +12,7 @@ export default function ListItem(props) {
         <Button icon = { !empty ? 'caret' : 'plus' }/>
         <div>
           <h4>{name}</h4>
-          <h6 className='list-item__left__quantity'>{quantity !== 0 && quantity}</h6>
+          <h6 className='list-item__left__quantity'>{quantity !== 0 && quantity + ' on hand'}</h6>
         </div>
       </div>
       <div className='list-item__right'>

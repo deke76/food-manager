@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = find(params[:id])
+    @location = Location.find(params[:id])
     render json: @location
   end
 
