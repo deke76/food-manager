@@ -4,7 +4,14 @@ class FoodsController < ApplicationController
     render json: @foods
   end
 
-  def index
+  def users
+    @foods = Food
+      .left_outer_joins(:location)
+      .where(location: {user_id: params[:user_id]})
+    render json: @foods
+  end
+
+  def locations
     @foods = Food.where(location_id: params[:location_id])
     render json: @foods
   end
@@ -14,15 +21,7 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
-  def user
-    @foods = Food
-      .left_outer_joins(:location)
-      .where(location: {user_id: params[:user_id]})
-    render json: @foods
-  end
-
   def new
-
   end
 
   def autocomplete
@@ -32,24 +31,6 @@ class FoodsController < ApplicationController
     res = Net::HTTP.get_response(uri)
     render json: res.body
   end
-
-  def recipes_index
-    uri = URI("https://api.spoonacular.com/recipes/findByIngredients")
-    spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :ingredients => params[:ingredients] }
-    uri.query = URI.encode_www_form(spoonacular_query)
-    res = Net::HTTP.get_response(uri)
-    render json: res.body
-  end
-  
-  def recipes_show
-    id = params[:id]
-    uri = URI("https://api.spoonacular.com/recipes/#{id}/information")
-    spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'] }
-    uri.query = URI.encode_www_form(spoonacular_query)
-    res = Net::HTTP.get_response(uri)
-    render json: res.body
-  end
-
 
   def reset_database
     tables = ActiveRecord::Base.connection.tables
