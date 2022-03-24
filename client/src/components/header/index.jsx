@@ -14,7 +14,7 @@ import "./index.scss";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
-    useFetchServer(URL.USER_LOCATIONS);
+    useFetchServer(URL.userLocations);
 
   const { user, incrementUser, decrementUser } = useContext(userContext);
 

@@ -12,7 +12,7 @@ export default function useFetchServer(url) {
       .get(url)
       .then((res) => setResponseData(res.data))
       .catch((err) => setReponseError(err));
-  },[route, user]);
+  },[url, user]);
 
   if (responseError) console.log(responseError)
   return { responseData, responseError };
