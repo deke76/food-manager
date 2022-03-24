@@ -1,9 +1,8 @@
 import React from 'react';
-import FoodSearch from "./FoodSearch";
-// import FoodAdd from '.';
+import FoodSearch from ".";
 
 export default {
-  component: FoodSearch
+  component: FoodSearch,
 };
 
 export const Default = () => <FoodSearch />;

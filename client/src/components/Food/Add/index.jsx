@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Select from "../buttons/select/Select";
-import './FoodSearch.scss';
+import Select from "../../buttons/select/Select";
+import './index.scss';
 
 export default function FoodSearch(props) {
   const [searchValue, setSearchValue] = useState("");
