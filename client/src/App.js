@@ -21,9 +21,9 @@ export default function App() {
     <div className="App">
       <UserProvider>
         <HeaderBar />
-        <FoodBrowse />
+        {/* <FoodBrowse />
         {view === FOOD_ADD && <FoodBrowse />}
-        {view === FOOD_BROWSE && <FoodBrowse />}
+        {view === FOOD_BROWSE && <FoodBrowse />} */}
       </UserProvider>
     </div>
   );

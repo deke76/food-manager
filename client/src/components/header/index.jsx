@@ -12,16 +12,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.scss";
 
 export default function HeaderBar(props) {
-  const { currentLocation, setCurrentLocation } = props;
+  const { responseData: locations, responseError } =
+    useFetchServer("locations");
+  console.log("locations", locations);
+  console.log("error", responseError);
+
   const { user, incrementUser, decrementUser } = useContext(userContext);
+
+  const [currentLocation, setCurrentLocation] = useState(0);
 
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
   const toggleLocationDropdown = () => setShowLocationDropdown((prev) => !prev);
   const toggleProfileChanger = () => setShowProfileChanger((prev) => !prev);
-
-  const { responseData } = useFetchServer("shelves");
-  const shelves = responseData;
 
   return (
     <>
@@ -31,7 +34,7 @@ export default function HeaderBar(props) {
         </div>
         <div className="group">
           <div className="location-path" onClick={toggleLocationDropdown}>
-            House/Pantry
+            {locations && locations[currentLocation].name}
           </div>
           <div className="profile-image" onClick={toggleProfileChanger}>
             <FontAwesomeIcon icon={faUserAstronaut} />
@@ -47,10 +50,11 @@ export default function HeaderBar(props) {
       </nav>
       {showLocationDropdown && (
         <ul className="location-dropdown">
-          <li>House/Fridge</li>
-          <li>House/Freezer</li>
-          <li>Cabin/Freezer 1</li>
-          <li>Cabin/Freezer 2</li>
+          {locations && locations.map((location, index) => (
+            <li key={index} onClick={() => setCurrentLocation(index)}>
+              {location.name}
+            </li>
+          ))}
         </ul>
       )}
     </>
