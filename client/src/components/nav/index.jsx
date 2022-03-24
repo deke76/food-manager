@@ -10,7 +10,7 @@ import "./NavBar.scss";
 
 export default function NavBar(props) {
   return (
-    <nav className="nav">
+    <nav className="footer">
       <div className="icon-container">
         <FontAwesomeIcon icon={faEarthAmerica} />
         <div className="icon-text">Foods</div>

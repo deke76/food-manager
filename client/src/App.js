@@ -6,6 +6,7 @@ import HeaderBar from "./components/header";
 import FoodAdd from "./components/Food/Add";
 import Calendar from "./components/Food/Browse/Calendar"
 import FoodBrowse from "./components/Food/Browse"
+import LocationBrowse from "./components/Locations/Browse";
 
 
 // Main application file
