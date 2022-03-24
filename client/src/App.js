@@ -5,6 +5,7 @@ import UserProvider from "./providers/UserProvider";
 import FoodBrowse from "./components/food_browse/index";
 import HeaderBar from "./components/header";
 
+// Main application file
 export default function App() {
   const HOME = "HOME";
   const FOOD_BROWSE = "FOOD_BROWSE";
@@ -13,8 +14,9 @@ export default function App() {
   const LOCATION_BROWSE = "LOCATION_BROWSE";
   const LOCATION_READ = "LOCATION_READ";
   const LOCATION_ADD = "LOCATION_ADD";
-
   const [view, setView] = useState(HOME);
+  const urlUsersObject = 'localhost:3000/users/'
+
   return (
     <div className="App">
       <UserProvider>
