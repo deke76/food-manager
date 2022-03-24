@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
 
-
   # def show
   #   locations = Location.where(user_id: params[:id])
   #   foods = Food.where(user_id: params[:id])

@@ -16,6 +16,13 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
+  def user
+    @foods = Food
+      .left_outer_joins(:location)
+      .where(location: {user_id: params[:user_id]})
+    render json: @foods
+  end
+
   def new
     uri = URI('https://api.spoonacular.com/food/ingredients/autocomplete')
     spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
