@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 
 import UserProvider from "./providers/UserProvider";
-import FoodBrowse from "./components/food_browse/index";
 import HeaderBar from "./components/header";
+import FoodAdd from "./components/food_add";
+
 
 // Main application file
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
     <div className="App">
       <UserProvider>
         <HeaderBar />
+        <FoodAdd />
         {/* <FoodBrowse />
         {view === FOOD_ADD && <FoodBrowse />}
         {view === FOOD_BROWSE && <FoodBrowse />} */}
