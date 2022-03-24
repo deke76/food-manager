@@ -11,9 +11,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :locations do
-      resources :shelf, only: [:index] do
-        resources :foods, only: [:index]
-      end
+      resources :foods, only: [:index]
     end
   end
 end

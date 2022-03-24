@@ -8,17 +8,14 @@
 
 require 'faker'
 
-unless Rails.env.development?
-  puts "Development seeds only (for now)!"
-  exit 0
-end
+# unless Rails.env.development?
+#   puts "Development seeds only (for now)!"
+#   exit 0
+# end
 
-# create users
-puts 'Creating users...'
+# destroy current tables
 User.destroy_all
-puts 'Creating locations...'
 Location.destroy_all
-puts 'Creating foods...'
 Food.destroy_all
 
 user_id = 1
@@ -26,6 +23,7 @@ location_id = 1
 food_id = 1
 
 20.times do
+  puts 'Creating user...'
   User.create!({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -37,6 +35,7 @@ food_id = 1
     location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
     location_storage = ["Fridge", "Freezer", "Pantry", "Closer", "Cooler"].sample
     
+    puts 'Creating locations...'
     Location.create!({
       user_id: user_id,
       name: "#{location_structure} - #{location_storage}",
@@ -51,8 +50,9 @@ food_id = 1
     rand(6..20).times do
       food_name = [Faker::Food.spice, Faker::Food.ingredient, Faker::Food.vegetables, Faker::Food.fruits].sample
       
+      puts 'Creating foods...'
       Food.create!({
-        # user_id: user_id,  
+        user_id: user_id,  
         location_id: location_id,
         name: food_name,
         quantity: Faker::Number.between(from: 1, to: 6),
