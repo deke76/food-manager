@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
     locations = Location.where(user_id: params[:id])
-    shelves = Shelf.where(user_id: params[:id])
     foods = Food.where(user_id: params[:id])
     @user = { 'locations' => locations, 'shelves' => shelves, 'foods' => foods }
     render json: @user

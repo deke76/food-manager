@@ -2,6 +2,7 @@ class CreateLocations < ActiveRecord::Migration[6.1]
   def change
     create_table :locations do |t|
       t.integer :user_id, foreign_key: true
+      t.integer :temperature
       t.text :name
       t.text :street_address
       t.text :postal
