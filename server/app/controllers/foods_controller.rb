@@ -1,8 +1,13 @@
 
 
 class FoodsController < ApplicationController
+  def all
+    @foods = Food.all
+    render json: @foods
+  end
+
   def index
-    @foods = Food.where(user_id: params[:user_id])
+    @foods = Food.where(location_id: params[:location_id])
     render json: @foods
   end
 
