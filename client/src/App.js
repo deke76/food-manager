@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import { getUserData } from "./helpers/selector";
 
 import UserProvider from "./providers/UserProvider";
 import HeaderBar from "./components/header";
@@ -21,7 +20,7 @@ export default function App() {
     <div className="App">
       <UserProvider>
         <HeaderBar />
-        <FoodBrowse />
+        {/* <FoodBrowse /> */}
       </UserProvider>
     </div>
   );

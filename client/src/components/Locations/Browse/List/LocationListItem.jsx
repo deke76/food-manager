@@ -1,10 +1,11 @@
 import React from 'react';
-import Button from '../buttons/actions/Button';
-import './ListItem.scss';
+import Button from '../../../buttons/actions/Button';
+import './LocationListItem.scss';
 
 export default function ListItem(props) {
-  const { empty, name, detailHeader, detailFooter, quantity } = props
-  
+  const { name, detailHeader, detailFooter, quantity } = props
+  const empty = props;
+  console.log(empty);
   return (
     <section className='list-item'>
       <div className='list-item__left'>
