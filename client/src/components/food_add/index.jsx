@@ -7,12 +7,17 @@ import Counter from "../buttons/counter";
 import "./index.scss";
 import axios from "axios";
 import moment from "moment";
+import SelectOneDropdown from "../buttons/selectOne";
 
 export default function FoodAdd(props) {
+  // Search values
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedSuggestion, setSelectedSuggestion] = useState(null);
 
+  // New Food Values
+  const [foodName, setFoodName] = useState("New Food Item");
   const [foodDateExpiry, setFoodDateExpiry] = useState(
     moment().add(10, "days").format("YYYY-MM-DD")
   );
@@ -20,8 +25,17 @@ export default function FoodAdd(props) {
     moment().format("YYYY-MM-DD")
   );
   const [foodQtyNum, setFoodQtyNum] = useState(1);
-  const [foodQtyUnit, setFoodQtyUnit] = useState("each");
+  const [foodQtyUnit, setFoodQtyUnit] = useState(0);
+  const foodUnitOptions = [
+    "each",
+    "ounce",
+    "gallon",
+    "liter",
+    "kilogram",
+    "pound",
+  ];
 
+  // Fetch suggestions from server
   useEffect(() => {
     const url = "http://localhost:3000/foods/autocomplete";
     const params = searchValue.length > 0 ? { query: searchValue } : null;
@@ -35,34 +49,36 @@ export default function FoodAdd(props) {
       });
   }, [searchValue]);
 
+  useEffect(() => {
+    suggestions &&
+      selectedSuggestion !== null &&
+      setFoodName(suggestions[selectedSuggestion].name);
+  }, [selectedSuggestion, suggestions]);
+
   return (
     <div className="food-add">
-      <h3>Add a Food Item</h3>
+      <h3>{foodName}</h3>
       <div className="food-add__input">
         <input
           type="text"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => {
+            setSelectedSuggestion(null);
+            setSearchValue(e.target.value);
+          }}
+          onClick={() => setShowSuggestions(true)}
         />
         <div className="barcode-btn">
           <FontAwesomeIcon icon={faBarcode} />
         </div>
       </div>
       {showSuggestions && (
-        <div className="food-add__suggestions">
-          {suggestions.map((suggestion, index) => (
-            <div
-              key={index}
-              className="suggestion"
-              onClick={() => {
-                setShowSuggestions(false);
-                setSearchValue(suggestion.name);
-              }}
-            >
-              {suggestion.name}
-            </div>
-          ))}
-        </div>
+        <SelectOneDropdown
+          selected={selectedSuggestion}
+          setSelected={setSelectedSuggestion}
+          choices={suggestions.map((suggestion) => suggestion.name)}
+          onClickCallback={() => setShowSuggestions(false)}
+        />
       )}
       <div className="food-add__details">
         <div className="group">
@@ -70,7 +86,7 @@ export default function FoodAdd(props) {
           <input
             type="date"
             value={foodDatePurchase}
-            onChange={(e) => setFoodDateExpiry(e.target.value)}
+            onChange={(e) => setFoodDatePurchase(e.target.value)}
           />
         </div>
         <div className="group">
@@ -90,16 +106,6 @@ export default function FoodAdd(props) {
             minValue={0}
             maxValue={100}
           />
-          <select name="units" id="qty_units" className="qty-units">
-            <option value="each" selected>
-              each
-            </option>
-            <option value="oz">oz</option>
-            <option value="gallon">gallon</option>
-            <option value="liter">liter</option>
-            <option value="kg">kg</option>
-            <option value="lb">lb</option>
-          </select>
         </div>
       </div>
     </div>

@@ -1,23 +1,34 @@
-import "./selectOne.scss"
+import "./selectOne.scss";
 
 export default function SelectOneDropdown(props) {
-  const { selected, setSelected, choices, newChoiceText, newChoiceCallback } =
-    props;
-  
+  const {
+    selected,
+    setSelected,
+    choices,
+    onClickCallback,
+    newChoiceText,
+    newChoiceCallback,
+  } = props;
+
   return (
     <ul>
       {choices.map((choice, index) => (
         <li
           key={index}
-          onClick={() => setSelected(index)}
+          onClick={() => {
+            setSelected(index);
+            onClickCallback && onClickCallback();
+          }}
           className={index === selected ? "selected" : ""}
         >
           {choice}
         </li>
       ))}
-      <li className="new-choice" onClick={newChoiceCallback}>
-        {newChoiceText}
-      </li>
+      {newChoiceText && (
+        <li className="new-choice" onClick={newChoiceCallback}>
+          {newChoiceText}
+        </li>
+      )}
     </ul>
   );
 }
