@@ -9,14 +9,13 @@ Rails.application.routes.draw do
   # User Routes
   resources :users do
     get "/foods", to: "foods#users"
-    resources :locations, only: [:index]
+    resources :locations, only: [:index, :show] do
+      get "/foods", to: "foods#locations"
+    end
   end
 
   # Location Routes
   get "/locations", to: "locations#all"
-  resources :locations, only: [:show] do
-    get "/foods", to: "foods#locations"
-  end
 
   # Recipe Routes
   resources :recipes, only: [:index, :show]
