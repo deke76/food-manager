@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
+import classNames from "classnames";
 
 import {
-  faUserAstronaut,
+  faUser,
   faCaretLeft,
   faCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -14,8 +15,6 @@ import "./index.scss";
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
     useFetchServer("locations");
-  console.log("locations", locations);
-  console.log("error", responseError);
 
   const { user, incrementUser, decrementUser } = useContext(userContext);
 
@@ -30,6 +29,7 @@ export default function HeaderBar(props) {
     <>
       <nav className="header">
         <div className="group title">
+          <div className="app-logo">🍌</div>
           <div className="app-title">Pantryful</div>{" "}
         </div>
         <div className="group">
@@ -37,7 +37,7 @@ export default function HeaderBar(props) {
             {locations && locations[currentLocation].name}
           </div>
           <div className="profile-image" onClick={toggleProfileChanger}>
-            <FontAwesomeIcon icon={faUserAstronaut} />
+            <FontAwesomeIcon icon={faUser} />
           </div>
           {showProfileChanger && (
             <div className="profile-switcher">
@@ -50,11 +50,30 @@ export default function HeaderBar(props) {
       </nav>
       {showLocationDropdown && (
         <ul className="location-dropdown">
-          {locations && locations.map((location, index) => (
-            <li key={index} onClick={() => setCurrentLocation(index)}>
-              {location.name}
-            </li>
-          ))}
+          {locations &&
+            locations.map((location, index) => {
+              const classes = classNames({
+                selected: index === currentLocation,
+              });
+              return (
+                <li
+                  key={index}
+                  className={classes}
+                  onClick={() => setCurrentLocation(index)}
+                >
+                  {location.name}
+                </li>
+              );
+            })}
+          <li
+            className="add-location"
+            onClick={() => {
+              setShowLocationDropdown(false);
+              console.log("Add a location");
+            }}
+          >
+            Add a Location...
+          </li>
         </ul>
       )}
     </>

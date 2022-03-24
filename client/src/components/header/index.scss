@@ -5,11 +5,12 @@
   flex-direction: row;
   justify-content: space-between;
 
-  padding: 8px;
+  font-size: larger;
+  padding: 10px;
 
   .app-title {
     font-weight: bold;
-    font-size: larger;
+    font-size: x-large;
   }
 
   .location-path {
@@ -63,4 +64,22 @@
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
+  font-size: large;
+
+
+
+  li {
+    padding: 10px;
+    border-bottom: solid 1px silver;
+    
+    &.selected {
+      font-weight: bold;
+    }
+
+    &.add-location {
+      font-style: italic;
+      opacity: 50%;
+    }
+  
+  }
 }
