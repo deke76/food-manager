@@ -7,7 +7,7 @@ export default function ListItem(props) {
   const empty = props;
   console.log(empty);
   return (
-    <section className='list-item'>
+    <section className='location'>
       <div className='list-item__left'>
         <Button icon = { !empty ? 'caret' : 'plus' }/>
         <div>
