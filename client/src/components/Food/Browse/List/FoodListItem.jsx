@@ -3,7 +3,7 @@ import Button from '../../../buttons/actions/Button';
 import './FoodListItem.scss';
 
 export default function FoodListItem(props) {
-  const { name, expires, purchased, quantity, expired } = props
+  const { name, expires, quantity, expired } = props
   let sectionClass = 'list-item' + (expired ? ' expired' : '');
 
   return (

@@ -3,13 +3,8 @@ import "./App.css";
 
 import UserProvider from "./providers/UserProvider";
 import HeaderBar from "./components/header";
-<<<<<<< HEAD
-import FoodBrowse from "./components/Food/Browse";
-import LocationBrowse from "./components/Locations/Browse/index"
-=======
-import FoodAdd from "./components/food_add";
+import FoodAdd from "./components/Food/Add";
 
->>>>>>> page/new-food
 
 // Main application file
 export default function App() {
@@ -26,14 +21,10 @@ export default function App() {
     <div className="App">
       <UserProvider>
         <HeaderBar />
-<<<<<<< HEAD
-        {/* <FoodBrowse /> */}
-=======
         <FoodAdd />
         {/* <FoodBrowse />
         {view === FOOD_ADD && <FoodBrowse />}
         {view === FOOD_BROWSE && <FoodBrowse />} */}
->>>>>>> page/new-food
       </UserProvider>
     </div>
   );
