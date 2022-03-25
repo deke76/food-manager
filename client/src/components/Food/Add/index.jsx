@@ -36,6 +36,11 @@ export default function FoodAdd(props) {
     "pound",
   ];
 
+  // const save = () => {
+  //   axios.post
+  // }
+
+
   // Fetch suggestions from server
   useEffect(() => {
     const url = "http://localhost:3000/foods/autocomplete";
