@@ -10,6 +10,5 @@ const foods = [
   {name: 'Orange', quantity: 2, date_purchased: '2022-03-17', date_expires: '2022-03-30'},
   {name: 'Apple', quantity: 6, date_purchased: '2022-03-15', date_expires: '2022-03-31'}
 ]
-console.log(foods);
 
 export const Food_List = () => <FoodList data={foods} />;

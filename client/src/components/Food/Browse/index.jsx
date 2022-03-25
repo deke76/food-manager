@@ -1,13 +1,20 @@
+import { useContext } from "react";
 import useFetchServer from "../../../hooks/useFetchServer";
-import FoodList from "./List/FoodList";
+import { locationContext } from "../../../providers/LocationProvider";
 
 export default function FoodBrowse(props) {
-  const { responseData } = useFetchServer('foods');
-  const { foods } = responseData
-  console.log(responseData);
+  const { location: locationId } = useContext(locationContext);
+  console.log("locationId", locationId);
+  const { responseData: foodItems } = useFetchServer(
+    `/locations/${locationId}/foods`
+  );
+  console.log(foodItems);
+
   return (
     <div>
-      <FoodList data={ foods } />
+      {foodItems.map((item) => (
+        <div>{item.name}</div>
+      ))}
     </div>
   );
 }

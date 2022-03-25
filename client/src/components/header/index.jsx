@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
-import classNames from "classnames";
+import { locationContext } from "../../providers/LocationProvider";
+
 
 import {
   faUser,
@@ -11,14 +12,25 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.scss";
+import SelectOneDropdown from "../buttons/selectOne";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
     useFetchServer("locations");
 
+  const addLocation = () => {
+    console.log("new location");
+  };
+
   const { user, incrementUser, decrementUser } = useContext(userContext);
 
   const [currentLocation, setCurrentLocation] = useState(0);
+
+  const { setLocation } = useContext(locationContext);
+
+  useEffect(() => {
+    locations && setLocation(locations[currentLocation].id);
+  },[currentLocation, locations, setLocation]);
 
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
@@ -49,32 +61,14 @@ export default function HeaderBar(props) {
         </div>
       </nav>
       {showLocationDropdown && (
-        <ul className="location-dropdown">
-          {locations &&
-            locations.map((location, index) => {
-              const classes = classNames({
-                selected: index === currentLocation,
-              });
-              return (
-                <li
-                  key={index}
-                  className={classes}
-                  onClick={() => setCurrentLocation(index)}
-                >
-                  {location.name}
-                </li>
-              );
-            })}
-          <li
-            className="add-location"
-            onClick={() => {
-              setShowLocationDropdown(false);
-              console.log("Add a location");
-            }}
-          >
-            Add a Location...
-          </li>
-        </ul>
+        <SelectOneDropdown
+          selected={currentLocation}
+          setSelected={setCurrentLocation}
+          choices={locations.map((location) => location.name)}
+          newChoiceText="Add a new Location..."
+          newChoiceCallback={addLocation}
+          newChoiceLink="/locations/add"
+        />
       )}
     </>
   );

@@ -1,27 +1,36 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 
 import UserProvider from "./providers/UserProvider";
+import LocationProvider from "./providers/LocationProvider";
+
 import HeaderBar from "./components/header";
+
+import FoodAdd from "./components/Food/Add";
+import LocationAdd from "./components/Locations/Add";
+
 import FoodBrowse from "./components/Food/Browse";
-import LocationBrowse from "./components/Locations/Browse/index"
+import LocationBrowse from "./components/Locations/Browse";
 
 // Main application file
-export default function App() {
-  const HOME = "HOME";
-  const FOOD_BROWSE = "FOOD_BROWSE";
-  const FOOD_READ = "FOOD_READ";
-  const FOOD_ADD = "FOOD_ADD";
-  const LOCATION_BROWSE = "LOCATION_BROWSE";
-  const LOCATION_READ = "LOCATION_READ";
-  const LOCATION_ADD = "LOCATION_ADD";
-  const [view, setView] = useState(HOME);
-
+export default function App(props) {
   return (
-    <div className="App">
+    <div>
       <UserProvider>
-        <HeaderBar />
-        {/* <FoodBrowse /> */}
+        <LocationProvider>
+          <BrowserRouter>
+            <HeaderBar />
+            <Routes>
+              <Route path="/" element={<FoodBrowse />} />
+              <Route path="/foods" element={<FoodBrowse />} />
+              <Route path="/foods/add" element={<FoodAdd />} />
+              <Route path="/locations" element={<LocationBrowse />} />
+              <Route path="/locations/add" element={<LocationAdd />} />
+            </Routes>
+          </BrowserRouter>
+        </LocationProvider>
       </UserProvider>
     </div>
   );

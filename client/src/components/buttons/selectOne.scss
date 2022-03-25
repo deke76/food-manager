@@ -1,0 +1,26 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+  font-size: large;
+
+  li {
+    padding: 10px;
+    border-bottom: solid 1px silver;
+
+    &.selected {
+      font-weight: bold;
+    }
+
+    &.new-choice {
+      font-style: italic;
+      opacity: 50%;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+}

@@ -1,6 +1,86 @@
-.food-search {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  width: 100%
+.food-add {
+  // box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+  
+  h1 {
+    margin: 10px;
+    padding: 0;
+    color: salmon;
+
+  }
+
+  .food-add__input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    // margin: 10px;
+    // background-color: red;
+    
+    * {
+      margin: 10px;
+    }
+    
+    
+    textarea, input {
+      width: 100%;
+      border: none;
+      font-size: larger;
+      background-color: whitesmoke;
+      border-radius: 30px;
+      box-shadow: inset rgba(0, 0, 0, 0.35) 0px 2px 5px;
+      
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    
+    .barcode-btn {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
+
+      background-color: whitesmoke;
+
+      svg {
+        height: 27px;
+      }
+    }
+
+  }
+
+  .food-add__suggestions {
+    // font-size: larger;
+    .suggestion {
+      background-color: whitesmoke;
+      border-bottom: 1px solid silver;
+      padding: 10px;
+    }
+  }
+
+  .food-add__details {
+    .group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      gap: 15px;
+      margin: 15px;
+
+    }
+
+    input {
+      font-size: large;
+      border: none;
+      background-color: white;
+    }
+
+    .qty-num {
+      background-color: red;
+    }
+  }
+
 }

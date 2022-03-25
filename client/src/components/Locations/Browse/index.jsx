@@ -1,4 +1,4 @@
-import useFetchServer from "../../../hooks/useFetchServer";
+import { useFetchServer } from '../../../constants'
 import LocationList from "./List/LocationList";
 
 export default function LocationBrowse(props) {
