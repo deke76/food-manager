@@ -1,4 +1,4 @@
-import useFetchServer from "../../../hooks/useFetchServer";
+import { useFetchServer } from "../../../constants";
 import FoodList from "./List/FoodList";
 
 export default function FoodBrowse(props) {

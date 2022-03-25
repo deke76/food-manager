@@ -2,23 +2,20 @@ import React from 'react';
 import Button from '../../../buttons/actions/Button';
 import './FoodListItem.scss';
 
-export default function ListItem(props) {
-  const { name, detailHeader, detailFooter, quantity } = props
-  const empty = props;
-  console.log(empty);
+export default function FoodListItem(props) {
+  const { name, expires, quantity, expired } = props
+  let sectionClass = 'list-item' + (expired ? ' expired' : '');
+
   return (
-    <section className='list-item'>
-      <div className='list-item__left'>
-        <Button icon = { !empty ? 'caret' : 'plus' }/>
-        <div>
-          <h4>{name}</h4>
-          <h6 className='list-item__left__quantity'>{quantity !== 0 && quantity + ' on hand'}</h6>
-        </div>
+    <section className={sectionClass}>
+      <Button icon = { 'caret' }/>
+      <div className='list-item__description'>
+        <h3>{name}</h3>
+        <h4 className='list-item__left__quantity'>{quantity !== 0 && quantity + ' on hand'}</h4>
       </div>
-      <div className='list-item__right'>
-        <h4>{detailHeader}</h4>
-        <h6>{detailFooter}</h6>
-      </div>
+    <div className='list-item__right'>
+      <h4>Expires {expires}</h4>
+    </div>
     </section>
   )
 }

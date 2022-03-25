@@ -4,6 +4,8 @@ import "./App.css";
 import UserProvider from "./providers/UserProvider";
 import HeaderBar from "./components/header";
 import FoodAdd from "./components/Food/Add";
+import Calendar from "./components/Food/Browse/Calendar"
+import FoodBrowse from "./components/Food/Browse"
 
 
 // Main application file
