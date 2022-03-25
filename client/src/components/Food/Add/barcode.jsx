@@ -1,5 +1,6 @@
 import React from "react";
 import Quagga from "quagga"; // ES6
+import './barcode.scss';
 
 let _scannerIsRunning = false;
 
