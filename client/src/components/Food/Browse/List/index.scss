@@ -1,0 +1,39 @@
+@import '../../../../styles/reset.scss';
+@import '../../../../styles/variables.scss';
+.list {
+  border-collapse: collapse;
+}
+
+.list-item {
+  box-sizing:border-box;
+  align-items: baseline;
+  border-bottom-style: solid;
+  border-width: 1px;
+  padding: 0.5em;
+  width: 100vw;
+
+  &__button {
+    min-width: 1em;
+  }
+
+  &__name {
+    width: 35%;
+  }
+
+  &__quantity {
+    width: 5%;
+  }
+
+  &__units {
+    width: 10%;
+  }
+
+  &__expiry {
+    text-align: end;
+    width: 35%;
+  }
+}
+
+.expired {
+  background-color: $danger-color;
+}

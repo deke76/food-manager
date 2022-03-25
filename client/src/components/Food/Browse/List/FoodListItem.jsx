@@ -1,21 +1,22 @@
 import React from 'react';
 import Button from '../../../buttons/actions/Button';
-import './FoodListItem.scss';
+import moment from 'moment';
+import './index.scss';
 
 export default function FoodListItem(props) {
-  const { name, expires, quantity, expired } = props
+  const { name, expires, quantity, units, expired } = props
   let sectionClass = 'list-item' + (expired ? ' expired' : '');
+  
+  const today = new Date();
+  const daysToExpiry = moment(expires).from(today);
 
   return (
-    <section className={sectionClass}>
-      <Button icon = { 'caret' }/>
-      <div className='list-item__description'>
-        <h3>{name}</h3>
-        <h4 className='list-item__left__quantity'>{quantity !== 0 && quantity + ' on hand'}</h4>
-      </div>
-    <div className='list-item__right'>
-      <h4>Expires {expires}</h4>
-    </div>
-    </section>
+    <tr className={sectionClass}>
+      <td className={'list-item__button'}><Button icon = { 'caret' }/></td>
+      <td className={'list-item__name'}>{name}</td>
+      <td className={'list-item__quantity'}>{quantity}</td>
+      <td className={'list-item__units'}>{units}</td>
+      <td className={'list-item__expiry'}>{daysToExpiry}</td>
+    </tr>
   )
 }
