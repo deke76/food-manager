@@ -2,12 +2,11 @@ import { useFetchServer } from '../../../constants'
 import LocationList from "./List/LocationList";
 
 export default function LocationBrowse(props) {
-  const { responseData } = useFetchServer('locations');
-  const { locations } = responseData
-  console.log(responseData);
+  const { responseData: locations } = useFetchServer('/locations');
+  console.log(locations);
   return (
     <div>
-      <LocationList data={ locations } />
+      {locations && <LocationList data={ locations } />}
     </div>
   );
 }
