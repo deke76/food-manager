@@ -4,37 +4,45 @@ import { locationContext } from "../../providers/LocationProvider";
 import { userContext } from "../../providers/UserProvider";
 import axios from "axios";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 export default function LocationList(props) {
   const { setLocation } = useContext(locationContext);
   const { user } = useContext(userContext);
 
   const [locations, setLocations] = useState(null);
 
-  
   const [currentLocation, setCurrentLocation] = useState(0);
   useEffect(() => {
     locations && setLocation(locations[currentLocation].id);
   }, [currentLocation, locations, setLocation]);
-  
+
   const [showNewLocation, setShowNewLocation] = useState(false);
   const [newLocationName, setNewLocationName] = useState("");
   const toggleNewLocation = () => setShowNewLocation((prev) => !prev);
-  
+
   const saveNewLocation = () => {
     if (newLocationName === "") return;
-    
     const url = `http://localhost:3000/users/${user}/locations`;
     return axios.post(url, { name: newLocationName }).then((response) => {
       toggleNewLocation();
       setNewLocationName("");
-      locations.push(newLocationName);
+      setLocations([...locations, newLocationName]);
     });
   };
-  
+
+  const deleteLocation = (id) => {
+    const url = `http://localhost:3000/users/${user}/locations/${id}`;
+    return axios.delete(url).then(() => {
+      setLocations(locations.filter((i) => i.id !== id));
+    });
+  };
+
   useEffect(() => {
     const url = `http://localhost:3000/users/${user}/locations`;
     return axios.get(url).then((response) => setLocations(response.data));
-  }, [user,locations]);
+  }, [user]);
 
   return (
     <ul className="location-dropdown">
@@ -46,7 +54,11 @@ export default function LocationList(props) {
             onClick={() => setCurrentLocation(index)}
           >
             <span className="text">{loc.name}</span>
-            {/* <FontAwesomeIcon className="btn" icon={ faTrashAlt}/> */}
+            <FontAwesomeIcon
+              className="btn"
+              icon={faTrashAlt}
+              onClick={() => deleteLocation(loc.id)}
+            />
           </li>
         ))}
       {showNewLocation && (
