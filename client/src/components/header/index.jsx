@@ -14,35 +14,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.scss";
 import SelectOneDropdown from "../buttons/selectOne";
 import axios from "axios";
+import usePostLocationServer from "../../hooks/usePostLocationServer";
+import LocationList from "./locationList";
 
 export default function HeaderBar(props) {
-  const { responseData: locations, responseError } =
-    useFetchServer("locations");
-
-  const addLocation = () => {
-    console.log("new location");
-  };
+  const { responseData: locations } = useFetchServer("locations");
 
   const { user, incrementUser, decrementUser } = useContext(userContext);
-  const [currentLocation, setCurrentLocation] = useState(0);
   const { setLocation } = useContext(locationContext);
+  const [currentLocation, setCurrentLocation] = useState(0);
 
+  // set location context
   useEffect(() => {
     locations && setLocation(locations[currentLocation].id);
   }, [currentLocation, locations, setLocation]);
 
+  // toggle UI elements
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
   const toggleLocationDropdown = () => setShowLocationDropdown((prev) => !prev);
   const toggleProfileChanger = () => setShowProfileChanger((prev) => !prev);
-  
-  const [showNewLocation, setShowNewLocation] = useState(false);
+
+  // states for creating a new location
   const [newLocationName, setNewLocationName] = useState("");
+  const [showNewLocation, setShowNewLocation] = useState(false);
   const toggleNewLocation = () => setShowNewLocation((prev) => !prev);
 
   const saveNewLocation = () => {
-    useEffect(() => axios.)
-  }
+    toggleNewLocation();
+    const url = `http://localhost:3000/users/${user}/locations`;
+    return axios
+      .post(url, { name: newLocationName })
+      .then(response => {
+        setCurrentLocation(locations.length - 1);
+        console.log("response",response)
+      });
+  };
 
   return (
     <>
@@ -69,17 +76,9 @@ export default function HeaderBar(props) {
           )}
         </div>
       </nav>
-      {/* {showLocationDropdown && (
-        <SelectOneDropdown
-          selected={currentLocation}
-          setSelected={setCurrentLocation}
-          choices={locations.map((location) => location.name)}
-          newChoiceText="Add a new Location..."
-          newChoiceCallback={addLocation}
-          newChoiceLink="/locations/add"
-        />
-      )} */}
-      {showLocationDropdown && locations && (
+
+      <LocationList/>
+      {/* {showLocationDropdown && locations && (
         <ul className="location-dropdown">
           {locations.map((location, index) => (
             <li
@@ -99,19 +98,16 @@ export default function HeaderBar(props) {
                 value={newLocationName}
                 onChange={(event) => setNewLocationName(event.target.value)}
               />
-              <span onClick={toggleNewLocation}>Save</span>
+              <span onClick={saveNewLocation}>Save</span>
             </li>
           )}
           {!showNewLocation && (
-            <li
-              className="new-choice"
-              onClick={toggleNewLocation}
-            >
+            <li className="new-choice" onClick={toggleNewLocation}>
               Add a new Location...
             </li>
           )}
         </ul>
-      )}
+      )} */}
     </>
   );
 }
