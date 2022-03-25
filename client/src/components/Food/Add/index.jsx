@@ -8,6 +8,7 @@ import "./index.scss";
 import axios from "axios";
 import moment from "moment";
 import SelectOneDropdown from "../../buttons/selectOne";
+import Barcode from "./barcode";
 
 export default function FoodAdd(props) {
   // Search values
@@ -35,6 +36,9 @@ export default function FoodAdd(props) {
     "kilogram",
     "pound",
   ];
+
+  // Barcode scanner
+  const [showBarcode, setShowBarcode] = useState();
 
   // const save = () => {
   //   axios.post
@@ -80,8 +84,9 @@ export default function FoodAdd(props) {
           placeholder="Search for food..."
         />
         <div className="barcode-btn">
-          <FontAwesomeIcon icon={faBarcode} />
+          <FontAwesomeIcon onClick={() => setShowBarcode(true)} icon={faBarcode} />
         </div>
+        {showBarcode ? <Barcode/> : ""}
       </div>
       {showSuggestions && (
         <SelectOneDropdown
