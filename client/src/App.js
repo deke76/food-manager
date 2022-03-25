@@ -7,7 +7,6 @@ import FoodAdd from "./components/Food/Add";
 import Calendar from "./components/Food/Browse/Calendar"
 import FoodBrowse from "./components/Food/Browse"
 
-
 // Main application file
 export default function App() {
   const HOME = "HOME";
@@ -18,15 +17,13 @@ export default function App() {
   const LOCATION_READ = "LOCATION_READ";
   const LOCATION_ADD = "LOCATION_ADD";
   const [view, setView] = useState(HOME);
-
+  
   return (
     <div className="App">
       <UserProvider>
         <HeaderBar />
         <FoodAdd />
-        {/* <FoodBrowse />
-        {view === FOOD_ADD && <FoodBrowse />}
-        {view === FOOD_BROWSE && <FoodBrowse />} */}
+        <FoodBrowse />
       </UserProvider>
     </div>
   );

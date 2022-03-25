@@ -16,6 +16,7 @@ import SelectOneDropdown from "../buttons/selectOne";
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
     useFetchServer('locations');
+  const { responseData: foods } = useFetchServer('foods');
 
   const addLocation = () => {
     console.log("new location");
