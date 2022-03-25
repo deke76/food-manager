@@ -1,12 +1,13 @@
 // import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "./App.css";
+import "./styles/app.scss";
 
 import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
 
 import HeaderBar from "./components/header";
+import NavBar from "./components/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
 import LocationAdd from "./components/Locations/Add";
@@ -22,13 +23,16 @@ export default function App(props) {
         <LocationProvider>
           <BrowserRouter>
             <HeaderBar />
-            <Routes>
-              <Route path="/" element={<FoodBrowse />} />
-              <Route path="/foods" element={<FoodBrowse />} />
-              <Route path="/foods/add" element={<FoodAdd />} />
-              <Route path="/locations" element={<LocationBrowse />} />
-              <Route path="/locations/add" element={<LocationAdd />} />
-            </Routes>
+            <div className="content">
+              <Routes>
+                <Route path="/" element={<FoodBrowse />} />
+                <Route path="/foods" element={<FoodBrowse />} />
+                <Route path="/foods/add" element={<FoodAdd />} />
+                <Route path="/locations" element={<LocationBrowse />} />
+                <Route path="/locations/add" element={<LocationAdd />} />
+              </Routes>
+            </div>
+            <NavBar />
           </BrowserRouter>
         </LocationProvider>
       </UserProvider>
