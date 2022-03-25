@@ -12,7 +12,7 @@ export default function FoodBrowse(props) {
 
   return (
     <div>
-      {foodItems.map((item) => (
+      {foodItems && foodItems.map((item) => (
         <div>{item.name}</div>
       ))}
     </div>
