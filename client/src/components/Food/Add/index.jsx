@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarcode } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
-import Counter from "../buttons/counter";
+import Counter from "../../buttons/counter";
 
 import "./index.scss";
 import axios from "axios";
 import moment from "moment";
-import SelectOneDropdown from "../buttons/selectOne";
+import SelectOneDropdown from "../../buttons/selectOne";
 
 export default function FoodAdd(props) {
   // Search values
@@ -72,6 +72,7 @@ export default function FoodAdd(props) {
             setSearchValue(e.target.value);
           }}
           onClick={() => setShowSuggestions(true)}
+          placeholder="Search for food..."
         />
         <div className="barcode-btn">
           <FontAwesomeIcon icon={faBarcode} />
@@ -123,6 +124,10 @@ export default function FoodAdd(props) {
               onClickCallback={() => setShowFoodQty(false)}
             />
           )}
+      </div>
+      <div className="group">
+        <button>Save and Exit</button>
+        <button>Save and Add Another</button>
       </div>
     </div>
   );
