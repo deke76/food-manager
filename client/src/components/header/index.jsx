@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
-import { useFetchServer } from "../../constants";
+import { useContext, useEffect, useState } from "react";
+import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
-import classNames from "classnames";
+import { locationContext } from "../../providers/LocationProvider";
+
 
 import {
   faUser,
@@ -15,7 +16,7 @@ import SelectOneDropdown from "../buttons/selectOne";
 
 export default function HeaderBar(props) {
   const { responseData: locations, responseError } =
-    useFetchServer('locations');
+    useFetchServer("locations");
 
   const addLocation = () => {
     console.log("new location");
@@ -24,6 +25,12 @@ export default function HeaderBar(props) {
   const { user, incrementUser, decrementUser } = useContext(userContext);
 
   const [currentLocation, setCurrentLocation] = useState(0);
+
+  const { setLocation } = useContext(locationContext);
+
+  useEffect(() => {
+    locations && setLocation(locations[currentLocation].id);
+  },[currentLocation, locations, setLocation]);
 
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
@@ -57,9 +64,10 @@ export default function HeaderBar(props) {
         <SelectOneDropdown
           selected={currentLocation}
           setSelected={setCurrentLocation}
-          choices={locations.map(location => location.name)}
+          choices={locations.map((location) => location.name)}
           newChoiceText="Add a new Location..."
           newChoiceCallback={addLocation}
+          newChoiceLink="/locations/add"
         />
       )}
     </>

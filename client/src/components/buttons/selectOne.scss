@@ -8,7 +8,7 @@ ul {
   li {
     padding: 10px;
     border-bottom: solid 1px silver;
-    
+
     &.selected {
       font-weight: bold;
     }
@@ -17,5 +17,10 @@ ul {
       font-style: italic;
       opacity: 50%;
     }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
   }
 }
