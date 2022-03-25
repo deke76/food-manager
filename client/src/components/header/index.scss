@@ -1,12 +1,15 @@
 .header {
+  box-sizing:border-box;
   background-color: #03045e;
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   font-size: larger;
   padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   .app-title {
     font-weight: bold;

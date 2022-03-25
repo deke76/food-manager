@@ -7,6 +7,7 @@ import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
 
 import HeaderBar from "./components/header";
+import NavBar from "./components/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
 import LocationAdd from "./components/Locations/Add";
@@ -29,6 +30,7 @@ export default function App(props) {
               <Route path="/locations" element={<LocationBrowse />} />
               <Route path="/locations/add" element={<LocationAdd />} />
             </Routes>
+            <NavBar />
           </BrowserRouter>
         </LocationProvider>
       </UserProvider>

@@ -1,0 +1,12 @@
+nav {
+  position: fixed;
+  width: 100%;
+
+  &__top {
+    top: 0;
+  }
+
+  &__bottom {
+    bottom: 0;
+  }
+}

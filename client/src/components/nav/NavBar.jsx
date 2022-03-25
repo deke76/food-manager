@@ -1,28 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBallPile,
-  faEarthAmerica,
-  faCirclePlus,
-  faPlus,
+  faLocationDot,
+  faUtensils,
+  faAppleWhole,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-import "./NavBar.scss";
+import "./index.scss";
+import LinkButton from "../buttons/link";
 
 export default function NavBar(props) {
   return (
-    <nav className="nav">
-      <div className="icon-container">
-        <FontAwesomeIcon icon={faEarthAmerica} />
-        <div className="icon-text">Foods</div>
-      </div>
-      <div className="icon-container">
-        <FontAwesomeIcon icon={faPlus} />
-        <div className="icon-text">Shelves</div>
-      </div>
-      <div className="icon-container">
-        <FontAwesomeIcon icon={faCirclePlus} />
-        <div className="icon-text">Add Food</div>
-      </div>
+    <nav className="footer">
+      <LinkButton style={'icon-container'} link={'/locations'} icon={faLocationDot} />
+      <LinkButton style={"icon-container"} link={'/foods'} icon={faAppleWhole} />
+      <LinkButton style={"icon-container"} link={''} icon={faUtensils} />
     </nav>
   );
 }
