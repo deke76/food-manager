@@ -23,7 +23,7 @@ export default function FoodList(props) {
 
   return (
     <ul>
-      <table>
+      <table className='list'>
         <tbody>
           {items}
         </tbody>

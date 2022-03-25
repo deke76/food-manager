@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../buttons/actions/Button';
 import moment from 'moment';
-import './FoodListItem.scss';
+import './index.scss';
 
 export default function FoodListItem(props) {
   const { name, expires, quantity, units, expired } = props
@@ -12,11 +12,11 @@ export default function FoodListItem(props) {
 
   return (
     <tr className={sectionClass}>
-      <td><Button icon = { 'caret' }/></td>
+      <td className={'list-item__button'}><Button icon = { 'caret' }/></td>
       <td className={'list-item__name'}>{name}</td>
-      <td>{quantity}</td>
-      <td>{units}</td>
-      <td>{daysToExpiry}</td>
+      <td className={'list-item__quantity'}>{quantity}</td>
+      <td className={'list-item__units'}>{units}</td>
+      <td className={'list-item__expiry'}>{daysToExpiry}</td>
     </tr>
   )
 }
