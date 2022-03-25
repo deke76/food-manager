@@ -9,6 +9,7 @@ export default function useFetchServer(route) {
 
   useEffect(() => {
     const url = `http://localhost:3000/users/${user}/${route}`;
+    console.log(url);
     return axios
       .get(url)
       .then((res) => setResponseData(res.data))
