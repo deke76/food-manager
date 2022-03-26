@@ -25,9 +25,9 @@ export default function App(props) {
         <LocationProvider>
           <BrowserRouter>
             <HeaderBar />
+            <div className="content">
             <FloatingActionButton linkTo="/foods/add" />
             <LocationList />
-            <div className="content">
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />

@@ -66,7 +66,7 @@ export default function LocationList(props) {
   };
 
   return (
-    <div className="sideways-scrolling-wrapper" style={{ marginTop: "50px" }}>
+    <div className="sideways-scrolling-wrapper">
       {locations &&
         locations.map((location, index) => (
           <LocationCard
