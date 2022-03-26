@@ -28,8 +28,7 @@ export default function App(props) {
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/locations" element={<LocationBrowse />} />
-                <Route path="/locations/add" element={<LocationAdd />} />
+                <Route path="/locations" element={<LocationBrowse/>} />
               </Routes>
             </div>
             <NavBar />

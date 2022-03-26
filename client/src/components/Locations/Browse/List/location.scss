@@ -1,33 +1,81 @@
 @import '../../../../styles/reset.scss';
 
-.list {
-  border-collapse: collapse;
-  width: 100vw;
+.scrolling-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  gap: 15px;
+
 }
 
-.list-item {
-  box-sizing:border-box;
-  align-items: baseline;
-  border-bottom-style: solid;
-  border-width: 1px;
-  padding: 0.5em;
-  height: 2em;
+.location-card {
+  background-color: rgb(214, 65, 11);
+  color: white;
+  width: 80vw;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  cursor: pointer;
 
-  &__button {
-    width: 1px;
+  position: relative;
+  padding: 15px;
+
+  flex: 0 0 auto;
+  height: 15vh;
+
+  transition: all 0.3s;
+  
+  &__selected {
+    background-color: rgb(236, 74, 15);
   }
 
-  &__name {
-
+  &__details {
+    opacity: 80%;
+    padding-top: 0;
   }
 
-  &__city {
-    text-align: end;
+  &__delete {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    opacity: 50%;
   }
 
-  &__province {
-    text-align: end;
-    width: 1em;
-    padding-right: 0.5em;
+
+  header {
+    padding-bottom: 15px;
+  }
+
+  div {
+    font-size: small;
+  }
+
+  &.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 50%;
+    
+    svg {
+      height: 50px;
+      padding: 20px 50px 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .location-card {
+    width: 30vw;
+  }
+}
+
+@media only screen and (max-width:600px) {
+
+  .scrolling-wrapper {
+    flex-direction: column;
+    overflow-y: auto;
   }
 }
