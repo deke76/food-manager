@@ -22,6 +22,13 @@ class BarcodeTextField extends React.Component {
     }
   }
 
+  submitBarcode(barcode) {
+    console.log("Submit barcode");
+    fetch(`http://localhost:3000/foods/barcode/${barcode}`)
+    .then(response => response.json())
+    .then(data => (data.title))
+  }
+
   startScanner() {
     Quagga.init(
       {
@@ -191,8 +198,11 @@ class BarcodeTextField extends React.Component {
     return (
       <div style={{ display: "inline-block" }}>
         <input type="text" id="text-input" />
-        <button onClick={this.handleClick}> Scan </button>
-        <input id="inputId" type="file" accept="image/*" />
+        <button onClick={ () => this.submitBarcode(document.querySelector("#text-input").value) }>Submit</button>
+        <p>
+          <button onClick={this.handleClick}> Scan </button>
+          <input id="inputId" type="file" accept="image/*" />
+        </p>
       </div>
     );
   }

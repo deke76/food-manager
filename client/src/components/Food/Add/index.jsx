@@ -8,7 +8,6 @@ import "./index.scss";
 import axios from "axios";
 import moment from "moment";
 import SelectOneDropdown from "../../buttons/selectOne";
-import Barcode from "./barcode";
 
 export default function FoodAdd(props) {
   // Search values
@@ -82,8 +81,7 @@ export default function FoodAdd(props) {
           }}
           onClick={() => setShowSuggestions(true)}
           placeholder="Search for food..."
-        />
-         {/* {showBarcode ? <Barcode/> : ""}  */}
+        />         
         <div className="barcode-btn">
           <a href='/foods/barcode'>
           <FontAwesomeIcon onClick={() => setShowBarcode(true)} icon={faBarcode} />
