@@ -20,7 +20,7 @@ export default function LocationCard(props) {
         </div>
         <div>{location.country}</div>
       </article>
-      <div className="location-card__delete" onClick={onDelete}>
+      <div className="location-card__button" onClick={onDelete}>
         delete
       </div>
     </div>

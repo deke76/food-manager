@@ -44,6 +44,29 @@ export default function LocationList(props) {
     });
   };
 
+  const defaultLocation = {
+    name: "",
+    country: "Canada",
+    city: "Calgary",
+    province: "",
+  };
+
+  const [newLocation, setNewLocation] = useState(defaultLocation);
+
+  const saveNewLocation = () => {
+    if (newLocation.name === "") {
+      return;
+    }
+    const url = `http://localhost:3000/users/${user}/locations`;
+    return axios
+      .post(url, { ...newLocation, user_id: user })
+      .then((response) => {
+        // toggleNewLocation();
+        setLocations((prev) => [...prev, response.data]);
+        setNewLocation(defaultLocation);
+      });
+  };
+
   return (
     <div className="locations-wrapper">
       {showCards && (
@@ -64,12 +87,17 @@ export default function LocationList(props) {
                 }}
               />
             ))}
-          <LocationCardNew />
+          <LocationCardNew
+            onSave={saveNewLocation}
+            newLocation={newLocation}
+            setNewLocation={setNewLocation}
+          />
         </div>
       )}
-      {!showCards && (
+      {!showCards && locations && (
         <div className="single-location" onClick={() => setShowCards(true)}>
-          {locations && <h4>{locations[currentLocation].name}</h4>}
+          <h4>{locations[currentLocation].name}</h4>
+          <div>{locations[currentLocation].num_children} items</div>
         </div>
       )}
     </div>

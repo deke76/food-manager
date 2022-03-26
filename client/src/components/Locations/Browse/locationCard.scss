@@ -26,7 +26,6 @@
 
   .location-card__details {
     opacity: 80%;
-    padding-top: 0;
   }
 
   div {
@@ -47,7 +46,19 @@
     }
   }
 
-  .location-card__delete {
+  input {
+    display: inline-block;
+
+    opacity: 0.9;
+    border: none;
+
+    margin: 3px;
+    padding: 3px 8px;
+    border-radius: 10px;
+
+  }
+
+  .location-card__button {
     position: absolute;
     bottom: 15px;
     right: 15px;

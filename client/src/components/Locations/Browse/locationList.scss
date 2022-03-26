@@ -1,6 +1,7 @@
 .locations-wrapper {
   padding: 20px;
   background-color: rgba(248, 129, 93, 0.233);
+  transition: all 0.5s;
 
   .single-location {
     display: flex;
@@ -12,6 +13,10 @@
     
     padding: 10px 15px;
     border-radius: 20px;
+  
+    div {
+      font-size: small;
+    }
   }
   
   .sideways-scrolling-wrapper {
