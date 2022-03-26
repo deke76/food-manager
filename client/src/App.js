@@ -26,7 +26,7 @@ export default function App(props) {
             <div className="content">
               <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/foods" element={<FoodBrowse />} />
+                <Route path="/foods" element={<FoodBrowse locations={'/locations'} />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
                 <Route path="/locations" element={<LocationBrowse />} />
               </Routes>
