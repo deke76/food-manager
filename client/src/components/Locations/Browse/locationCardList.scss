@@ -4,17 +4,13 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-
+  background-color: lightblue;
   gap: 15px;
 
 }
 
 @media only screen and (max-width:600px) {
 
-  .sideways-scrolling-wrapper {
-    flex-direction: column;
-    overflow-y: auto;
-  }
 }
 
 @media only screen and (min-width: 768px) {
