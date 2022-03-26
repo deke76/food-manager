@@ -12,6 +12,7 @@ export default function LocationCard(props) {
         <div>{location.city}, {location.province}</div>
         <div>{location.country}</div>
       </article>
+      <div className="location-card__delete">delete</div>
     </div>
   );
 }

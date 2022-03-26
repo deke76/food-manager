@@ -14,7 +14,6 @@ export default function LocationPath(props) {
 
   return (
     <div className="location-path">
-      Location:{" "}
       {/* {locations && locationID && filterLocations(locationID, locations).name} */}
       {locations && <LocationCardList locations={locations} />}
     </div>
