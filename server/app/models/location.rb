@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
-  belongs_to :user, :dependent => :destroy
-  has_many :foods
+  belongs_to :user
+  has_many :foods, :dependent => :destroy
 end

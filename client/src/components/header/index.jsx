@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
 import { locationContext } from "../../providers/LocationProvider";
@@ -12,44 +12,21 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.scss";
-import SelectOneDropdown from "../buttons/selectOne";
-import axios from "axios";
-import usePostLocationServer from "../../hooks/usePostLocationServer";
 import LocationList from "./locationList";
 
 export default function HeaderBar(props) {
-  const { responseData: locations } = useFetchServer("locations");
-
   const { user, incrementUser, decrementUser } = useContext(userContext);
-  const { setLocation } = useContext(locationContext);
-  const [currentLocation, setCurrentLocation] = useState(0);
-
-  // set location context
-  useEffect(() => {
-    locations && setLocation(locations[currentLocation].id);
-  }, [currentLocation, locations, setLocation]);
-
+  const { locationID } = useContext(locationContext);
+  const { responseData: location } = useFetchServer(`locations/${locationID}`)
+  
+  // console.log("location",location)
+  // console.log("locationName",location)
+  
   // toggle UI elements
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
   const toggleLocationDropdown = () => setShowLocationDropdown((prev) => !prev);
   const toggleProfileChanger = () => setShowProfileChanger((prev) => !prev);
-
-  // states for creating a new location
-  const [newLocationName, setNewLocationName] = useState("");
-  const [showNewLocation, setShowNewLocation] = useState(false);
-  const toggleNewLocation = () => setShowNewLocation((prev) => !prev);
-
-  const saveNewLocation = () => {
-    toggleNewLocation();
-    const url = `http://localhost:3000/users/${user}/locations`;
-    return axios
-      .post(url, { name: newLocationName })
-      .then(response => {
-        setCurrentLocation(locations.length - 1);
-        console.log("response",response)
-      });
-  };
 
   return (
     <>
@@ -62,7 +39,7 @@ export default function HeaderBar(props) {
         </Link>
         <div className="group">
           <div className="location-path" onClick={toggleLocationDropdown}>
-            {locations && locations[currentLocation].name}
+            {location && location.name}
           </div>
           <div className="profile-image" onClick={toggleProfileChanger}>
             <FontAwesomeIcon icon={faUser} />

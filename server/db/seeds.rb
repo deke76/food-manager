@@ -33,7 +33,7 @@ food_id = 1
 
   rand(1..5).times do
     location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
-    location_storage = ["Fridge", "Freezer", "Pantry", "Closer", "Cooler"].sample
+    location_storage = ["Fridge", "Freezer", "Pantry", "Closet", "Cooler"].sample
     
     puts 'Creating locations...'
     Location.create!({
