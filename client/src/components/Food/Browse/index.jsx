@@ -13,8 +13,6 @@ export default function FoodBrowse(props) {
 
   return (
     <div>
-      {/* <LocationPath /> */}
-      <LocationList />
       <div>{foodItems && <FoodList data={foodItems} />}</div>
     </div>
   );

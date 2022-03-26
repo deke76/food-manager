@@ -12,9 +12,10 @@ import NavBar from "./components/nav/NavBar";
 import FoodAdd from "./components/Food/Add";
 
 import FoodBrowse from "./components/Food/Browse";
-import LocationBrowse from "./components/Locations/Browse";
 import Landing from "./components/landing";
 import LocationList from "./components/Locations/Browse/locationList";
+
+import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
 export default function App(props) {
@@ -24,12 +25,12 @@ export default function App(props) {
         <LocationProvider>
           <BrowserRouter>
             <HeaderBar />
+            <FloatingActionButton linkTo="/foods/add" />
+            <LocationList />
             <div className="content">
               <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/foods" element={<FoodBrowse />} />
+                <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/locations" element={<LocationList />} />
               </Routes>
             </div>
             <NavBar />
