@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import useFetchServer from "../../../hooks/useFetchServer";
 import { locationContext } from "../../../providers/LocationProvider";
 import { userContext } from "../../../providers/UserProvider";
-import axios from "axios";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
 import "./locationCardList.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios";
 const API_SERVER = "http://localhost:3000";
+
 export default function LocationList(props) {
+  // use contexts
   const { setLocationID } = useContext(locationContext);
   const { user } = useContext(userContext);
 
@@ -26,34 +24,35 @@ export default function LocationList(props) {
       .catch(console.log("could not get users locations"));
   }, [user]);
 
-  const [currentLocation, setCurrentLocation] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState(0); // index of locations list
 
-  // update location id state whenever current location changes
+  // update location id context whenever current location changes
   useEffect(() => {
     locations && setLocationID(locations[currentLocation].id);
   }, [currentLocation, locations, setLocationID]);
 
   console.log("current Location", currentLocation);
 
+  // const [newLocationName, setNewLocationName] = useState("");
+
   // const [showNewLocation, setShowNewLocation] = useState(false);
-  const [newLocationName, setNewLocationName] = useState("");
   // const toggleNewLocation = () => setShowNewLocation((prev) => !prev);
 
-  const saveNewLocation = () => {
-    if (newLocationName === "") {
-      // toggleNewLocation();
-      return;
-    }
-    console.log("newLocationName", newLocationName);
-    const url = `http://localhost:3000/users/${user}/locations`;
-    return axios
-      .post(url, { name: newLocationName, user_id: user })
-      .then((response) => {
-        // toggleNewLocation();
-        setLocations((prev) => [...prev, response.data]);
-        setNewLocationName("");
-      });
-  };
+  // const saveNewLocation = () => {
+  //   if (newLocationName === "") {
+  //     // toggleNewLocation();
+  //     return;
+  //   }
+  //   console.log("newLocationName", newLocationName);
+  //   const url = `http://localhost:3000/users/${user}/locations`;
+  //   return axios
+  //     .post(url, { name: newLocationName, user_id: user })
+  //     .then((response) => {
+  //       // toggleNewLocation();
+  //       setLocations((prev) => [...prev, response.data]);
+  //       setNewLocationName("");
+  //     });
+  // };
 
   // const saveNewLocation = () => {
   //   console.log(newLocationName);
