@@ -83,9 +83,11 @@ export default function FoodAdd(props) {
           onClick={() => setShowSuggestions(true)}
           placeholder="Search for food..."
         />
-         {showBarcode ? <Barcode/> : ""} 
+         {/* {showBarcode ? <Barcode/> : ""}  */}
         <div className="barcode-btn">
+          <a href='/foods/barcode'>
           <FontAwesomeIcon onClick={() => setShowBarcode(true)} icon={faBarcode} />
+          </a>
         </div>
       </div>
       {showSuggestions && (
