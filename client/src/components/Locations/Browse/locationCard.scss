@@ -16,7 +16,7 @@
   transition: all 0.3s;
   
   &.location-card__selected {
-    background-color: rgb(236, 74, 15);
+    background-color: rgb(255, 68, 0);
   }
 
 
@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     
-    opacity: 50%;
+    opacity: 80%;
     
     svg {
       height: 50px;
