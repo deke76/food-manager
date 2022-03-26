@@ -2,6 +2,10 @@
   padding: 20px;
   background-color: rgba(248, 129, 93, 0.233);
   transition: all 0.5s;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 15px;
 
   .single-location {
     display: flex;
@@ -13,16 +17,13 @@
     
     padding: 10px 15px;
     border-radius: 20px;
+    width: 100%;
+
+    // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   
     div {
       font-size: small;
     }
   }
-  
-  .sideways-scrolling-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 15px;
-  }
+
 }

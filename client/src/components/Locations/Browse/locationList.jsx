@@ -8,9 +8,6 @@ import "./locationList.scss";
 
 import axios from "axios";
 
-import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const API_SERVER = "http://localhost:3000";
 
 export default function LocationList(props) {
@@ -70,7 +67,7 @@ export default function LocationList(props) {
   return (
     <div className="locations-wrapper">
       {showCards && (
-        <div className="sideways-scrolling-wrapper">
+        <>
           {locations &&
             locations.map((location, index) => (
               <LocationCard
@@ -92,7 +89,7 @@ export default function LocationList(props) {
             newLocation={newLocation}
             setNewLocation={setNewLocation}
           />
-        </div>
+        </>
       )}
       {!showCards && locations && (
         <div className="single-location" onClick={() => setShowCards(true)}>
