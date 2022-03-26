@@ -9,6 +9,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   cursor: pointer;
 
+
   header {
     padding: 15px;
   }
@@ -21,6 +22,20 @@
 
   div {
     font-size: small;
+  }
+
+  &.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 50%;
+    
+    svg {
+      height: 50px;
+      padding: 20px 50px 10px;
+    }
   }
 
 }

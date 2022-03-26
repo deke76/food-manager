@@ -1,4 +1,6 @@
 import LocationCard from "./locationCard";
+import LocationCardNew from "./locationCardNew"
+
 import "./locationCardList.scss"
 
 export default function LocationCardList(props) {
@@ -8,6 +10,7 @@ export default function LocationCardList(props) {
       {locations.map((location) => (
         <LocationCard location={location} />
       ))}
+      <LocationCardNew />
     </div>
   );
 }

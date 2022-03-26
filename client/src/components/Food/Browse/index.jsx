@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import useFetchServer from "../../../hooks/useFetchServer";
 import { locationContext } from "../../../providers/LocationProvider";
-import LocationPath from "../../header/locationPath";
+// import LocationPath from "../../header/locationPath";
 import FoodList from "./List/FoodList";
 
 export default function FoodBrowse(props) {
@@ -12,7 +12,7 @@ export default function FoodBrowse(props) {
 
   return (
     <div>
-      <LocationPath />
+      {/* <LocationPath /> */}
       <div>{foodItems && <FoodList data={foodItems} />}</div>
     </div>
   );

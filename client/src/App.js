@@ -12,6 +12,7 @@ import NavBar from "./components/nav/NavBar";
 import FoodAdd from "./components/Food/Add";
 
 import FoodBrowse from "./components/Food/Browse";
+import LocationPath from "./components/Locations/Browse/locationPath";
 import LocationBrowse from "./components/Locations/Browse";
 import Landing from "./components/landing";
 
@@ -28,7 +29,7 @@ export default function App(props) {
                 <Route path="/" element={<Landing />} />
                 <Route path="/foods" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/locations" element={<LocationBrowse />} />
+                <Route path="/locations" element={<LocationPath />} />
               </Routes>
             </div>
             <NavBar />

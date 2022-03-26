@@ -1,13 +1,9 @@
 import { useContext, useState } from "react";
-import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
-import { locationContext } from "../../providers/LocationProvider";
 import { Link } from "react-router-dom";
 
 import {
   faUser,
-  faCaretLeft,
-  faCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
