@@ -83,10 +83,10 @@ export default function FoodAdd(props) {
           onClick={() => setShowSuggestions(true)}
           placeholder="Search for food..."
         />
+         {showBarcode ? <Barcode/> : ""} 
         <div className="barcode-btn">
           <FontAwesomeIcon onClick={() => setShowBarcode(true)} icon={faBarcode} />
         </div>
-        {showBarcode ? <Barcode/> : ""}
       </div>
       {showSuggestions && (
         <SelectOneDropdown
