@@ -6,7 +6,9 @@ import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import 'dotenv/config'
 
+const { API_SERVER } = process.env;
 export default function LocationList(props) {
   // const { setLocationID } = useContext(locationContext);
   const { user } = useContext(userContext);
@@ -15,7 +17,7 @@ export default function LocationList(props) {
   // set location information
   const [locations, setLocations] = useState([]); // list of strings
   useEffect(() => {
-    const url = `http://localhost:3000/users/${user}/locations`;
+    const url = `${API_SERVER}/users/${user}/locations`;
     return axios
       .get(url)
       .then((response) => setLocations(response.data))

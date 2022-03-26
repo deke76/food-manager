@@ -7,7 +7,7 @@ import FoodList from "./List/FoodList";
 export default function FoodBrowse(props) {
   const { locationID } = useContext(locationContext);
   const { responseData: foodItems } = useFetchServer(
-    `/locations/${locationID}/foods`
+    `locations/${locationID}/foods`
   );
 
   return (
