@@ -1,0 +1,12 @@
+.sideways-scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  gap: 15px;
+
+  .location-card {
+    flex: 0 0 auto;
+  }
+
+}
