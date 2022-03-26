@@ -1,0 +1,62 @@
+
+.location-card {
+  background-color: rgb(214, 65, 11);
+  color: white;
+  width: 80vw;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  cursor: pointer;
+
+  position: relative;
+  padding: 15px;
+
+  flex: 0 0 auto;
+  height: 120px;
+
+  transition: all 0.3s;
+  
+  &.location-card__selected {
+    background-color: rgb(236, 74, 15);
+  }
+
+
+  header {
+    padding-bottom: 15px;
+  }
+
+  .location-card__details {
+    opacity: 80%;
+    padding-top: 0;
+  }
+
+  div {
+    font-size: small;
+  }
+
+  &.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 50%;
+    
+    svg {
+      height: 50px;
+      padding: 20px 50px 10px;
+    }
+  }
+
+  .location-card__delete {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    opacity: 50%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .location-card {
+    width: 30vw;
+  }
+}

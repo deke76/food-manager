@@ -44,7 +44,7 @@ food_id = 1
       province: Faker::Address.state_abbr,
       city: Faker::Address.city,
       # temperature: rand(-18.0..20.0),
-      country: Faker::Address.country_code 
+      country: Faker::Address.country 
     })
 
     rand(6..20).times do
