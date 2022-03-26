@@ -15,7 +15,13 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create!({:name => params[:name], :user_id => params[:user_id]})
+    @location = Location.create!({
+      :name => params[:name], 
+      :user_id => params[:user_id],
+      :country => params[:country],
+      :city => params[:city],
+      :province => params[:province]
+      })
     render json: @location
   end
 
