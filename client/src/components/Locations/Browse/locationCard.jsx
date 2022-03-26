@@ -1,18 +1,28 @@
-import "./locationCard.scss"
+import "./locationCard.scss";
+import classNames from "classnames";
 
 export default function LocationCard(props) {
-  const { location } = props;
+  const { location, selected, onClick, onDelete } = props;
+  const classes = classNames("location-card", {
+    "location-card__selected": selected,
+  });
   return (
-    <div className="location-card">
+    <div className={classes} onClick={onClick}>
       <header>
         <h4 className="location-card__title">{location.name}</h4>
-        <div className="location-card__quantity">{location.num_children } items</div>
+        <div className="location-card__quantity">
+          {location.num_children} items
+        </div>
       </header>
       <article className="location-card__details">
-        <div>{location.city}, {location.province}</div>
+        <div>
+          {location.city}
+        </div>
         <div>{location.country}</div>
       </article>
-      <div className="location-card__delete">delete</div>
+      <div className="location-card__delete" onClick={onDelete}>
+        delete
+      </div>
     </div>
   );
 }

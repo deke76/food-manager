@@ -17,7 +17,7 @@ export default function HeaderBar(props) {
   const toggleProfileChanger = () => setShowProfileChanger((prev) => !prev);
 
   return (
-    <nav className="header">
+    <nav className="app-header">
       <Link to="/">
         <div className="group title">
           <div className="app-logo">🍌</div>

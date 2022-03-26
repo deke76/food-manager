@@ -12,7 +12,14 @@
 
   flex: 0 0 auto;
   height: 120px;
+
+  transition: all 0.3s;
   
+  &.location-card__selected {
+    background-color: rgb(236, 74, 15);
+  }
+
+
   header {
     padding-bottom: 15px;
   }

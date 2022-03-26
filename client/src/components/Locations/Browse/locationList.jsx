@@ -6,18 +6,18 @@ import axios from "axios";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
-import "./locationCardList.scss"
+import "./locationCardList.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const API_SERVER = "http://localhost:3000";
 export default function LocationList(props) {
-  // const { setLocationID } = useContext(locationContext);
+  const { setLocationID } = useContext(locationContext);
   const { user } = useContext(userContext);
 
   // set location information
-  const [locations, setLocations] = useState([]); // list of objects
+  const [locations, setLocations] = useState(null); // list of objects
   useEffect(() => {
     const url = `${API_SERVER}/users/${user}/locations`;
     return axios
@@ -29,9 +29,11 @@ export default function LocationList(props) {
   const [currentLocation, setCurrentLocation] = useState(0);
 
   // update location id state whenever current location changes
-  // useEffect(() => {
-  //   locations && setLocationID(locations[currentLocation].id);
-  // }, [currentLocation, locations, setLocationID]);
+  useEffect(() => {
+    locations && setLocationID(locations[currentLocation].id);
+  }, [currentLocation, locations, setLocationID]);
+
+  console.log("current Location", currentLocation);
 
   // const [showNewLocation, setShowNewLocation] = useState(false);
   const [newLocationName, setNewLocationName] = useState("");
@@ -66,11 +68,20 @@ export default function LocationList(props) {
 
   return (
     <div className="sideways-scrolling-wrapper">
-      {locations.map((location,index) => (
-        <LocationCard key={index} location={location} />
-      ))}
-      <LocationCardNew />
+      {locations &&
+        locations.map((location, index) => (
+          <LocationCard
+            key={index}
+            location={location}
+            selected={index === currentLocation}
+            onClick={() => setCurrentLocation(index)}
+            onDelete={(event) => {
+              event.stopPropagation();
+              deleteLocation(location.id);
+            }}
+          />
+        ))}
+      <LocationCardNew onAdd={() => console.log("add")} />
     </div>
   );
-
 }
