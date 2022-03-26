@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;600&display=swap');
+
+.location-card {
+  font-family: 'Readex Pro', sans-serif;
+  background-color: rgb(214, 65, 11);
+  color: white;
+  width: fit-content;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  cursor: pointer;
+
+  header {
+    padding: 15px;
+  }
+
+  .location-card__details {
+    opacity: 80%;
+    padding: 15px;
+    padding-top: 0;
+  }
+
+  div {
+    font-size: small;
+  }
+
+}
