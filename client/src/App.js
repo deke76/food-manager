@@ -15,6 +15,7 @@ import FoodBrowse from "./components/Food/Browse";
 import LocationBrowse from "./components/Locations/Browse";
 import Landing from "./components/landing";
 import LocationList from "./components/Locations/Browse/locationList";
+import RecipeBrowse from "./components/Recipes";
 
 // Main application file
 export default function App(props) {
@@ -30,6 +31,7 @@ export default function App(props) {
                 <Route path="/foods" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
                 <Route path="/locations" element={<LocationList />} />
+                <Route path='/recipes' element={<RecipeBrowse />} />
               </Routes>
             </div>
             <NavBar />

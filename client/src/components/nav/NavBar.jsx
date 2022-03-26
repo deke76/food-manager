@@ -14,7 +14,7 @@ export default function NavBar(props) {
     <nav className="footer">
       <LinkButton style={'icon-container'} link={'/locations'} icon={faLocationDot} />
       <LinkButton style={"icon-container"} link={'/foods'} icon={faAppleWhole} />
-      <LinkButton style={"icon-container"} link={''} icon={faUtensils} />
+      <LinkButton style={"icon-container"} link={'/recipes'} icon={faUtensils} />
     </nav>
   );
 }
