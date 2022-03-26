@@ -17,8 +17,10 @@ export default function LocationList(props) {
   // console.log(props.data);
 
   return (
-    <ul>
-      {items}
-    </ul>
+    <table className={'list'}>
+      <tbody>
+        {items}
+      </tbody>
+    </table>
   )
 }
