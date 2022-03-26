@@ -9,7 +9,6 @@ export default function SelectOneDropdown(props) {
     onClickCallback,
     newChoiceText,
     newChoiceCallback,
-    newChoiceLink,
   } = props;
 
   return (
@@ -27,17 +26,15 @@ export default function SelectOneDropdown(props) {
         </li>
       ))}
       {newChoiceText && (
-        <Link to={newChoiceLink}>
-          <li
-            className="new-choice"
-            onClick={() => {
-              newChoiceCallback && newChoiceCallback();
-              onClickCallback && onClickCallback();
-            }}
-          >
-            {newChoiceText}
-          </li>
-        </Link>
+        <li
+          className="new-choice"
+          onClick={() => {
+            newChoiceCallback && newChoiceCallback();
+            onClickCallback && onClickCallback();
+          }}
+        >
+          {newChoiceText}
+        </li>
       )}
     </ul>
   );
