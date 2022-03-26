@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 export const locationContext = createContext();
 
 export default function LocationProvider(props) {
-  const [location, setLocation] = useState(1);
+  const [locationID, setLocationID] = useState(1);
 
-  const providerData = { location, setLocation };
+  const providerData = { locationID, setLocationID };
   
   return (
     <locationContext.Provider value={providerData}>

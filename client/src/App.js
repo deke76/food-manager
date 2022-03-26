@@ -30,6 +30,7 @@ export default function App(props) {
                 <Route path="/foods/add" element={<FoodAdd />} />
                 <Route path="/locations" element={<LocationBrowse />} />
                 <Route path="/locations/add" element={<LocationAdd />} />
+                <Route path="/headertest" element={<div />} />
               </Routes>
             </div>
             <NavBar />

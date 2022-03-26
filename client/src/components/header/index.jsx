@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useFetchServer from "../../hooks/useFetchServer";
 import { userContext } from "../../providers/UserProvider";
 import { locationContext } from "../../providers/LocationProvider";
-
+import { Link } from "react-router-dom";
 
 import {
   faUser,
@@ -12,26 +12,17 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.scss";
-import SelectOneDropdown from "../buttons/selectOne";
+import LocationList from "./locationList";
 
 export default function HeaderBar(props) {
-  const { responseData: locations, responseError } =
-    useFetchServer("locations");
-
-  const addLocation = () => {
-    console.log("new location");
-  };
-
   const { user, incrementUser, decrementUser } = useContext(userContext);
-
-  const [currentLocation, setCurrentLocation] = useState(0);
-
-  const { setLocation } = useContext(locationContext);
-
-  useEffect(() => {
-    locations && setLocation(locations[currentLocation].id);
-  },[currentLocation, locations, setLocation]);
-
+  const { locationID } = useContext(locationContext);
+  const { responseData: location } = useFetchServer(`locations/${locationID}`)
+  
+  // console.log("location",location)
+  // console.log("locationName",location)
+  
+  // toggle UI elements
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showProfileChanger, setShowProfileChanger] = useState(false);
   const toggleLocationDropdown = () => setShowLocationDropdown((prev) => !prev);
@@ -40,13 +31,15 @@ export default function HeaderBar(props) {
   return (
     <>
       <nav className="header">
-        <div className="group title">
-          <div className="app-logo">🍌</div>
-          <div className="app-title">Pantryful</div>{" "}
-        </div>
+        <Link to="/" onClick={() => setShowLocationDropdown(false)}>
+          <div className="group title">
+            <div className="app-logo">🍌</div>
+            <div className="app-title">Pantryful</div>{" "}
+          </div>
+        </Link>
         <div className="group">
           <div className="location-path" onClick={toggleLocationDropdown}>
-            {locations && locations[currentLocation].name}
+            {location && location.name}
           </div>
           <div className="profile-image" onClick={toggleProfileChanger}>
             <FontAwesomeIcon icon={faUser} />
@@ -60,16 +53,38 @@ export default function HeaderBar(props) {
           )}
         </div>
       </nav>
-      {showLocationDropdown && (
-        <SelectOneDropdown
-          selected={currentLocation}
-          setSelected={setCurrentLocation}
-          choices={locations.map((location) => location.name)}
-          newChoiceText="Add a new Location..."
-          newChoiceCallback={addLocation}
-          newChoiceLink="/locations/add"
-        />
-      )}
+
+      <LocationList/>
+      {/* {showLocationDropdown && locations && (
+        <ul className="location-dropdown">
+          {locations.map((location, index) => (
+            <li
+              key={index}
+              className={index === currentLocation ? "selected" : ""}
+              onClick={() => {
+                setCurrentLocation(index);
+                setLocation(location.id);
+              }}
+            >
+              {location.name}
+            </li>
+          ))}
+          {showNewLocation && (
+            <li className="new-choice">
+              <input
+                value={newLocationName}
+                onChange={(event) => setNewLocationName(event.target.value)}
+              />
+              <span onClick={saveNewLocation}>Save</span>
+            </li>
+          )}
+          {!showNewLocation && (
+            <li className="new-choice" onClick={toggleNewLocation}>
+              Add a new Location...
+            </li>
+          )}
+        </ul>
+      )} */}
     </>
   );
 }
