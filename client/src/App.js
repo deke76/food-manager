@@ -10,10 +10,10 @@ import HeaderBar from "./components/header";
 import NavBar from "./components/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
-import LocationAdd from "./components/Locations/Add";
 
 import FoodBrowse from "./components/Food/Browse";
 import LocationBrowse from "./components/Locations/Browse";
+import Landing from "./components/landing";
 
 // Main application file
 export default function App(props) {
@@ -25,12 +25,10 @@ export default function App(props) {
             <HeaderBar />
             <div className="content">
               <Routes>
-                <Route path="/" element={<FoodBrowse />} />
+                <Route path="/" element={<Landing />} />
                 <Route path="/foods" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
                 <Route path="/locations" element={<LocationBrowse />} />
-                <Route path="/locations/add" element={<LocationAdd />} />
-                <Route path="/headertest" element={<div />} />
               </Routes>
             </div>
             <NavBar />
