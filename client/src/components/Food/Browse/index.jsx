@@ -3,7 +3,6 @@ import useFetchServer from "../../../hooks/useFetchServer";
 import { locationContext } from "../../../providers/LocationProvider";
 // import LocationPath from "../../header/locationPath";
 import FoodList from "./List/FoodList";
-import LocationList from "../../Locations/Browse/locationList"
 
 export default function FoodBrowse(props) {
   const { locationID } = useContext(locationContext);
@@ -13,7 +12,7 @@ export default function FoodBrowse(props) {
 
   return (
     <div>
-      <div>{foodItems && <FoodList data={foodItems} />}</div>
+      <div>{foodItems && <FoodList foods={foodItems} />}</div>
     </div>
   );
 }
