@@ -4,11 +4,12 @@ import { locationContext } from "../../providers/LocationProvider";
 
 export default function LocationPath(props) {
   const {locationID} = useContext(locationContext)
-  const locationName = useFetchServer(`locations/${locationID}`).name;
+  const {responseData: location} = useFetchServer(`locations/${locationID}`);
+  console.log("location",location)
 
   return (
     <div className="location-path">
-      {locationName && locationName}
+      Location: {location && location.name}
     </div>
   );
 }
