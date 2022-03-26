@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../buttons/actions/Button';
 import moment from 'moment';
-import './index.scss';
+import './foods.scss';
 
 export default function FoodListItem(props) {
   const { name, expires, quantity, units, expired } = props

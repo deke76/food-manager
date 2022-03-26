@@ -22,12 +22,10 @@ export default function FoodList(props) {
   ))
 
   return (
-    <ul>
-      <table className='list'>
+      <table className={'list'}>
         <tbody>
           {items}
         </tbody>
       </table>
-    </ul>
   )
 }
