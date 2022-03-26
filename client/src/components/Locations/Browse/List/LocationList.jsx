@@ -14,7 +14,7 @@ export default function LocationList(props) {
      province={d.province}
    />
   ))
-  console.log(props.data);
+  // console.log(props.data);
 
   return (
     <ul>
