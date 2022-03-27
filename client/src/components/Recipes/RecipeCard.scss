@@ -1,4 +1,5 @@
 .recipe-list {
+  box-sizing:content-box;
   display: grid;
   grid-template-columns: 45vw 45vw;
   grid-template-rows: repeat(5, 20vh);
