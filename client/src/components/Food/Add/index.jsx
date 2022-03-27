@@ -3,11 +3,11 @@ import { faBarcode } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 import Counter from "../../buttons/counter";
+import SelectOneDropdown from "../../buttons/selectOne";
 
 import "./index.scss";
 import axios from "axios";
 import moment from "moment";
-import SelectOneDropdown from "../../buttons/selectOne";
 
 export default function FoodAdd(props) {
   // Search values
@@ -24,22 +24,27 @@ export default function FoodAdd(props) {
   const [foodDatePurchase, setFoodDatePurchase] = useState(
     moment().format("YYYY-MM-DD")
   );
+
+  const defaultFood = {
+    location_id: 1,
+    name: "",
+    quantity: 4,
+    quantity_units: "ea",
+    price_cents: 1454,
+    date_purchased: "2022-03-23",
+    date_expires: "2022-04-02",
+  };
+
+  const [newFood, setNewFood] = useState();
+
   const [foodQtyNum, setFoodQtyNum] = useState(1);
   const [foodQtyUnit, setFoodQtyUnit] = useState(0);
   const [showFoodQty, setShowFoodQty] = useState(false);
-  const foodUnitOptions = [
-    "each",
-    "ounce",
-    "gallon",
-    "liter",
-    "kilogram",
-    "pound",
-  ];
+  const foodUnitOptions = ["ea", "oz", "gal", "L", "kg", "lb"];
 
   // const save = () => {
   //   axios.post
   // }
-
 
   // Fetch suggestions from server
   useEffect(() => {
@@ -62,8 +67,8 @@ export default function FoodAdd(props) {
   }, [selectedSuggestion, suggestions]);
 
   useEffect(() => {
-    searchValue === "" && setSuggestions([])
-  },[searchValue])
+    searchValue === "" && setSuggestions([]);
+  }, [searchValue]);
 
   return (
     <div className="food-add">
@@ -118,17 +123,19 @@ export default function FoodAdd(props) {
               minValue={0}
               maxValue={100}
             />
-            <div onClick={() => setShowFoodQty(prev => !prev)}>{foodUnitOptions[foodQtyUnit]}</div>
+            <div onClick={() => setShowFoodQty((prev) => !prev)}>
+              {foodUnitOptions[foodQtyUnit]}
+            </div>
           </div>
         </div>
-          {showFoodQty && (
-            <SelectOneDropdown
-              selected={foodQtyUnit}
-              setSelected={setFoodQtyUnit}
-              choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
-              onClickCallback={() => setShowFoodQty(false)}
-            />
-          )}
+        {showFoodQty && (
+          <SelectOneDropdown
+            selected={foodQtyUnit}
+            setSelected={setFoodQtyUnit}
+            choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
+            onClickCallback={() => setShowFoodQty(false)}
+          />
+        )}
       </div>
       <div className="group">
         <button>Save and Exit</button>
