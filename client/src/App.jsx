@@ -13,6 +13,7 @@ import FoodAdd from "./components/Food/Add";
 
 import FoodBrowse from "./components/Food/Browse";
 import LocationList from "./components/Locations/Browse/locationList";
+import RecipeBrowse from "./components/Recipes";
 
 import FloatingActionButton from "./components/buttons/fab";
 
@@ -30,6 +31,8 @@ export default function App(props) {
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
+                <Route path="/locations" element={<LocationList />} />
+                <Route path='/recipes' element={<RecipeBrowse />} />
               </Routes>
             </div>
             <NavBar />
