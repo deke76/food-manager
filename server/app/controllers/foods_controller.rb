@@ -24,6 +24,13 @@ class FoodsController < ApplicationController
   def new
   end
 
+  def update
+    @food = Food.find(params[:id])
+    @food.update!({
+      :quantity => params[:quantity]
+      })
+  end
+
   def autocomplete
     uri = URI('https://api.spoonacular.com/food/ingredients/autocomplete')
     spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
