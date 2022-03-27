@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .recipe-list {
   box-sizing:content-box;
   display: grid;
@@ -12,11 +14,10 @@
 }
 
 .recipe-card {
-  background-color: rgb(214, 65, 11);
+  background-color: $primary-background;
   color: white;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  cursor: pointer;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   position: relative;
   transition: all 0.3s;
   text-align: center;
@@ -24,9 +25,6 @@
   flex-direction: column;
   justify-content: start;
   
-  &__selected {
-    background-color: rgb(236, 74, 15);
-  }
 
   &__details {
     display:flex;
