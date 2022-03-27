@@ -4,25 +4,44 @@ import axios from "axios";
 
 export const stateContext = createContext();
 
-const stateBuilder = (locations, foods) =>
-  locations.map((location) => ({
+const locationBuilder = (locations, foods) => {
+  return locations.map((location) => ({
     ...location,
     foods: foods.filter((food) => food.location_id === location.id),
   }));
+};
 
-export default function UserProvider(props) {
+export default function StateProvider(props) {
   const [state, setState] = useState(null);
-  const user = useContext(userContext);
+  const { user } = useContext(userContext);
 
   useEffect(() => {
     Promise.all([
-      axios.get(`http:localhost:3000/users/${user}/locations`),
-      axios.get(`http:localhost:3000/users/${user}/foods`),
+      axios.get(`http://localhost:3000/users/${user}/locations`),
+      axios.get(`http://localhost:3000/users/${user}/foods`),
     ]).then((all) => {
-      setState(stateBuilder(all[0], all[1]));
-      console.log(state);
+      const locations = locationBuilder(all[0].data, all[1].data);
+      const currentLocation = locations.length > 0 ? locations[0].id : null;
+
+      setState((prev) => ({
+        ...prev,
+        locations,
+        currentLocation,
+      }));
+
     });
-  });
+  }, [user]);
+  
+  useEffect(() => {
+    console.log("state", state);
+    // const currentLocation = state.locations.length > 0 ? state.locations[0].id : null;
+
+    // setState((prev) => ({
+    //   ...prev,
+    //   currentLocation,
+    // }));
+
+  },[state])
 
   // const incrementUser = () => setUser((prev) => (prev < 20 ? prev + 1 : prev));
   // const decrementUser = () => setUser((prev) => (prev > 1 ? prev - 1 : prev));
