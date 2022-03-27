@@ -29,7 +29,7 @@ export default function RecipeBrowse(props) {
         key={recipe.id}
         name={recipe.title}
         picture={recipe.image}
-        onClick={() => window.location.assign('http://google.ca')}
+        onClick={() => window.location.assign(`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`)}
       />);
 
   return (
