@@ -12,7 +12,7 @@ class FoodsController < ApplicationController
   end
 
   def locations
-    @foods = Food.where(location_id: params[:location_id])
+    @foods = Food.where(location_id: params[:location_id]).where('quantity > 0')
     render json: @foods
   end
 

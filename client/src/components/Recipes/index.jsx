@@ -20,7 +20,7 @@ export default function RecipeBrowse(props) {
   //     .get(url)
   //     .then((res) => res.data)
   //     .catch((err) => console.log(err));
-  console.log(recipes);
+  
 
   // Build the cards
   const recipeItems = 
@@ -29,6 +29,7 @@ export default function RecipeBrowse(props) {
         key={recipe.id}
         name={recipe.title}
         picture={recipe.image}
+        onClick={() => window.location.assign('http://google.ca')}
       />);
 
   return (
