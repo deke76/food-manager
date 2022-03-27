@@ -28,6 +28,7 @@ export default function RecipeBrowse(props) {
       <RecipeCard
         key={recipe.id}
         name={recipe.title}
+        picture={recipe.image}
       />);
 
   return (

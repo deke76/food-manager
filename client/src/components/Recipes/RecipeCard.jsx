@@ -1,16 +1,14 @@
 import "./RecipeCard.scss";
 
 export default function LocationCard(props) {
-  const { name, onClick } = props;
+  const { name, picture, onClick } = props;
   
   return (
     <div className={'recipe-card'} onClick={onClick}>
-      <header>
-        <h4 className="location-card__title">{name}</h4>
-      </header>
-      <article className="location-card__details">
-
+      <article className="recipe-card__details">
+        <img src={picture} className='recipe-card__img'  alt='' />
       </article>
+      <h4 className="location-card__title">{name}</h4>
     </div>
   );
 }
