@@ -10,7 +10,7 @@ import { useContext, useState, useEffect } from 'react';
 import { locationContext } from './providers/LocationProvider';
 import { userContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
-import { locationTreeHelper } from './helpers/locationTreeHelpers';
+// import { locationTreeHelper } from './helpers/locationTreeHelpers';
 import { recipes } from './components/Recipes/testData';
 
 // Components

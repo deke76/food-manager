@@ -8,16 +8,15 @@ export default function RecipeBrowse(props) {
   
   const ingredients = foodItems ? foodItems.map( item => item.name ) : [];
   
-  const ingredientsUrl = `http://localhost:3000/recipes?ingredients=${ingredients}`
+  // const ingredientsUrl = `http://localhost:3000/recipes?ingredients=${ingredients}`
   // const recipes = axios
   //     .get(url)
   //     .then((res) => res.data)
   //     .catch((err) => console.log(err));
   
-
   // Build the cards
   const recipeItems = 
-    recipes.map(recipe => 
+    ingredients.map(recipe => 
       <RecipeCard
         key={recipe.id}
         recipe={recipe}
