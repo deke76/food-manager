@@ -27,13 +27,12 @@ export default function RecipeBrowse(props) {
     recipes.map(recipe => 
       <RecipeCard
         key={recipe.id}
-        name={recipe.title}
-        picture={recipe.image}
+        recipe={recipe}
         onClick={() => window.location.assign(`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`)}
       />);
 
   return (
-    <div className='recipe-list'>
+    <div className='recipe-wrapper'>
       {recipeItems}
     </div>
   )
