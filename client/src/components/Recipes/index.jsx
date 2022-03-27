@@ -13,23 +13,24 @@ export default function RecipeBrowse(props) {
     `locations/${locationID}/foods`
   );
   
-  const ingredients = foodItems ? foodItems.map( item => item.name ) : [];
-  
-  const ingredientsUrl = `http://localhost:3000/recipes?ingredients=${ingredients}`
+  const ingredients = foodItems ? foodItems.map( item => item.name ).join(',+') : [];
+  const url = `http://localhost:3000/recipes?ingredients=${ingredients}`
+    
   // const recipes = axios
   //     .get(url)
-  //     .then((res) => res.data)
+  //     .then((res) => console.log(res.data))
   //     .catch((err) => console.log(err));
   
-
   // Build the cards
-  const recipeItems = 
-    recipes.map(recipe => 
+
+  const recipeItems = recipes.length 
+    ? recipes.map(recipe => 
       <RecipeCard
         key={recipe.id}
         recipe={recipe}
         onClick={() => window.location.assign(`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`)}
-      />);
+      />)
+    : [];
 
   return (
     <div className='recipe-wrapper'>
