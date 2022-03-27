@@ -17,7 +17,7 @@ export default function FoodAdd(props) {
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
 
   // New Food Values
-  const [foodName, setFoodName] = useState("New Food Item");
+  const { foodName, setFoodName } = props;
   const [foodDateExpiry, setFoodDateExpiry] = useState(
     moment().add(10, "days").format("YYYY-MM-DD")
   );

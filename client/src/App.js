@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/app.scss";
@@ -19,6 +19,7 @@ import LocationBrowse from "./components/Locations/Browse";
 
 // Main application file
 export default function App(props) {
+  const [foodName, setFoodName] = useState("New Food Item");
   return (
     <div>
       <UserProvider>
@@ -29,8 +30,8 @@ export default function App(props) {
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods" element={<FoodBrowse />} />
-                <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/foods/barcode" element={<FoodBarcode />} />
+                <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
+                <Route path="/foods/barcode" element={<FoodBarcode foodName={foodName} setFoodName={setFoodName} />} />
                 <Route path="/locations" element={<LocationBrowse />} />
                 <Route path="/locations/add" element={<LocationAdd />} />
               </Routes>

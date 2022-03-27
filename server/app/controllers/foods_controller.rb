@@ -34,9 +34,7 @@ class FoodsController < ApplicationController
 
   def barcode    
     upc = params[:barcode]
-    uri = URI("https://api.spoonacular.com/food/products/upc/#{upc}")
-    spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
-    uri.query = URI.encode_www_form(spoonacular_query)
+    uri = URI("https://world.openfoodfacts.org/api/v0/product/#{upc}.json")    
     res = Net::HTTP.get_response(uri)
     render json: res.body
   end

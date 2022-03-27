@@ -1,26 +1,21 @@
 import React from "react";
-import Quagga from "quagga"; // ES6
 import "./barcode.scss";
 import Bardcodetextfield from "./barcodeTextField";
 
 let _scannerIsRunning = false;
 
-class FoodBarCode extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default function FoodBarCode(props) {  
+  const { foodName, setFoodName } = props;
 
-  render() {
-    return (
-      <>
-        <div id="scanner-container" />
-        <div>
-          <p style={{ display: "inline-block" }}>Barcode: </p>
-          <Bardcodetextfield style={{ display: "inline-block" }} />
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div id="scanner-container" />
+      <div>
+        <p style={{ display: "inline-block" }}>Barcode: </p>
+        <Bardcodetextfield style={{ display: "inline-block" }} foodName={foodName} setFoodName={setFoodName} />
+      </div>
+    </>
+  );
+
 }
 
-export default FoodBarCode;

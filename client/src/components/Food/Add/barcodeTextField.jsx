@@ -24,7 +24,7 @@ class BarcodeTextField extends React.Component {
     console.log("Submit barcode");
     fetch(`http://localhost:3000/foods/barcode/${barcode}`)
     .then(response => response.json())
-    .then(data => console.log(data)) // data.title
+    .then(data => this.props.setFoodName(data.product.product_name)) // data.title
   }
 
   startScanner() {
