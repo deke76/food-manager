@@ -1,33 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
 import "./barcode.scss";
 
 let _scannerIsRunning = false;
 
-class BarcodeTextField extends React.Component {
-  constructor(props) {
-    super(props);
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFileSelect = this.handleFileSelect.bind(this);
-  }
-
-  handleClick() {
-    if (_scannerIsRunning) {
-      Quagga.stop();
-    } else {
-      this.startScanner();
-    }
-  }
-
-  submitBarcode(barcode) {
-    console.log("Submit barcode");
-    fetch(`http://localhost:3000/foods/barcode/${barcode}`)
-    .then(response => response.json())
-    .then(data => this.props.setFoodName(data.product.product_name)) // data.title
-  }
-
-  startScanner() {
+export default function BarcodeTextField(props) {
+  // let history = useNavigate();
+  
+  const startScanner = () => {
     Quagga.init(
       {
         inputStream: {
@@ -73,22 +54,22 @@ class BarcodeTextField extends React.Component {
           alert("You need a camera to scan barcodes.");
           console.log(err);
           document.querySelector("#scanner-container").innerHTML = "";
-
+  
           return;
         }
-
+  
         console.log("Initialization finished. Ready to start");
         Quagga.start();
-
+  
         // Set flag to is running
         //_scannerIsRunning = true;
       }
     );
-
+  
     Quagga.onProcessed(function(result) {
       let drawingCtx = Quagga.canvas.ctx.overlay,
         drawingCanvas = Quagga.canvas.dom.overlay;
-
+  
       if (result) {
         if (result.boxes) {
           drawingCtx.clearRect(
@@ -110,14 +91,14 @@ class BarcodeTextField extends React.Component {
               });
             });
         }
-
+  
         if (result.box) {
           Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
             color: "#00F",
             lineWidth: 2
           });
         }
-
+  
         if (result.codeResult && result.codeResult.code) {
           Quagga.ImageDebug.drawPath(
             result.line,
@@ -128,7 +109,7 @@ class BarcodeTextField extends React.Component {
         }
       }
     });
-
+  
     Quagga.onDetected(function(result) {
       Quagga.stop();
       document.querySelector("#text-input").value = result.codeResult.code;
@@ -139,8 +120,24 @@ class BarcodeTextField extends React.Component {
       );
     });
   }
+  
+  const handleClick = () => {
+    if (_scannerIsRunning) {
+      Quagga.stop();
+    } else {
+      startScanner();
+    }
+  }
 
-  handleFileSelect(evt) {
+  const submitBarcode = (barcode) => {
+    console.log("Submit barcode");
+    fetch(`http://localhost:3000/foods/barcode/${barcode}`)
+    .then(response => response.json())
+    .then(data => props.setFoodName(data.product.product_name)) // data.title
+  }
+
+
+  const handleFileSelect =(evt) => {
     let files = evt.target.files; // FileList object
 
     let tmpImgURL = URL.createObjectURL(files[0]);
@@ -186,24 +183,23 @@ class BarcodeTextField extends React.Component {
     );
   }
 
-  componentDidMount() {
+  useEffect(() => {
     document
       .querySelector("#inputId")
-      .addEventListener("change", this.handleFileSelect, false);
-  }
+      .addEventListener("change", handleFileSelect, false);
+  }, [])
 
-  render() {
-    return (
-      <div style={{ display: "inline-block" }}>
-        <input type="text" id="text-input" />
-        <button onClick={ () => this.submitBarcode(document.querySelector("#text-input").value) }>Submit</button>
-        <p>
-          <button onClick={this.handleClick}> Scan </button>
-          <input id="inputId" type="file" accept="image/*" />
-        </p>
-      </div>
-    );
-  }
+  return (
+    <div style={{ display: "inline-block" }}>
+      <input type="text" id="text-input" />
+      <button onClick={ () => submitBarcode(document.querySelector("#text-input").value) }>Submit</button>
+      <Link to="/foods/add"> Back </Link>
+      <p>
+        <button onClick={handleClick}> Scan </button>
+        <input id="inputId" type="file" accept="image/*" />
+      </p>
+    </div>
+  );
 }
 
-export default BarcodeTextField;
+
