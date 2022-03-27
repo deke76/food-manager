@@ -14,7 +14,6 @@ import FoodAdd from "./components/Food/Add";
 import FoodBrowse from "./components/Food/Browse";
 import LocationList from "./components/Locations/Browse/locationList";
 import RecipeBrowse from "./components/Recipes";
-import Calendar from './components/Food/Browse/Calendar'
 import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file

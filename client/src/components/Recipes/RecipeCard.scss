@@ -35,9 +35,11 @@
     }
 
     &__img {
+      box-sizing:content-box;
       border-radius: 20px 20px 0 0;
       width: 100%;
-      object-fit: cover;
+      object-fit: fill;
+      
     }
 
     &__missing-ingredients {

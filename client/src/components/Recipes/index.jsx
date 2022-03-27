@@ -1,28 +1,31 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { locationContext } from "../../providers/LocationProvider";
 import axios from "axios";
 import useFetchServer from "../../hooks/useFetchServer";
 import RecipeCard from './RecipeCard'
 
-import { recipes } from "./testData";
+// import { recipes } from "./testData";
 
 export default function RecipeBrowse(props) {
+  const[recipes, setRecipes] = useState([])
   const { locationID } = useContext(locationContext);
   const { responseData: foodItems } = useFetchServer(
     `locations/${locationID}/foods`
   );
   
   const ingredients = foodItems ? foodItems.map( item => item.name ).join(',+') : [];
-  const url = `http://localhost:3000/recipes?ingredients=${ingredients}`
+  useEffect(() => {
+    const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
     
-  // const recipes = axios
-  //     .get(url)
-  //     .then((res) => console.log(res.data))
-  //     .catch((err) => console.log(err));
-  
+    return axios
+      .get(url)
+      .then((response) => setRecipes(response.data))
+      .catch(console.log("No recipes available"));
+  }, [locationID]);
+    
+  console.log(recipes.length);
   // Build the cards
-
   const recipeItems = recipes.length 
     ? recipes.map(recipe => 
       <RecipeCard
