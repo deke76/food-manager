@@ -1,11 +1,4 @@
-import React from "react";
-import { useContext } from "react";
-import { locationContext } from "../../providers/LocationProvider";
-import axios from "axios";
-import useFetchServer from "../../hooks/useFetchServer";
-import RecipeCard from './RecipeCard'
-
-import { recipes } from "./testData";
+import { React, recipes, useFetchServer, useContext, locationContext, RecipeCard } from "../../constants";
 
 export default function RecipeBrowse(props) {
   const { locationID } = useContext(locationContext);

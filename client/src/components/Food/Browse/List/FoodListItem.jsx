@@ -1,6 +1,4 @@
-import React from 'react';
-import Button from '../../../buttons/actions/Button';
-import moment from 'moment';
+import { React, moment, Button } from '../../../../constants';
 import './foods.scss';
 
 export default function FoodListItem(props) {

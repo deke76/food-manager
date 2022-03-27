@@ -1,13 +1,9 @@
-import classNames from "classnames";
+// Component & React dependencies
+import { classNames, FontAwesomeIcon, faPlus,
+  faCaretRight, faPen, faAnglesLeft, faAnglesRight } from '../../../constants';
+
+// Stylesheets
 import "./buttons.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faCaretRight,
-  faPen,
-  faAnglesLeft,
-  faAnglesRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
   const { onClick, icon, text, open } = props;

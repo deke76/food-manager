@@ -1,6 +1,4 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { userContext } from "../providers/UserProvider";
+import { axios, useContext, useEffect, useState, userContext } from "../constants";
 
 export default function useFetchServer(route) {
   const [responseData, setResponseData] = useState(null);

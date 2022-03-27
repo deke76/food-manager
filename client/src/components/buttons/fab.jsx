@@ -1,7 +1,4 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-
+import { Link, FontAwesomeIcon, faPlusCircle } from "../../constants";
 import "./fab.scss"
 
 export default function FloatingActionButton(props) {

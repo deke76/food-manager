@@ -1,5 +1,5 @@
+import { Ingredients } from '../../constants';
 import "./RecipeCard.scss";
-import Ingredients from './Ingredients';
 
 export default function LocationCard(props) {
   const { recipe, onClick } = props;

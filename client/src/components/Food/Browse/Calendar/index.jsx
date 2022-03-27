@@ -1,12 +1,4 @@
-import classNames from "classnames";
-import moment from "moment";
-import { useContext, useState } from "react";
-import { locationContext } from "../../../../providers/LocationProvider";
-import useFetchServer from '../../../../hooks/useFetchServer'
-
-import Button from "../../../buttons/actions/Button";
-import CalendarDay from "./CalendarDay";
-
+import { classNames, moment, useContext, useState, locationContext, useFetchServer, Button, CalendarDay } from "../../../../constants";
 import "./Calendar.scss";
 
 export default function Calendar(props) {

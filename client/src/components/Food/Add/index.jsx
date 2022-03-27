@@ -1,13 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarcode } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
-
-import Counter from "../../buttons/counter";
-
+import { axios, moment, FontAwesomeIcon, faBarcode, useEffect, useState, Counter, SelectOneDropdown } from "../../../constants";
 import "./index.scss";
-import axios from "axios";
-import moment from "moment";
-import SelectOneDropdown from "../../buttons/selectOne";
 
 export default function FoodAdd(props) {
   // Search values

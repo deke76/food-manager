@@ -1,10 +1,6 @@
-import moment from "moment";
-import React from "react";
-import FoodListItem from "./FoodListItem";
-
+import { React, moment, FoodListItem } from "../../../../constants";
 
 export default function FoodList(props) {
-
   // Setup the list using the array passed in
   props.data.sort((a, b) =>
     moment(a.date_expires) - moment(b.date_expires));

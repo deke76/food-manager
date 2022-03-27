@@ -1,13 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationDot,
-  faUtensils,
-  faAppleWhole,
-} from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, FontAwesomeIcon, faLocationDot, faUtensils, faAppleWhole, LinkButton } from "../../../constants";
 import "./index.scss";
-import LinkButton from "../../buttons/link";
 
 export default function NavBar(props) {
   return (

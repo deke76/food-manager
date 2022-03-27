@@ -1,9 +1,4 @@
-import { useContext } from "react";
-import useFetchServer from "../../../hooks/useFetchServer";
-import { locationContext } from "../../../providers/LocationProvider";
-import FoodList from "./List/FoodList";
-import LocationList from "../../Locations/Browse/locationList"
-import Calendar from "./Calendar";
+import { useContext, useFetchServer, locationContext, Calendar, FoodList } from "../../../constants";
 
 export default function FoodBrowse(props) {
   const { locationID } = useContext(locationContext);

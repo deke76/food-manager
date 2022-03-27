@@ -1,9 +1,5 @@
-import moment from "moment";
-import classNames from "classnames";
+import { FontAwesomeIcon, faCircle, classNames, moment } from "../../../../constants";
 import "./CalendarDay.scss";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function CalendarDay(props) {
   const { day, hasEvents, onClick, selected } = props;

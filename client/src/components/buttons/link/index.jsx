@@ -1,7 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { React, useNavigate, FontAwesomeIcon } from '../../../constants'
 
 const LinkButton = (props) => {
   const navigate = useNavigate();
