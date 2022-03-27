@@ -4,7 +4,7 @@ import { userContext } from "../../../providers/UserProvider";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
-import "./locationList.scss";
+import "./locationList.scss"
 
 import axios from "axios";
 

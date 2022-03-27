@@ -35,7 +35,8 @@ export default function Calendar(props) {
   const weekElements = [];
   const firstWeek = firstDay.week();
   
-  if (events) {
+
+  if (events !== null) {
     // iterate over four weeks and each day of week to build table
 
     for (let w = 0; w < 6; w++) {
