@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "../../../providers/UserProvider";
+import { stateContext } from "../../../providers/StateProvider";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
-import "./locationList.scss";
-
 import axios from "axios";
-import { stateContext } from "../../../providers/StateProvider";
+
+import "./locationList.scss";
 
 export default function LocationList(props) {
   const { user } = useContext(userContext);

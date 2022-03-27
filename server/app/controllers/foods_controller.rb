@@ -29,6 +29,7 @@ class FoodsController < ApplicationController
     @food.update!({
       :quantity => params[:quantity]
       })
+    render json: @food
   end
 
   def autocomplete

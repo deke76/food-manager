@@ -9,6 +9,16 @@ const locationBuilder = (locations, foods) => {
     ...location,
     foods: foods.filter((food) => food.location_id === location.id),
   }));
+
+
+  // const result = {};
+  
+  // locations.forEach((location) => {
+  //   result[location.id] = {
+  //     ...location,
+  //     foods: foods.filter((food) => food.location_id === location.id),
+  //   }
+  // });
 };
 
 export default function StateProvider(props) {
@@ -34,7 +44,9 @@ export default function StateProvider(props) {
   
   useEffect(() => {
     console.log("state", state);
-    // const currentLocation = state.locations.length > 0 ? state.locations[0].id : null;
+
+    // send state back to database?
+
 
     // setState((prev) => ({
     //   ...prev,
