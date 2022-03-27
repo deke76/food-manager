@@ -26,15 +26,19 @@ export default function FoodListItem(props) {
 
   return (
     <tr className={classes}>
-      <td className={"list-item__name"}>{food.name}</td>
+      {qty > 0 && (
+        <>
+          <td className={"list-item__name"}>{food.name}</td>
 
-      <td className={"list-item__quantity"}>
-        <Counter value={qty} setValue={setQty} maxValue={20} minValue={0} />
-      </td>
-      <td className={"list-item__units"}>{food.quantity_units}</td>
-      <td className={"list-item__expiry"}>
-        {expired ? "expired" : "expires"} {daysToExpiry}
-      </td>
+          <td className={"list-item__quantity"}>
+            <Counter value={qty} setValue={setQty} maxValue={20} minValue={0} />
+          </td>
+          <td className={"list-item__units"}>{food.quantity_units}</td>
+          <td className={"list-item__expiry"}>
+            {expired ? "expired" : "expires"} {daysToExpiry}
+          </td>
+        </>
+      )}
     </tr>
   );
 }
