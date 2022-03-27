@@ -1,6 +1,4 @@
 import React from "react";
-// eslint-disable-next-line
-import ReactDOM from "react-dom";
 import Quagga from "quagga"; // ES6
 import "./barcode.scss";
 
@@ -26,7 +24,7 @@ class BarcodeTextField extends React.Component {
     console.log("Submit barcode");
     fetch(`http://localhost:3000/foods/barcode/${barcode}`)
     .then(response => response.json())
-    .then(data => (data.title))
+    .then(data => console.log(data)) // data.title
   }
 
   startScanner() {
