@@ -3,7 +3,7 @@ import Ingredients from './Ingredients';
 
 export default function LocationCard(props) {
   const { recipe, onClick } = props;
-  console.log(recipe.missedIngredients);
+  
   // Build the missing ingredients
   const ingredients = 
     recipe.missedIngredients.map(ingredient =>
