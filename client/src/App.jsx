@@ -6,8 +6,8 @@ import "./styles/app.scss";
 import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
 
-import HeaderBar from "./components/header";
-import NavBar from "./components/nav/NavBar";
+import HeaderBar from "./components/Navigation/header/index";
+import NavBar from "./components/Navigation/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
 

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { userContext } from "../../providers/UserProvider";
+import { userContext } from "../../../providers/UserProvider";
 import { Link } from "react-router-dom";
 
 import {
@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./index.scss";
-import Counter from "../buttons/counter";
+import Counter from "../../../components/buttons/counter";
 
 export default function HeaderBar(props) {
   const { user, setUser } = useContext(userContext);

@@ -7,7 +7,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import "./index.scss";
-import LinkButton from "../buttons/link";
+import LinkButton from "../../buttons/link";
 
 export default function NavBar(props) {
   return (
