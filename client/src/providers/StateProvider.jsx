@@ -1,4 +1,6 @@
-import { createContext, useContext, useEffect, useState, axios, userContext } from "../constants";
+import { createContext, useContext, useEffect, useState } from "react";
+import { userContext } from "./UserProvider";
+import axios from "axios";
 
 export const stateContext = createContext();
 
