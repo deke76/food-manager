@@ -191,6 +191,12 @@ export default function BarcodeTextField(props) {
       .addEventListener("change", handleFileSelect, false);
   }, [])
 
+
+  const hiddenFileInput = React.useRef(null);
+  const uploadClick = event => {
+    hiddenFileInput.current.click();
+  };
+
   return (
     <div style={{ display: "inline-block" }}>
       <input type="text" id="text-input" />
@@ -201,9 +207,9 @@ export default function BarcodeTextField(props) {
       </Link>
       <p>
         <Button onClick={handleClick} text="scan" icon="camera"/>
-        <input id="inputId" type="file" accept="image/*" class="visually-hidden" />
-        {/* style="display:none" */}
-        <Button for="inputId" text="upload a file" icon="camera" />
+        
+        <Button onClick={uploadClick} text="upload a file" icon="camera" />
+        <input id="inputId" type="file" accept="image/*" ref={hiddenFileInput} style={{display:'none'}} />
       </p>
     </div>
   );
