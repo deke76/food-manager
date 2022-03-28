@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,10 +7,13 @@ import {
   faAnglesLeft,
   faAnglesRight,
   faUtensils,
+  faBarcode,
+  faTrash,
+  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
-  const { onClick, linkTo, icon, text} = props;
+  const { onClick, linkTo, icon, text } = props;
   const classes = classNames("button", { text: text !== undefined });
 
   const body = (
@@ -20,6 +23,9 @@ export default function Button(props) {
       {icon === "left" && <FontAwesomeIcon icon={faAnglesLeft} />}
       {icon === "right" && <FontAwesomeIcon icon={faAnglesRight} />}
       {icon === "recipe" && <FontAwesomeIcon icon={faUtensils} />}
+      {icon === "barcode" && <FontAwesomeIcon icon={faBarcode} />}
+      {icon === "delete" && <FontAwesomeIcon icon={faTrash} />}
+      {icon === "save" && <FontAwesomeIcon icon={faSave} />}
     </div>
   );
 
