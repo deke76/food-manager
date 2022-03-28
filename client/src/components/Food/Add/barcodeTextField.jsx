@@ -193,7 +193,7 @@ export default function BarcodeTextField(props) {
     <div style={{ display: "inline-block" }}>
       <input type="text" id="text-input" />
       <button onClick={ () => submitBarcode(document.querySelector("#text-input").value) }>Submit</button>
-      <Link to="/foods/add"> Back </Link>
+      <button> <Link to="/foods/add"> Back </Link> </button>
       <p>
         <button onClick={handleClick}> Scan </button>
         <input id="inputId" type="file" accept="image/*" />
