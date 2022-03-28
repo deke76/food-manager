@@ -5,89 +5,110 @@ import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 import classNames from 'classnames';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import { Link } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { locationContext } from './providers/LocationProvider';
 import { userContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
-// import { locationTreeHelper } from './helpers/locationTreeHelpers';
-import { recipes } from './components/Recipes/testData';
+import UserProvider from './providers/UserProvider';
+import StateProvider, { stateContext } from './providers/StateProvider';
+
 
 // Components
-import SelectOneDropdown from './components/buttons/selectOne';
-import FoodListItem from './components/Food/Browse/';
-import Ingredients from './components/Recipes/Ingredients';
-import CalendarDay from './components/Food/Browse/Calendar/CalendarDay';
-import Calendar from './components/Food/Browse/Calendar';
-import LinkButton from './components/buttons/link';
-import RecipeCard from './components/Recipes/RecipeCard';
-import Counter from './components/buttons/counter';
-import Button from './components/buttons/actions/Button';
 import App from './App';
+import Button from './components/buttons/actions/Button';
+import Calendar from './components/Food/Browse/Calendar';
+import CalendarDay from './components/Food/Browse/Calendar/CalendarDay';
+import Counter from './components/buttons/counter';
+import FloatingActionButton from './components/buttons/fab'
+import FoodAdd from './components/Food/Add';
+import FoodBrowse from './components/Food/Browse'
 import FoodList from './components/Food/Browse/List/FoodList';
+import FoodListItem from './components/Food/Browse/';
+import HeaderBar from './components/Navigation/header'
+import Ingredients from './components/Recipes/Ingredients';
+import LinkButton from './components/buttons/link';
+import LocationList from './components/Food/Browse'
+import RecipeBrowse from './components/Recipes';
+import RecipeCard from './components/Recipes/RecipeCard';
+import SelectOneDropdown from './components/buttons/selectOne';
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLocationDot,
+  faAnglesLeft,
   faAnglesRight,
   faAppleWhole,
-  faCaretRight,
-  faAnglesLeft,
-  faPlusCircle,
-  faCaretLeft,
-  faUtensils,
   faBarcode,
+  faCaretLeft,
+  faCaretRight,
   faCircle,
-  faTrash,
+  faLocationDot,
+  faSave,
+  faPen,
   faPlus,
-  faUser,
-  faPen
+  faPlusCircle,
+  faUtensils,
+  faTrash,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
 
 
 import useFetchServer from "./hooks/useFetchServer";
 export { 
   App,
-  Link, 
   axios,
-  faPen,
-  React, 
-  moment, 
-  faPlus,
-  faUser,
   Button,
-  recipes, 
-  faTrash,
-  Counter,
-  useState,
-  ReactDOM, 
-  faCircle,
+  BrowserRouter,
   Calendar,
-  FoodList,
-  useEffect,
-  faBarcode,
-  useContext,
-  classNames,
-  LinkButton,
-  RecipeCard, 
-  faUtensils,
   CalendarDay,
-  userContext,
-  faCaretLeft,
-  Ingredients,
-  useNavigate,
+  classNames,
+  Counter,
+  createContext,
   faAnglesLeft,
+  faBarcode,
+  faCaretLeft,
+  faCircle,
+  faPen,
+  faAnglesRight,
+  faLocationDot,
+  faPlus,
   faCaretRight,
   faPlusCircle,
   faAppleWhole,
+  faSave,
+  faTrash,
+  faUser,
+  faUtensils,
+  FloatingActionButton,
+  FoodAdd,
+  FoodBrowse,
+  FoodList,
   FoodListItem,
-  faAnglesRight,
-  faLocationDot,
-  useFetchServer,
-  reportWebVitals,
-  locationContext, 
   FontAwesomeIcon,
+  HeaderBar,
+  Ingredients,
+  Link, 
+  LinkButton,
+  LocationList,
+  locationContext, 
+  moment, 
+  React, 
+  ReactDOM,  
+  RecipeBrowse,
+  RecipeCard, 
+  Route,
+  Routes,
   SelectOneDropdown,
-  serviceWorkerRegistration
+  serviceWorkerRegistration,
+  reportWebVitals,
+  useContext,
+  userContext,
+  useEffect,
+  useFetchServer,
+  useNavigate,
+  UserProvider,
+  useState,
+  stateContext,
+  StateProvider
 };

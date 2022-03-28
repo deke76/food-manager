@@ -1,4 +1,3 @@
-// import { Link } from "../../constants";
 import "./selectOne.scss";
 
 export default function SelectOneDropdown(props) {

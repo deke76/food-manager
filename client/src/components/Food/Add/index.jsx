@@ -1,12 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarcode } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useEffect, useState } from "react";
-
-import { stateContext } from "./../../../providers/StateProvider";
-import { userContext } from "../../../providers/UserProvider";
-
-import Counter from "../../buttons/counter";
-import SelectOneDropdown from "../../buttons/selectOne";
+import { FontAwesomeIcon, faBarcode } from "../../../constants";
+import { useContext, useEffect, useState, stateContext, userContext } from '../../../constants';
+import { Counter, SelectOneDropdown } from "../../../constants";
 
 import "./index.scss";
 import axios from "axios";

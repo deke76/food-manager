@@ -1,6 +1,4 @@
-import { faPlusCircle, faUtensils } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon, Link, faPlusCircle, faUtensils } from "../../constants";
 
 import "./fab.scss"
 

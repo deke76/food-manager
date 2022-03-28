@@ -1,6 +1,4 @@
-import moment from "moment";
-import React from "react";
-import FoodListItem from "./FoodListItem";
+import { moment, React, FoodListItem } from "../../../../constants";
 
 export default function FoodList(props) {
   const { foods } = props;

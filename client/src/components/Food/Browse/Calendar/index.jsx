@@ -1,22 +1,10 @@
-import classNames from "classnames";
-import moment from "moment";
-import { useContext, useState } from "react";
-// import { locationContext } from "../../../../providers/LocationProvider";
-import useFetchServer from "../../../../hooks/useFetchServer";
-
-import Button from "../../../buttons/actions/Button";
-import CalendarDay from "./CalendarDay";
+import { classNames, moment } from "../../../../constants";
+import { useContext, useState, stateContext }  from "../../../../constants";
+import { Button, CalendarDay } from "../../../../constants";
 
 import "./Calendar.scss";
-import { stateContext } from "../../../../providers/StateProvider";
 
 export default function Calendar(props) {
-  // list of objects with date attribute
-  // const { events } = props;
-  // const { locationID } = useContext(locationContext);
-  // const { responseData: events } = useFetchServer(
-  //   `locations/${locationID}/foods`
-  // );
 
   const { state } = useContext(stateContext);
 

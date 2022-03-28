@@ -1,16 +1,13 @@
-import classNames from "classnames";
-import { Link } from "react-router-dom";
-import "./buttons.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
+import { classNames, Link } from "../../../constants";
+import { FontAwesomeIcon, faPlus,
   faAnglesLeft,
   faAnglesRight,
   faUtensils,
   faBarcode,
   faTrash,
-  faSave,
-} from "@fortawesome/free-solid-svg-icons";
+  faSave, } from "../../../constants"
+  import "./buttons.scss";
+
 
 export default function Button(props) {
   const { onClick, linkTo, icon, text } = props;
