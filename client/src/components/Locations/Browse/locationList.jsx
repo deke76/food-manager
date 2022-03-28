@@ -1,43 +1,30 @@
-import { useContext, useEffect, useState } from "react";
-import { locationContext } from "../../../providers/LocationProvider";
+import { useContext, useState } from "react";
 import { userContext } from "../../../providers/UserProvider";
+import { stateContext } from "../../../providers/StateProvider";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
-import "./locationList.scss"
-
 import axios from "axios";
 
-const API_SERVER = "http://localhost:3000";
+import "./locationList.scss";
 
 export default function LocationList(props) {
-  // use contexts
-  const { setLocationID } = useContext(locationContext);
   const { user } = useContext(userContext);
+  const { state, setState } = useContext(stateContext);
 
   const [showCards, setShowCards] = useState(false);
-
-  // set location information
-  const [locations, setLocations] = useState(null); // list of objects
-  useEffect(() => {
-    const url = `${API_SERVER}/users/${user}/locations`;
-    return axios
-      .get(url)
-      .then((response) => setLocations(response.data))
-      .catch(console.log("could not get users locations"));
-  }, [user]);
-
-  const [currentLocation, setCurrentLocation] = useState(0); // index of locations list
-
-  // update location id context whenever current location changes
-  useEffect(() => {
-    locations && setLocationID(locations[currentLocation].id);
-  }, [currentLocation, locations, setLocationID]);
 
   const deleteLocation = (id) => {
     const url = `http://localhost:3000/users/${user}/locations/${id}`;
     return axios.delete(url).then(() => {
-      setLocations(locations.filter((i) => i.id !== id));
+      setState((prev) => ({
+        ...prev,
+        locations: prev.locations.filter((location) => location.id !== id),
+        currentLocation:
+          id === prev.currentLocation
+            ? prev.locations[0].id
+            : prev.currentLocation,
+      }));
     });
   };
 
@@ -58,25 +45,35 @@ export default function LocationList(props) {
     return axios
       .post(url, { ...newLocation, user_id: user })
       .then((response) => {
-        // toggleNewLocation();
-        setLocations((prev) => [...prev, response.data]);
+        setState((prev) => ({
+          ...prev,
+          locations: [...prev.locations, { ...response.data, foods: [] }],
+        }));
+
         setNewLocation(defaultLocation);
       });
   };
+
+  const selectedLocation = state
+    ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+    : null;
 
   return (
     <div className="locations-wrapper">
       {showCards && (
         <>
-          {locations &&
-            locations.map((location, index) => (
+          {state &&
+            state.locations.map((location, index) => (
               <LocationCard
                 key={index}
                 location={location}
-                selected={index === currentLocation}
+                selected={location.id === state.currentLocation}
                 onClick={() => {
                   setShowCards(false);
-                  setCurrentLocation(index);
+                  setState((prev) => ({
+                    ...prev,
+                    currentLocation: location.id,
+                  }));
                 }}
                 onDelete={(event) => {
                   event.stopPropagation();
@@ -91,10 +88,10 @@ export default function LocationList(props) {
           />
         </>
       )}
-      {!showCards && locations && (
+      {!showCards && state && (
         <div className="single-location" onClick={() => setShowCards(true)}>
-          <h4>{locations[currentLocation].name}</h4>
-          <div>{locations[currentLocation].num_children} items</div>
+          <h4>{selectedLocation.name}</h4>
+          <div>{selectedLocation.foods.length} items</div>
         </div>
       )}
     </div>

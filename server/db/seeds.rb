@@ -56,7 +56,7 @@ food_id = 1
         location_id: location_id,
         name: food_name,
         quantity: Faker::Number.between(from: 1, to: 6),
-        quantity_units: 'each',
+        quantity_units: 'ea',
         price_cents: Faker::Number.between(from: 100, to: 2000),
         date_purchased: Faker::Date.backward(days: 5),
         date_expires: Faker::Date.forward(days: 10),

@@ -5,6 +5,7 @@ import "./styles/app.scss";
 
 import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
+import StateProvider from "./providers/StateProvider";
 
 import HeaderBar from "./components/header";
 import NavBar from "./components/nav/NavBar";
@@ -14,6 +15,7 @@ import FoodAdd from "./components/Food/Add";
 import FoodBrowse from "./components/Food/Browse";
 import LocationList from "./components/Locations/Browse/locationList";
 import RecipeBrowse from "./components/Recipes";
+import Calendar from "./components/Food/Browse/Calendar";
 import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
@@ -21,22 +23,24 @@ export default function App(props) {
   return (
     <div>
       <UserProvider>
-        <LocationProvider>
-          <BrowserRouter>
-            <HeaderBar />
-            <div className="content">
-            <FloatingActionButton linkTo="/foods/add" />
-            <LocationList />
-              <Routes>
-                <Route path="/" element={<FoodBrowse />} />
-                <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/locations" element={<LocationList />} />
-                <Route path='/recipes' element={<RecipeBrowse />} />
-              </Routes>
-            </div>
-            <NavBar />
-          </BrowserRouter>
-        </LocationProvider>
+        <StateProvider>
+          <LocationProvider>
+            <BrowserRouter>
+              <HeaderBar />
+              <div className="content">
+                <FloatingActionButton linkTo="/foods/add" />
+                <LocationList />
+                <Routes>
+                  <Route path="/" element={<FoodBrowse />} />
+                  <Route path="/foods/add" element={<FoodAdd />} />
+                  <Route path="/locations" element={<LocationList />} />
+                  <Route path="/recipes" element={<RecipeBrowse />} />
+                </Routes>
+              </div>
+              <NavBar />
+            </BrowserRouter>
+          </LocationProvider>
+        </StateProvider>
       </UserProvider>
     </div>
   );
