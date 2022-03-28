@@ -196,11 +196,14 @@ export default function BarcodeTextField(props) {
       <input type="text" id="text-input" />
       <Button onClick={ () => submitBarcode(document.querySelector("#text-input").value)} text="submit" icon="camera" />
       
-      <Link to="/foods/add"> Back </Link>
+      <Link to="/foods/add">
+        <Button text="back" icon="camera" />
+      </Link>
       <p>
         <Button onClick={handleClick} text="scan" icon="camera"/>
-        <input id="inputId" type="file" accept="image/*" />
+        <input id="inputId" type="file" accept="image/*" class="visually-hidden" />
         {/* style="display:none" */}
+        <Button for="inputId" text="upload a file" icon="camera" />
       </p>
     </div>
   );
