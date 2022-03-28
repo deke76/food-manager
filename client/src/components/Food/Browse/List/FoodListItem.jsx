@@ -26,7 +26,7 @@ export default function FoodListItem(props) {
 
   return (
     <div className={classes}>
-      <span>
+      <span className="left">
         <h4>{food.name}</h4>
         <span className="details">
           {expired ? "expired" : "expires"} {daysToExpiry}
