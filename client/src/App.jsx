@@ -11,7 +11,7 @@ import HeaderBar from "./components/header";
 import FoodAdd from "./components/Food/Add";
 
 import FoodBrowse from "./components/Food/Browse";
-import LocationList from "./components/Locations/Browse/locationList";
+import LocationList from "./components/Locations/locationList";
 import RecipeBrowse from "./components/Recipes";
 import FloatingActionButton from "./components/buttons/fab";
 

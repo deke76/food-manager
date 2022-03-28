@@ -2,7 +2,7 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useState } from "react";
-import Button from "../../buttons/actions/Button";
+import Button from "../buttons/actions/Button";
 
 export default function LocationCardNew(props) {
   const { onSave, newLocation, setNewLocation } = props;

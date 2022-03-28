@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { userContext } from "../../../providers/UserProvider";
-import { stateContext } from "../../../providers/StateProvider";
+import { userContext } from "../../providers/UserProvider";
+import { stateContext } from "../../providers/StateProvider";
 
 import LocationCard from "./locationCard";
 import LocationCardNew from "./locationCardNew";
