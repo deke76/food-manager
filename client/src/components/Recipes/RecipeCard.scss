@@ -24,6 +24,7 @@
     width: 90vw;
 
     &__details {
+      background-color: $primary-background;
       display:flex;
       flex-direction: column;
       justify-content:flex-start;
@@ -37,7 +38,6 @@
     &__img {
       box-sizing:content-box;
       border-radius: 20px 20px 0 0;
-      width: 100%;
       object-fit: fill;
       
     }

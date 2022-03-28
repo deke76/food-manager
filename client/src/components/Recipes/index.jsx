@@ -22,7 +22,7 @@ export default function RecipeBrowse(props) {
       .get(url)
       .then((response) => setRecipes(response.data))
       .catch(console.log("No recipes available"));
-  }, [locationID]);
+  }, [ingredients]);
     
   console.log(recipes.length);
   // Build the cards
