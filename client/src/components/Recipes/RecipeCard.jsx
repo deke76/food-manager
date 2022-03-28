@@ -3,7 +3,7 @@ import "./RecipeCard.scss";
 
 export default function LocationCard(props) {
   const { recipe, onClick } = props;
-  console.log(recipe.missedIngredients);
+  
   // Build the missing ingredients
   const ingredients = 
     recipe.missedIngredients.map(ingredient =>
@@ -18,7 +18,7 @@ export default function LocationCard(props) {
         <img src={recipe.image} className='recipe-card__img'  alt='' />
       </article>
       <h4 className="recipe-card__title">{recipe.title}</h4>
-      <h4 className='recipe-card__missing-ingredients'>Missing Ingredients</h4>
+      <h4 className='recipe-card__missing-ingredients'>You're missing these {recipe.missedIngredientCount} ingredients.</h4>
       <table>
         <tbody>
           <tr>

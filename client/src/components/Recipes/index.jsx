@@ -1,31 +1,50 @@
-import { React, recipes, useFetchServer, useContext, locationContext, RecipeCard } from "../../constants";
+import React from "react";
+import { useContext, useState, useEffect } from "react";
+import { locationContext } from "../../providers/LocationProvider";
+import { stateContext } from "../../providers/StateProvider";
+import { userContext } from "../../providers/UserProvider";
+import axios from "axios";
+import useFetchServer from "../../hooks/useFetchServer";
+import RecipeCard from "./RecipeCard";
+
+// import { recipes } from "./testData";
 
 export default function RecipeBrowse(props) {
-  const { locationID } = useContext(locationContext);
-  const { responseData: foodItems } = useFetchServer(
-    `locations/${locationID}/foods`
-  );
-  
-  const ingredients = foodItems ? foodItems.map( item => item.name ) : [];
-  
-  // const ingredientsUrl = `http://localhost:3000/recipes?ingredients=${ingredients}`
-  // const recipes = axios
-  //     .get(url)
-  //     .then((res) => res.data)
-  //     .catch((err) => console.log(err));
-  
-  // Build the cards
-  const recipeItems = 
-    ingredients.map(recipe => 
-      <RecipeCard
-        key={recipe.id}
-        recipe={recipe}
-        onClick={() => window.location.assign(`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`)}
-      />);
+  const [recipes, setRecipes] = useState([]);
+  const { state } = useContext(stateContext);
 
-  return (
-    <div className='recipe-wrapper'>
-      {recipeItems}
-    </div>
-  )
+  useEffect(() => {
+    const selectedLocation = state
+      ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+      : null;
+
+    const ingredients = selectedLocation
+      ? selectedLocation.foods.map((item) => item.name).join(",+")
+      : [];
+
+    const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
+
+    return axios
+      .get(url)
+      .then((response) => setRecipes(response.data))
+      .catch(console.log("No recipes available"));
+  }, [state]);
+
+  console.log(recipes.length);
+  // Build the cards
+  const recipeItems = recipes.length
+    ? recipes.map((recipe) => (
+        <RecipeCard
+          key={recipe.id}
+          recipe={recipe}
+          onClick={() =>
+            window.location.assign(
+              `http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`
+            )
+          }
+        />
+      ))
+    : [];
+
+  return <div className="recipe-wrapper">{recipeItems}</div>;
 }

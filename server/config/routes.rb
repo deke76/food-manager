@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "/foods", to: "foods#users"
     resources :locations do
       get "/foods", to: "foods#locations"
+      resources :foods
     end
   end
 

@@ -4,6 +4,7 @@
 .list {
   border-collapse: collapse;
   width: 100vw;
+  padding: 0.5em;
 }
 
 .list-item {
@@ -20,7 +21,7 @@
   }
 
   &__name {
-    
+    padding-left: 0.5em;
   }
 
   &__quantity {
@@ -34,7 +35,7 @@
   &__expiry {
     text-align: end;
     width: 35%;
-    padding-right: 0.5em;
+    padding-right: 1.0em;
   }
 }
 

@@ -12,7 +12,7 @@ class FoodsController < ApplicationController
   end
 
   def locations
-    @foods = Food.where(location_id: params[:location_id]).where('quantity > 0')
+    @foods = Food.where(location_id: params[:location_id]).where("quantity > 0")
     render json: @foods
   end
 
@@ -22,6 +22,14 @@ class FoodsController < ApplicationController
   end
 
   def new
+  end
+
+  def update
+    @food = Food.find(params[:id])
+    @food.update!({
+      :quantity => params[:quantity]
+      })
+    render json: @food
   end
 
   def autocomplete
