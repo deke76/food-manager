@@ -14,7 +14,7 @@ export default function LocationCardNew(props) {
   return (
     <div className={classes} onClick={() => setShowForm(true)}>
       {showForm && (
-        <div>
+        <>
           <header>
             <h4 className="location-card__title">
               <input
@@ -63,16 +63,16 @@ export default function LocationCardNew(props) {
                 }
               />
             </div>
+            <Button
+              icon="save"
+              onClick={(event) => {
+                event.stopPropagation();
+                setShowForm(false);
+                onSave();
+              }}
+            />
           </article>
-          <Button
-            icon="save"
-            onClick={(event) => {
-              event.stopPropagation();
-              setShowForm(false);
-              onSave();
-            }}
-          />
-        </div>
+        </>
       )}
 
       {!showForm && (

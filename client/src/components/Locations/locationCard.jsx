@@ -12,7 +12,7 @@ export default function LocationCard(props) {
     <div className={classes} onClick={onClick}>
       <header>
         <h4 className="location-card__title">{location.name}</h4>
-        <div className="location-card__quantity">
+        <div className="quantity">
           {location.foods.length} items
         </div>
       </header>
