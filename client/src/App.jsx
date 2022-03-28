@@ -27,7 +27,7 @@ export default function App(props) {
                 </Routes>
               </div>
             </div>
-            <FloatingActionButton linkTo={{foods: "/foods/add", recipes:"/recipes"}}/>
+            <FloatingActionButton/>
           </BrowserRouter>
         </StateProvider>
       </UserProvider>
