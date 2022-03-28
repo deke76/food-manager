@@ -15,6 +15,7 @@ export default function RecipeBrowse(props) {
   );
   
   const ingredients = foodItems ? foodItems.map( item => item.name ).join(',+') : [];
+  
   useEffect(() => {
     const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
     
