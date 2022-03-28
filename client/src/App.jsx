@@ -4,10 +4,6 @@ import { HeaderBar, FoodAdd, LocationList, FoodBrowse, RecipeBrowse, FloatingAct
 
 import "./styles/app.scss";
 
-
-
-
-
 // Main application file
 export default function App(props) {
   return (
