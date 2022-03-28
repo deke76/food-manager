@@ -23,7 +23,7 @@ export default function App(props) {
       <UserProvider>
         <StateProvider>
           <BrowserRouter>
-            {/* <HeaderBar /> */}
+            <HeaderBar />
             <div className="content">
               <LocationList />
               <div className='content__main'>
