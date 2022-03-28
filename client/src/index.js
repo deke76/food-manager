@@ -1,4 +1,9 @@
-import { React, ReactDOM, App, reportWebVitals, serviceWorkerRegistration } from './constants';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 import './index.scss';
 
 ReactDOM.render(
