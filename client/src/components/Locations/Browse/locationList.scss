@@ -1,13 +1,16 @@
+@import '../../../styles/variables.scss';
+
 .locations-wrapper {
   padding: 20px;
-  background-color: rgba(248, 129, 93, 0.233);
+  background-color: $primary-background;
   transition: all 0.5s;
-  position:fixed;
+  position:sticky;
   top: 3em;
   width: 90%;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  overflow-y:hidden;
   gap: 15px;
 
   .single-location {

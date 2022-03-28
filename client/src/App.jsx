@@ -37,7 +37,7 @@ export default function App(props) {
                 <Route path="/recipes" element={<RecipeBrowse />} />
               </Routes>
             </div>
-            <FloatingActionButton linkTo={{foods: "/foods/add", recipes:"/recipes"}}/>
+            <FloatingActionButton/>
           </BrowserRouter>
         </StateProvider>
       </UserProvider>
