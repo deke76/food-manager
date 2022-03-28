@@ -69,16 +69,16 @@
       padding: 20px 50px 10px;
     }
   }
-}
+  
+  input {
+    display: inline-block;
+    // width: 100%;
 
-input {
-  display: inline-block;
-  // width: 100%;
+    opacity: 0.9;
+    border: none;
 
-  opacity: 0.9;
-  border: none;
-
-  margin: 3px;
-  padding: 3px 8px;
-  border-radius: 10px;
+    margin: 3px;
+    padding: 3px 8px;
+    border-radius: 10px;
+  }
 }
