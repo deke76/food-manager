@@ -29,7 +29,6 @@ export default function App(props) {
             <HeaderBar />
             <div className="content">
               <LocationList />
-<<<<<<< HEAD
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
@@ -37,16 +36,6 @@ export default function App(props) {
                 <Route path="/locations" element={<LocationList />} />
                 <Route path="/recipes" element={<RecipeBrowse />} />
               </Routes>
-=======
-              <div className='content__main'>
-                  <Routes>
-                  <Route path="/" element={<FoodBrowse />} />
-                  <Route path="/foods/add" element={<FoodAdd />} />
-                  <Route path="/locations" element={<LocationList />} />
-                  <Route path="/recipes" element={<RecipeBrowse />} />
-                </Routes>
-              </div>
->>>>>>> main
             </div>
             <FloatingActionButton linkTo={{foods: "/foods/add", recipes:"/recipes"}}/>
           </BrowserRouter>

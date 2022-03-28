@@ -3,6 +3,7 @@ import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
 import "./barcode.scss";
 import Button from "../../buttons/actions/Button";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 let _scannerIsRunning = false;
 
@@ -193,11 +194,12 @@ export default function BarcodeTextField(props) {
   return (
     <div style={{ display: "inline-block" }}>
       <input type="text" id="text-input" />
-      <button onClick={ () => submitBarcode(document.querySelector("#text-input").value) }>Submit</button>
+      <Button onClick={ () => submitBarcode(document.querySelector("#text-input").value)} text="submit" icon="camera" />
       <button> <Link to="/foods/add"> Back </Link> </button>
       <p>
         <Button onClick={handleClick} text="scan" icon="camera"/>
         <input id="inputId" type="file" accept="image/*" />
+        {/* style="display:none" */}
       </p>
     </div>
   );
