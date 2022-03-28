@@ -21,7 +21,7 @@ const locationBuilder = (locations, foods) => {
   // });
 };
 
-export default function StateProvider(props) {
+export function StateProvider(props) {
   const [state, setState] = useState(null);
   const { user } = useContext(userContext);
 

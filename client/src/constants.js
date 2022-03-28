@@ -11,7 +11,7 @@ import { locationContext } from './providers/LocationProvider';
 import { userContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
 import UserProvider from './providers/UserProvider';
-import StateProvider, { stateContext } from './providers/StateProvider';
+import { StateProvider, stateContext } from './providers/StateProvider';
 
 
 // Components
