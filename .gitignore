@@ -28,3 +28,4 @@
 /server/.env
 .DS_store
 .env
+/server/Gemfile.lock
