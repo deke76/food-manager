@@ -12,7 +12,7 @@ export default function FoodBrowse(props) {
 
   return selectedLocation ? (
     <div>
-      <div>{<Calendar />}</div>
+      {/* <div>{<Calendar />}</div> */}
       <div>{<FoodList foods={selectedLocation.foods} />}</div>
     </div>
   ) : (

@@ -4,6 +4,8 @@ body {
   margin: 0;
   font-family: 'Readex Pro', sans-serif;
 
+  overscroll-behavior: none;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
