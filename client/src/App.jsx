@@ -8,7 +8,6 @@ import LocationProvider from "./providers/LocationProvider";
 import StateProvider from "./providers/StateProvider";
 
 import HeaderBar from "./components/header";
-import NavBar from "./components/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
 
@@ -29,8 +28,8 @@ export default function App(props) {
           <BrowserRouter>
             <HeaderBar />
             <div className="content">
-              <FloatingActionButton linkTo="/foods/add" />
               <LocationList />
+<<<<<<< HEAD
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
@@ -38,8 +37,18 @@ export default function App(props) {
                 <Route path="/locations" element={<LocationList />} />
                 <Route path="/recipes" element={<RecipeBrowse />} />
               </Routes>
+=======
+              <div className='content__main'>
+                  <Routes>
+                  <Route path="/" element={<FoodBrowse />} />
+                  <Route path="/foods/add" element={<FoodAdd />} />
+                  <Route path="/locations" element={<LocationList />} />
+                  <Route path="/recipes" element={<RecipeBrowse />} />
+                </Routes>
+              </div>
+>>>>>>> main
             </div>
-            <NavBar />
+            <FloatingActionButton linkTo={{foods: "/foods/add", recipes:"/recipes"}}/>
           </BrowserRouter>
         </StateProvider>
       </UserProvider>
