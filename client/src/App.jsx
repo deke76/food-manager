@@ -5,17 +5,19 @@ import "./styles/app.scss";
 
 import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
+import StateProvider from "./providers/StateProvider";
 
 import HeaderBar from "./components/header";
 import NavBar from "./components/nav/NavBar";
 
 import FoodAdd from "./components/Food/Add";
-import LocationAdd from "./components/Locations/Add";
 
 import FoodBarcode from "./components/Food/Add/foodBarcode";
 
 import FoodBrowse from "./components/Food/Browse";
-import LocationBrowse from "./components/Locations/Browse";
+import LocationList from "./components/Locations/Browse/locationList";
+import RecipeBrowse from "./components/Recipes";
+import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
 export default function App(props) {
@@ -23,22 +25,23 @@ export default function App(props) {
   return (
     <div>
       <UserProvider>
-        <LocationProvider>
+        <StateProvider>
           <BrowserRouter>
             <HeaderBar />
             <div className="content">
+              <FloatingActionButton linkTo="/foods/add" />
+              <LocationList />
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
-                <Route path="/foods" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
                 <Route path="/foods/barcode" element={<FoodBarcode foodName={foodName} setFoodName={setFoodName} />} />
-                <Route path="/locations" element={<LocationBrowse />} />
-                <Route path="/locations/add" element={<LocationAdd />} />
+                <Route path="/locations" element={<LocationList />} />
+                <Route path="/recipes" element={<RecipeBrowse />} />
               </Routes>
             </div>
             <NavBar />
           </BrowserRouter>
-        </LocationProvider>
+        </StateProvider>
       </UserProvider>
     </div>
   );

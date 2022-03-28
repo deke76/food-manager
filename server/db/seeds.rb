@@ -33,7 +33,7 @@ food_id = 1
 
   rand(1..5).times do
     location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
-    location_storage = ["Fridge", "Freezer", "Pantry", "Closer", "Cooler"].sample
+    location_storage = ["Fridge", "Freezer", "Pantry", "Closet", "Cooler"].sample
     
     puts 'Creating locations...'
     Location.create!({
@@ -44,7 +44,7 @@ food_id = 1
       province: Faker::Address.state_abbr,
       city: Faker::Address.city,
       # temperature: rand(-18.0..20.0),
-      country: Faker::Address.country_code 
+      country: Faker::Address.country 
     })
 
     rand(6..20).times do
@@ -56,7 +56,7 @@ food_id = 1
         location_id: location_id,
         name: food_name,
         quantity: Faker::Number.between(from: 1, to: 6),
-        quantity_units: 'each',
+        quantity_units: 'ea',
         price_cents: Faker::Number.between(from: 100, to: 2000),
         date_purchased: Faker::Date.backward(days: 5),
         date_expires: Faker::Date.forward(days: 10),

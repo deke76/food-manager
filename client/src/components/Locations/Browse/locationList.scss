@@ -1,0 +1,27 @@
+.locations-wrapper {
+  padding: 20px;
+  background-color: rgba(248, 129, 93, 0.233);
+  transition: all 0.5s;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 15px;
+
+  .single-location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: rgb(255, 68, 0);
+    
+    padding: 10px 15px;
+    border-radius: 20px;
+    width: 100%;
+
+    div {
+      font-size: small;
+    }
+  }
+
+}

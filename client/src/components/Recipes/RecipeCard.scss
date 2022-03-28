@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+
+.recipe-wrapper {
+  padding: 20px;
+  transition: all 0.5s;
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 15px;
+  background-color: rgba(248, 129, 93, 0.233);
+
+  .recipe-card {
+    background-color: $primary-background;
+    color: white;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 75vh;
+    width: 90vw;
+
+    &__details {
+      display:flex;
+      flex-direction: column;
+      justify-content:flex-start;
+      overflow: hidden;
+      background-color: $primary-background;
+      border-radius:20px 20px 0 0;
+
+    }
+
+    &__title{
+      padding-top: 1em;
+    }
+
+    &__img {
+      box-sizing:content-box;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      object-fit: fill;
+      
+    }
+
+    &__missing-ingredients {
+      text-align: center;
+      padding: 1em;
+    }
+
+    div {
+      font-size: small;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .location-card {
+    width: 30vw;
+  }
+}

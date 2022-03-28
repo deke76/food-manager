@@ -14,11 +14,13 @@ export default function LocationList(props) {
      province={d.province}
    />
   ))
-  console.log(props.data);
+  // console.log(props.data);
 
   return (
-    <ul>
-      {items}
-    </ul>
+    <table className={'list'}>
+      <tbody>
+        {items}
+      </tbody>
+    </table>
   )
 }

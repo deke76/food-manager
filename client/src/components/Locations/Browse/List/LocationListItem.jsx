@@ -1,24 +1,17 @@
 import React from 'react';
 import Button from '../../../buttons/actions/Button';
-import './LocationListItem.scss';
+import './location.scss';
 
 export default function LocationListItem(props) {
   const { name, city, province, quantity } = props
-  const empty = props;
-  console.log(empty);
+
   return (
-    <section className='list-item'>
-      <div className='list-item__left'>
-        <Button icon = {'caret'}/>
-        <div>
-          <h4>{name}</h4>
-          <h6 className='list-item__left__quantity'>{quantity !== 0 && quantity}</h6>
-        </div>
-      </div>
-      <div className='list-item__right'>
-        <h5>{city}</h5>
-        <h6>{province}</h6>
-      </div>
-    </section>
+    <tr className={'list-item'}>
+      <td className={'list-item__button'}><Button icon = {'caret'}/></td>
+      <td className={'list-item__name'}>{name}</td>
+      <td className={'list-item__quantity'}>{quantity !== 0 && quantity}</td>
+      <td className={'list-item__city'}>{city}, </td>
+      <td className={'list-item__province'}>{province}</td>
+    </tr>
   )
 }
