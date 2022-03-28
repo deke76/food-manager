@@ -15,7 +15,6 @@ import FoodAdd from "./components/Food/Add";
 import FoodBrowse from "./components/Food/Browse";
 import LocationList from "./components/Locations/Browse/locationList";
 import RecipeBrowse from "./components/Recipes";
-import Calendar from "./components/Food/Browse/Calendar";
 import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
@@ -24,22 +23,20 @@ export default function App(props) {
     <div>
       <UserProvider>
         <StateProvider>
-          <LocationProvider>
-            <BrowserRouter>
-              <HeaderBar />
-              <div className="content">
-                <FloatingActionButton linkTo="/foods/add" />
-                <LocationList />
-                <Routes>
-                  <Route path="/" element={<FoodBrowse />} />
-                  <Route path="/foods/add" element={<FoodAdd />} />
-                  <Route path="/locations" element={<LocationList />} />
-                  <Route path="/recipes" element={<RecipeBrowse />} />
-                </Routes>
-              </div>
-              <NavBar />
-            </BrowserRouter>
-          </LocationProvider>
+          <BrowserRouter>
+            <HeaderBar />
+            <div className="content">
+              <FloatingActionButton linkTo="/foods/add" />
+              <LocationList />
+              <Routes>
+                <Route path="/" element={<FoodBrowse />} />
+                <Route path="/foods/add" element={<FoodAdd />} />
+                <Route path="/locations" element={<LocationList />} />
+                <Route path="/recipes" element={<RecipeBrowse />} />
+              </Routes>
+            </div>
+            <NavBar />
+          </BrowserRouter>
         </StateProvider>
       </UserProvider>
     </div>

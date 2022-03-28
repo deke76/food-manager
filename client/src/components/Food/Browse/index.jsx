@@ -1,6 +1,4 @@
 import { useContext } from "react";
-import useFetchServer from "../../../hooks/useFetchServer";
-import { locationContext } from "../../../providers/LocationProvider";
 import FoodList from "./List/FoodList";
 import Calendar from "./Calendar";
 import { stateContext } from "../../../providers/StateProvider";
