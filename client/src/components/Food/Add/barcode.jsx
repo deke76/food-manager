@@ -1,6 +1,7 @@
 import React from "react";
 import Quagga from "quagga"; // ES6
 import './barcode.scss';
+import Button from "../../buttons/actions/Button";
 
 let _scannerIsRunning = false;
 
@@ -189,7 +190,7 @@ class BarcodeTextField extends React.Component {
     return (
       <div style={{ display: "inline-block" }}>
         <input type="text" id="text-input" />
-        <button onClick={this.handleClick}> Scan </button>
+        <Button onClick={this.handleClick} icon={"camera"} text={"scan"}/>
         <input id="inputId" type="file" accept="image/*" />
       </div>
     );
