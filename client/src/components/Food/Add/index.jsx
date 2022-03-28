@@ -11,6 +11,7 @@ import SelectOneDropdown from "../../buttons/selectOne";
 import "./index.scss";
 import axios from "axios";
 import moment from "moment";
+import Button from "../../buttons/actions/Button";
 
 export default function FoodAdd(props) {
   // Search values
@@ -88,9 +89,7 @@ export default function FoodAdd(props) {
           onBlur={() => setShowSuggestions(false)}
           placeholder="Search for food..."
         />
-        <div className="barcode-btn">
-          <FontAwesomeIcon icon={faBarcode} />
-        </div>
+        <Button icon="barcode"/>
       </div>
       {showSuggestions &&
         (suggestions.length > 0 ? (

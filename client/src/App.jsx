@@ -23,7 +23,7 @@ export default function App(props) {
       <UserProvider>
         <StateProvider>
           <BrowserRouter>
-            <HeaderBar />
+            {/* <HeaderBar /> */}
             <div className="content">
               <LocationList />
               <div className='content__main'>
@@ -35,7 +35,7 @@ export default function App(props) {
                 </Routes>
               </div>
             </div>
-            <FloatingActionButton linkTo={{foods: "/foods/add", recipes:"/recipes"}}/>
+            <FloatingActionButton/>
           </BrowserRouter>
         </StateProvider>
       </UserProvider>
