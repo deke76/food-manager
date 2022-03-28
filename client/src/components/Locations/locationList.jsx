@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
-import { userContext } from "../../providers/UserProvider";
-import { stateContext } from "../../providers/StateProvider";
-
-import LocationCard from "./locationCard";
-import LocationCardNew from "./locationCardNew";
-import axios from "axios";
+import { 
+  axios,
+  useContext, useState,
+  userContext, stateContext,
+  LocationCard, LocationCardNew } from "../../constants";
 
 import "./locationList.scss";
 
