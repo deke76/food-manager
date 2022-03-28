@@ -5,6 +5,7 @@ import "./styles/app.scss";
 
 import UserProvider from "./providers/UserProvider";
 import LocationProvider from "./providers/LocationProvider";
+import StateProvider from "./providers/StateProvider";
 
 import HeaderBar from "./components/header";
 import NavBar from "./components/nav/NavBar";
@@ -21,22 +22,22 @@ export default function App(props) {
   return (
     <div>
       <UserProvider>
-        <LocationProvider>
+        <StateProvider>
           <BrowserRouter>
             <HeaderBar />
             <div className="content">
-            <FloatingActionButton linkTo="/foods/add" />
-            <LocationList />
+              <FloatingActionButton linkTo="/foods/add" />
+              <LocationList />
               <Routes>
                 <Route path="/" element={<FoodBrowse />} />
                 <Route path="/foods/add" element={<FoodAdd />} />
                 <Route path="/locations" element={<LocationList />} />
-                <Route path='/recipes' element={<RecipeBrowse />} />
+                <Route path="/recipes" element={<RecipeBrowse />} />
               </Routes>
             </div>
             <NavBar />
           </BrowserRouter>
-        </LocationProvider>
+        </StateProvider>
       </UserProvider>
     </div>
   );

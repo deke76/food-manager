@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
-import Button from "../../../buttons/actions/Button";
-import moment from "moment";
-import classNames from "classnames";
-import "./foods.scss";
-
-import Counter from "./../../../buttons/counter";
 import { userContext } from "./../../../../providers/UserProvider";
+import Counter from "./../../../buttons/counter";
+
+import classNames from "classnames";
+import moment from "moment";
 import axios from "axios";
+
+import "./foods.scss";
 
 export default function FoodListItem(props) {
   const { food } = props;
   const { user } = useContext(userContext);
 
-  const expired = moment().isAfter(moment(food.date_expires));
-  const classes = classNames("list-item", { expired });
+  const [qty, setQty] = useState(food.quantity);
 
+  const expired = moment().isAfter(moment(food.date_expires));
   const daysToExpiry = moment(food.date_expires).from(moment());
 
-  const [qty, setQty] = useState(food.quantity);
+  const classes = classNames("list-item", { expired });
 
   useEffect(() => {
     const url = `http://localhost:3000/users/${user}/locations/${food.location_id}/foods/${food.id}`;
