@@ -27,7 +27,7 @@ export default function RecipeBrowse(props) {
       .catch(console.log("No recipes available"));
   }, [ingredients]);
     
-  console.log(recipes.length);
+  console.log(recipes[1]);
   // Build the cards
   const recipeItems = recipes.length 
     ? recipes.map(recipe => 
