@@ -17,6 +17,7 @@
     position: relative;
     transition: all 0.3s;
     text-align: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -44,7 +45,13 @@
 
     &__missing-ingredients {
       text-align: center;
-      padding: 1em;
+      cursor: pointer;
+      background-color: #03045E;;
+      color: white;
+      border-radius: 20px;
+      padding: 10px 15px;
+      width: fit-content;
+      margin: 1em;
     }
 
     div {

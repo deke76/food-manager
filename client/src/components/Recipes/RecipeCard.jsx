@@ -1,5 +1,7 @@
 import "./RecipeCard.scss";
 import Ingredients from './Ingredients';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function LocationCard(props) {
   const { recipe, onClick } = props;
@@ -18,7 +20,8 @@ export default function LocationCard(props) {
         <img src={recipe.image} className='recipe-card__img'  alt='' />
       </article>
       <h4 className="recipe-card__title">{recipe.title}</h4>
-      <h4 className='recipe-card__missing-ingredients'>You're missing these {recipe.missedIngredientCount} ingredients.</h4>
+      <h4 className='recipe-card__missing-ingredients'>
+        <FontAwesomeIcon icon={faEnvelope} />  {recipe.missedIngredientCount} ingredients missing.</h4>
       <table>
         <tbody>
           <tr>
