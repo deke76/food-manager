@@ -1,23 +1,23 @@
 @import '../../../styles/variables.scss';
 
 .location-card {
-  background-color: rgb(214, 65, 11);
+  background-color: #754840;
   color: white;
   width: 40vw;
   border-radius: 20px;
   cursor: pointer;
   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  
   position: relative;
   padding: 15px;
-
+  
   flex: 0 0 auto;
   height: 120px;
-
+  
   transition: all 0.3s;
   
   &.location-card__selected {
-    background-color: rgb(255, 68, 0);
+    background-color: #884a4b;
   }
 
 
@@ -59,11 +59,12 @@
 
   }
 
-  .location-card__button {
+  .button {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 10px;
+    right: 10px;
     opacity: 50%;
+    transform: scale(0.75);
   }
 }
 

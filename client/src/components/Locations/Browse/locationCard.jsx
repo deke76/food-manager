@@ -1,7 +1,6 @@
 import "./locationCard.scss";
 import classNames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../buttons/actions/Button";
 
 export default function LocationCard(props) {
   const { location, selected, onClick, onDelete } = props;
@@ -17,14 +16,10 @@ export default function LocationCard(props) {
         </div>
       </header>
       <article className="location-card__details">
-        <div>
-          {location.city}
-        </div>
+        <div>{location.city}</div>
         <div>{location.country}</div>
       </article>
-      <div className="location-card__button" onClick={onDelete}>
-        <FontAwesomeIcon icon={faTrash} />
-      </div>
+      <Button icon="delete" onClick={onDelete} />
     </div>
   );
 }

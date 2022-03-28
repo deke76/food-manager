@@ -1,11 +1,7 @@
 import { useContext, useState } from "react";
 import { userContext } from "../../providers/UserProvider";
 import { Link } from "react-router-dom";
-
-import {
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "../buttons/actions/Button";
 
 import "./index.scss";
 import Counter from "../buttons/counter";
@@ -19,19 +15,17 @@ export default function HeaderBar(props) {
   return (
     <nav className="app-header">
       <Link to="/">
-        <div className="group title">
-          <div className="app-logo">🍌</div>
-          <div className="app-title">Pantryful</div>{" "}
-        </div>
+        <span className="group title">
+          <span className="app-logo">🍌</span>
+          <span className="app-title">Pantryful</span>{" "}
+        </span>
       </Link>
-      <div className="group">
-        <div className="profile-image" onClick={toggleProfileChanger}>
-          <FontAwesomeIcon icon={faUser} />
-        </div>
+      <span className="group">
+        <Button icon="profile" onClick={toggleProfileChanger} />
         {showProfileChanger && (
           <Counter value={user} setValue={setUser} minValue={1} maxValue={20} />
         )}
-      </div>
+      </span>
     </nav>
   );
 }

@@ -10,6 +10,7 @@ import {
   faBarcode,
   faTrash,
   faSave,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
@@ -26,6 +27,7 @@ export default function Button(props) {
       {icon === "barcode" && <FontAwesomeIcon icon={faBarcode} />}
       {icon === "delete" && <FontAwesomeIcon icon={faTrash} />}
       {icon === "save" && <FontAwesomeIcon icon={faSave} />}
+      {icon === "profile" && <FontAwesomeIcon icon={faUser} />}
     </div>
   );
 

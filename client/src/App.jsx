@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/app.scss";
 
 import UserProvider from "./providers/UserProvider";
-import LocationProvider from "./providers/LocationProvider";
 import StateProvider from "./providers/StateProvider";
 
 import HeaderBar from "./components/header";
