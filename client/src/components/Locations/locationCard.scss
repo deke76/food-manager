@@ -1,0 +1,84 @@
+@import "../../styles/variables.scss";
+
+.location-card {
+  background-color: #754840;
+  color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-sizing: border-box;
+
+  width: 50vw;
+  height: 170px;
+  padding: 15px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 1s;
+
+  position: relative;
+  flex: 0 0 auto;
+
+  cursor: pointer;
+
+  & > header .quantity {
+    font-size: small;
+  }
+
+  & > article {
+    padding-top: 15px;
+    font-size: small;
+    opacity: 80%;
+
+    & > div.button {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      transform: scale(0.75);
+    }
+  }
+
+  &.selected {
+    background-color: #9c675e;
+  }
+
+  &.collapsed {
+    width: 100%;
+    height: fit-content;
+    border-radius: 50px;
+
+    & > header {
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 80%;
+
+    svg {
+      height: 50px;
+      padding: 20px 50px 10px;
+    }
+  }
+}
+
+input {
+  display: inline-block;
+  // width: 100%;
+
+  opacity: 0.9;
+  border: none;
+
+  margin: 3px;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
