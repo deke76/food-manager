@@ -18,7 +18,7 @@ export default function LocationCard(props) {
         <img src={recipe.image} className='recipe-card__img'  alt='' />
       </article>
       <h4 className="recipe-card__title">{recipe.title}</h4>
-      <h4 className='recipe-card__missing-ingredients'>You're missing these {recipe.missedIngredientCount} ingredients.</h4>
+      <h4 className='recipe-card__missing-ingredients'>You're missing these ingredients.</h4>
       <table>
         <tbody>
           <tr>
