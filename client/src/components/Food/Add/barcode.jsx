@@ -197,4 +197,94 @@ class BarcodeTextField extends React.Component {
   }
 }
 
+// return defaultFood ? (
+//   <div className="food-add">
+//     <h1>{newFood.name}</h1>
+//     <div className="food-add__input">
+//       <input
+//         type="text"
+//         value={searchValue}
+//         onChange={(e) => {
+//           setSelectedSuggestion(null);
+//           setSearchValue(e.target.value);
+//         }}
+//         onFocus={() => setShowSuggestions(true)}
+//         onBlur={() => setShowSuggestions(false)}
+//         placeholder="Search for food..."
+//       /> 
+//       <a href='/foods/barcode'>
+//         <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
+//       </a>
+//     </div>
+//     {showSuggestions &&
+//       (suggestions.length > 0 ? (
+//         <SelectOneDropdown
+//           selected={selectedSuggestion}
+//           setSelected={setSelectedSuggestion}
+//           choices={suggestions.map((suggestion) => suggestion.name)}
+//           onClickCallback={() => setShowSuggestions(false)}
+//         />
+//       ) : (
+//         <div>No Suggestions</div>
+//       ))}
+//     <div className="food-add__details">
+//       <div className="group">
+//         <label>Date Purchased</label>
+//         <input
+//           type="date"
+//           value={newFood.date_purchased}
+//           onChange={(event) =>
+//             setNewFood((prev) => ({
+//               ...prev,
+//               date_purchased: event.target.value,
+//             }))
+//           }
+//         />
+//       </div>
+//       <div className="group">
+//         <label>Date Expires</label>
+//         <input
+//           type="date"
+//           value={newFood.date_expires}
+//           onChange={(event) =>
+//             setNewFood((prev) => ({
+//               ...prev,
+//               date_expires: event.target.value,
+//             }))
+//           }
+//         />
+//       </div>
+//       <div className="group">
+//         <label>Quantity</label>
+//         <div className="group">
+//           <Counter
+//             value={foodQtyNum}
+//             setValue={setFoodQtyNum}
+//             minValue={0}
+//             maxValue={100}
+//           />
+//           <div onClick={() => setShowFoodQty((prev) => !prev)}>
+//             {foodUnitOptions[foodQtyUnit]}
+//           </div>
+//         </div>
+//       </div>
+//       {showFoodQty && (
+//         <SelectOneDropdown
+//           selected={foodQtyUnit}
+//           setSelected={setFoodQtyUnit}
+//           choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
+//           onClickCallback={() => setShowFoodQty(false)}
+//         />
+//       )}
+//     </div>
+//     <div className="group">
+//       <button>SAVE</button>
+//     </div>
+//   </div>
+// ) : (
+//   <div>Error: Could not read data</div>
+// );
+// }
+
+
 export default BarcodeTextField;
