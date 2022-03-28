@@ -89,10 +89,12 @@ export default function LocationList(props) {
         </>
       )}
       {!showCards && state && (
-        <div className="single-location" onClick={() => setShowCards(true)}>
-          <h4>{selectedLocation.name}</h4>
-          <div>{selectedLocation.foods.length} items</div>
-        </div>
+        <LocationCard
+          location={selectedLocation}
+          collapsed
+          selected
+          onClick={() => setShowCards(true)}
+        />
       )}
     </div>
   );

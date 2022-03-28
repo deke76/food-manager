@@ -3,9 +3,10 @@ import classNames from "classnames";
 import Button from "../buttons/actions/Button";
 
 export default function LocationCard(props) {
-  const { location, selected, onClick, onDelete } = props;
+  const { location, selected, onClick, onDelete, newCard, collapsed } = props;
   const classes = classNames("location-card", {
-    "location-card__selected": selected,
+    selected,
+    collapsed,
   });
   return (
     <div className={classes} onClick={onClick}>
@@ -15,11 +16,13 @@ export default function LocationCard(props) {
           {location.foods.length} items
         </div>
       </header>
-      <article className="location-card__details">
-        <div>{location.city}</div>
-        <div>{location.country}</div>
-      </article>
-      <Button icon="delete" onClick={onDelete} />
+      {!collapsed && (
+        <article className="location-card__details">
+          <div>{location.city}</div>
+          <div>{location.country}</div>
+          <Button icon="delete" onClick={onDelete} />
+        </article>
+      )}
     </div>
   );
 }

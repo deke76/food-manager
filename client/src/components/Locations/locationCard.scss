@@ -1,75 +1,109 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .location-card {
   background-color: #754840;
   color: white;
-  width: 40vw;
-  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 1s;
+
   cursor: pointer;
-  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
-  position: relative;
-  padding: 15px;
-  
-  flex: 0 0 auto;
+  width: 40vw;
   height: 120px;
-  
-  transition: all 0.3s;
-  
-  &.location-card__selected {
-    background-color: #884a4b;
+  border-radius: 20px;
+  padding: 15px;
+
+  &.selected {
+    background-color: green;
   }
 
-
-  header {
-    padding-bottom: 15px;
-  }
-
-  .location-card__details {
-    opacity: 80%;
-  }
-
-  div {
-    font-size: small;
-  }
-
-  &.new {
-    display: flex;
-    flex-direction: column;
+  &.collapsed {
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+
+    width: 100%;
+    height: fit-content;
+    border-radius: 50px;
     
-    opacity: 80%;
-    
-    svg {
-      height: 50px;
-      padding: 20px 50px 10px;
+    & > header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
-  }
 
-  input {
-    display: inline-block;
-
-    opacity: 0.9;
-    border: none;
-
-    margin: 3px;
-    padding: 3px 8px;
-    border-radius: 10px;
-
-  }
-
-  .button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    opacity: 50%;
-    transform: scale(0.75);
   }
 }
 
-@media only screen and (min-width: 600px) {
-  .location-card {
-    width: 30vw;
-  }
-}
+// .location-card {
+//   width: 40vw;
+//   border-radius: 20px;
+//   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+//   position: relative;
+//   padding: 15px;
+
+//   flex: 0 0 auto;
+//   height: 120px;
+
+//   transition: all 0.3s;
+
+//   &.location-card__selected {
+//     background-color: #884a4b;
+//   }
+
+//   header {
+//     padding-bottom: 15px;
+//   }
+
+//   .location-card__details {
+//     opacity: 80%;
+//   }
+
+//   div {
+//     font-size: small;
+//   }
+
+//   &.new {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+
+//     opacity: 80%;
+
+//     svg {
+//       height: 50px;
+//       padding: 20px 50px 10px;
+//     }
+//   }
+
+//   input {
+//     display: inline-block;
+
+//     opacity: 0.9;
+//     border: none;
+
+//     margin: 3px;
+//     padding: 3px 8px;
+//     border-radius: 10px;
+
+//   }
+
+//   .button {
+//     position: absolute;
+//     bottom: 10px;
+//     right: 10px;
+//     opacity: 50%;
+//     transform: scale(0.75);
+//   }
+// }
+
+// @media only screen and (min-width: 600px) {
+//   .location-card {
+//     width: 30vw;
+//   }
+// }
