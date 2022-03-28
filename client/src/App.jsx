@@ -2,9 +2,8 @@ import {
   BrowserRouter, Routes, Route, 
   UserProvider, StateProvider,
   FloatingActionButton, FoodAdd, FoodBrowse,
-  HeaderBar } from "./constants";
+  HeaderBar, LocationList } from "./constants";
 
-  import LocationList from "./components/Locations/locationList";
   import RecipeBrowse from "./components/Recipes";
   
   import "./styles/app.scss";
