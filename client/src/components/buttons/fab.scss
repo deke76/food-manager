@@ -1,12 +1,20 @@
 .floating-action-button {
-  position: fixed;
-  bottom: 60px;
-  right: 30px;
-  z-index: 10;
-
   color: #03045E;
-
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index:9;
   svg {
     height: 50px;
   }
+}
+
+.fab-container {
+  position: fixed;
+  // bottom: 60px;
+  // right: 30px;
+  // z-index: 10;
+  display: flex;
+  flex-direction:column;
+
 }
