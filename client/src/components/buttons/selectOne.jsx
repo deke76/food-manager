@@ -7,8 +7,7 @@ export default function SelectOneDropdown(props) {
     setSelected,
     choices,
     onClickCallback,
-    newChoiceText,
-    newChoiceCallback,
+    setterValue,
   } = props;
 
   return (
@@ -17,7 +16,9 @@ export default function SelectOneDropdown(props) {
         <li
           key={index}
           onClick={() => {
-            setSelected(index);
+            console.log(choice)
+            setterValue && setterValue(choice);
+            setSelected && setSelected(index);
             onClickCallback && onClickCallback();
           }}
           className={index === selected ? "selected" : ""}
@@ -25,17 +26,6 @@ export default function SelectOneDropdown(props) {
           {choice}
         </li>
       ))}
-      {newChoiceText && (
-        <li
-          className="new-choice"
-          onClick={() => {
-            newChoiceCallback && newChoiceCallback();
-            onClickCallback && onClickCallback();
-          }}
-        >
-          {newChoiceText}
-        </li>
-      )}
     </ul>
   );
 }
