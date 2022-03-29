@@ -51,6 +51,13 @@ class FoodsController < ApplicationController
     render json: res.body
   end
 
+  def barcode    
+    upc = params[:barcode]
+    uri = URI("https://world.openfoodfacts.org/api/v0/product/#{upc}.json")    
+    res = Net::HTTP.get_response(uri)
+    render json: res.body
+  end
+
   def reset_database
     tables = ActiveRecord::Base.connection.tables
     tables.delete 'schema.migrations'

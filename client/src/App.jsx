@@ -13,6 +13,7 @@ import "./styles/app.scss";
 
 // Main application file
 export default function App(props) {
+  // const [foodName, setFoodName] = useState("New Food Item");
   return (
     <div>
       <UserProvider>

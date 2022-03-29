@@ -1,27 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
-import './barcode.scss';
+import "./barcode.scss";
 import Button from "../../buttons/actions/Button";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 let _scannerIsRunning = false;
 
-class BarcodeTextField extends React.Component {
-  constructor(props) {
-    super(props);
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFileSelect = this.handleFileSelect.bind(this);
-  }
-
-  handleClick() {
-    if (_scannerIsRunning) {
-      Quagga.stop();
-    } else {
-      this.startScanner();
-    }
-  }
-
-  startScanner() {
+export default function BarcodeTextField(props) {
+  // let history = useNavigate();
+  
+  const startScanner = () => {
     Quagga.init(
       {
         inputStream: {
@@ -67,22 +56,22 @@ class BarcodeTextField extends React.Component {
           alert("You need a camera to scan barcodes.");
           console.log(err);
           document.querySelector("#scanner-container").innerHTML = "";
-
+  
           return;
         }
-
+  
         console.log("Initialization finished. Ready to start");
         Quagga.start();
-
+  
         // Set flag to is running
         //_scannerIsRunning = true;
       }
     );
-
+  
     Quagga.onProcessed(function(result) {
       let drawingCtx = Quagga.canvas.ctx.overlay,
         drawingCanvas = Quagga.canvas.dom.overlay;
-
+  
       if (result) {
         if (result.boxes) {
           drawingCtx.clearRect(
@@ -104,14 +93,14 @@ class BarcodeTextField extends React.Component {
               });
             });
         }
-
+  
         if (result.box) {
           Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
             color: "#00F",
             lineWidth: 2
           });
         }
-
+  
         if (result.codeResult && result.codeResult.code) {
           Quagga.ImageDebug.drawPath(
             result.line,
@@ -122,7 +111,7 @@ class BarcodeTextField extends React.Component {
         }
       }
     });
-
+  
     Quagga.onDetected(function(result) {
       Quagga.stop();
       document.querySelector("#text-input").value = result.codeResult.code;
@@ -133,8 +122,24 @@ class BarcodeTextField extends React.Component {
       );
     });
   }
+  
+  const handleClick = () => {
+    if (_scannerIsRunning) {
+      Quagga.stop();
+    } else {
+      startScanner();
+    }
+  }
 
-  handleFileSelect(evt) {
+  const submitBarcode = (barcode) => {
+    console.log("Submit barcode");
+    fetch(`http://localhost:3000/foods/barcode/${barcode}`)
+    .then(response => response.json())
+    .then(data => props.setFoodName(data.product.product_name)) // data.title
+  }
+
+
+  const handleFileSelect =(evt) => {
     let files = evt.target.files; // FileList object
 
     let tmpImgURL = URL.createObjectURL(files[0]);
@@ -180,111 +185,34 @@ class BarcodeTextField extends React.Component {
     );
   }
 
-  componentDidMount() {
+  useEffect(() => {
     document
       .querySelector("#inputId")
-      .addEventListener("change", this.handleFileSelect, false);
-  }
+      .addEventListener("change", handleFileSelect, false);
+  }, [])
 
-  render() {
-    return (
-      <div style={{ display: "inline-block" }}>
-        <input type="text" id="text-input" />
-        <Button onClick={this.handleClick} icon={"camera"} text={"scan"}/>
-        <input id="inputId" type="file" accept="image/*" />
-      </div>
-    );
-  }
+
+  const hiddenFileInput = React.useRef(null);
+  const uploadClick = event => {
+    hiddenFileInput.current.click();
+  };
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <input type="text" id="text-input" />
+      <Button onClick={ () => submitBarcode(document.querySelector("#text-input").value)} text="submit" icon="camera" />
+      
+      <Link to="/foods/add">
+        <Button text="back" icon="camera" />
+      </Link>
+      <p>
+        <Button onClick={handleClick} text="scan" icon="camera"/>
+        
+        <Button onClick={uploadClick} text="upload a file" icon="camera" />
+        <input id="inputId" type="file" accept="image/*" ref={hiddenFileInput} style={{display:'none'}} />
+      </p>
+    </div>
+  );
 }
 
-// return defaultFood ? (
-//   <div className="food-add">
-//     <h1>{newFood.name}</h1>
-//     <div className="food-add__input">
-//       <input
-//         type="text"
-//         value={searchValue}
-//         onChange={(e) => {
-//           setSelectedSuggestion(null);
-//           setSearchValue(e.target.value);
-//         }}
-//         onFocus={() => setShowSuggestions(true)}
-//         onBlur={() => setShowSuggestions(false)}
-//         placeholder="Search for food..."
-//       /> 
-//       <a href='/foods/barcode'>
-//         <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
-//       </a>
-//     </div>
-//     {showSuggestions &&
-//       (suggestions.length > 0 ? (
-//         <SelectOneDropdown
-//           selected={selectedSuggestion}
-//           setSelected={setSelectedSuggestion}
-//           choices={suggestions.map((suggestion) => suggestion.name)}
-//           onClickCallback={() => setShowSuggestions(false)}
-//         />
-//       ) : (
-//         <div>No Suggestions</div>
-//       ))}
-//     <div className="food-add__details">
-//       <div className="group">
-//         <label>Date Purchased</label>
-//         <input
-//           type="date"
-//           value={newFood.date_purchased}
-//           onChange={(event) =>
-//             setNewFood((prev) => ({
-//               ...prev,
-//               date_purchased: event.target.value,
-//             }))
-//           }
-//         />
-//       </div>
-//       <div className="group">
-//         <label>Date Expires</label>
-//         <input
-//           type="date"
-//           value={newFood.date_expires}
-//           onChange={(event) =>
-//             setNewFood((prev) => ({
-//               ...prev,
-//               date_expires: event.target.value,
-//             }))
-//           }
-//         />
-//       </div>
-//       <div className="group">
-//         <label>Quantity</label>
-//         <div className="group">
-//           <Counter
-//             value={foodQtyNum}
-//             setValue={setFoodQtyNum}
-//             minValue={0}
-//             maxValue={100}
-//           />
-//           <div onClick={() => setShowFoodQty((prev) => !prev)}>
-//             {foodUnitOptions[foodQtyUnit]}
-//           </div>
-//         </div>
-//       </div>
-//       {showFoodQty && (
-//         <SelectOneDropdown
-//           selected={foodQtyUnit}
-//           setSelected={setFoodQtyUnit}
-//           choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
-//           onClickCallback={() => setShowFoodQty(false)}
-//         />
-//       )}
-//     </div>
-//     <div className="group">
-//       <button>SAVE</button>
-//     </div>
-//   </div>
-// ) : (
-//   <div>Error: Could not read data</div>
-// );
-// }
 
-
-export default BarcodeTextField;

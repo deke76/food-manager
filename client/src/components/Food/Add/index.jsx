@@ -32,6 +32,9 @@ export default function FoodAdd(props) {
   const [newFood, setNewFood] = useState(defaultFood);
   const foodUnitOptions = ["ea", "oz", "gal", "L", "kg", "lb"];
 
+  // Barcode scanner
+  const [showBarcode, setShowBarcode] = useState();
+  
   const save = () => {
     const url = `http://localhost:3000/users/${user}/locations/${state.currentLocation}/foods`;
 
@@ -106,7 +109,7 @@ export default function FoodAdd(props) {
           onFocus={() => setShowSuggestions(true)}
           // onBlur={() => setShowSuggestions(false)}
           placeholder="Search for food..."
-        />
+        />  
         <Button
           icon="check"
           onClick={() => {
@@ -117,7 +120,9 @@ export default function FoodAdd(props) {
             setSearchValue("");
           }}
         />
-        <Button icon="barcode" text="Scan" />
+        <a href='/foods/barcode'>
+          <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
+        </a>
       </div>
       {showSuggestions && (
         <SelectOneDropdown
