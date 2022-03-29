@@ -1,11 +1,8 @@
-import React from "react";
-import { useContext, useState, useEffect } from "react";
-import { locationContext } from "../../providers/LocationProvider";
-import { stateContext } from "../../providers/StateProvider";
-import { userContext } from "../../providers/UserProvider";
-import axios from "axios";
-import useFetchServer from "../../hooks/useFetchServer";
-import RecipeCard from "./RecipeCard";
+import { 
+  axios, React,
+  useContext, useState, useEffect,
+  stateContext,
+  RecipeCard } from "../../constants";
 
 // import { recipes } from "./testData";
 
@@ -30,7 +27,10 @@ export default function RecipeBrowse(props) {
       .catch(console.log("No recipes available"));
   }, [state]);
 
-  console.log(recipes.length);
+  console.log(recipes);
+
+  recipes.sort((a,b) => a.missedIngredientCount - b.missedIngredientCount);
+
   // Build the cards
   const recipeItems = recipes.length
     ? recipes.map((recipe) => (

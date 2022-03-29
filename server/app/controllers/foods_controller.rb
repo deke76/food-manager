@@ -21,7 +21,18 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
-  def new
+  def create
+    @food = Food.create!({
+      :location_id => params[:location_id],
+      :name => params[:name],
+      :spoon_id => params[:spoon_id],
+      :quantity => params[:quantity],
+      :quantity_units => params[:quantity_units],
+      :price_cents => params[:price_cents],
+      :date_purchased => params[:date_purchased],
+      :date_expires => params[:date_expires]
+    })
+    render json: @food
   end
 
   def update

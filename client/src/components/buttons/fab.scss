@@ -1,4 +1,6 @@
 
+$colour: #002135;
+
 .fab-container {
   position: fixed;
   display: flex;
@@ -12,7 +14,7 @@
 
   .button {
     color: white;
-    background-color: navy;
+    background-color: $colour;
     transform: scale(1.5);
   }
 

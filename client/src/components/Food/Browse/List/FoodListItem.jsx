@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { userContext } from "./../../../../providers/UserProvider";
-import Counter from "./../../../buttons/counter";
+import {
+  axios, classNames, moment,
+  React, useContext, useEffect, useState,
+  userContext,
+  Counter } from "../../../../constants";
 
-import classNames from "classnames";
-import moment from "moment";
-import axios from "axios";
-
-import "./FoodListItem.scss";
+  import "./FoodListItem.scss";
 
 export default function FoodListItem(props) {
   const { food } = props;
@@ -26,7 +24,7 @@ export default function FoodListItem(props) {
 
   return (
     <div className={classes}>
-      <span>
+      <span className="left">
         <h4>{food.name}</h4>
         <span className="details">
           {expired ? "expired" : "expires"} {daysToExpiry}

@@ -1,25 +1,17 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { 
+  BrowserRouter, Routes, Route, 
+  UserProvider, StateProvider,
+  FloatingActionButton, FoodAdd, FoodBrowse,
+  HeaderBar, LocationList } from "./constants";
 
-import "./styles/app.scss";
+  import RecipeBrowse from "./components/Recipes";
+  
+  import "./styles/app.scss";
 
-import UserProvider from "./providers/UserProvider";
-import StateProvider from "./providers/StateProvider";
-
-import HeaderBar from "./components/header";
-
-import FoodAdd from "./components/Food/Add";
-
-import FoodBarcode from "./components/Food/Add/foodBarcode";
-
-import FoodBrowse from "./components/Food/Browse";
-import LocationList from "./components/Locations/locationList";
-import RecipeBrowse from "./components/Recipes";
-import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
 export default function App(props) {
-  const [foodName, setFoodName] = useState("New Food Item");
+  // const [foodName, setFoodName] = useState("New Food Item");
   return (
     <div>
       <UserProvider>
@@ -28,13 +20,13 @@ export default function App(props) {
             <HeaderBar />
             <div className="content">
               <LocationList />
-              <Routes>
-                <Route path="/" element={<FoodBrowse />} />
-                <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
-                <Route path="/foods/barcode" element={<FoodBarcode foodName={foodName} setFoodName={setFoodName} />} />
-                <Route path="/locations" element={<LocationList />} />
-                <Route path="/recipes" element={<RecipeBrowse />} />
-              </Routes>
+              <div className='content__main'>
+                  <Routes>
+                  <Route path="/" element={<FoodBrowse />} />
+                  <Route path="/foods/add" element={<FoodAdd />} />
+                  <Route path="/recipes" element={<RecipeBrowse />} />
+                </Routes>
+              </div>
             </div>
             <FloatingActionButton/>
           </BrowserRouter>

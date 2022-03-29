@@ -1,21 +1,20 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .locations-wrapper {
   padding: 20px;
   background-color: #f999708f;
-  transition: all 0.5s;
   box-sizing: border-box;
-  
-  position:sticky;
+
+  position: fixed;
   top: 4rem;
   width: 100vw;
-  
+
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y:hidden;
+  overflow-y: hidden;
   gap: 15px;
-  
+
   // .single-location {
   //   display: flex;
   //   flex-direction: row;
@@ -23,7 +22,7 @@
   //   align-items: center;
   //   justify-content: space-between;
   //   color: white;
-    
+
   //   padding: 10px 15px;
   //   border-radius: 20px;
   //   width: 100%;
@@ -32,5 +31,4 @@
   //     font-size: small;
   //   }
   // }
-
 }
