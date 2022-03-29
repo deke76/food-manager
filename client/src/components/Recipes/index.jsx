@@ -3,6 +3,7 @@ import { stateContext } from "./../../providers/StateProvider";
 import axios from "axios";
 
 import RecipeCard from "./RecipeCard"
+import { recipesTest } from './testData'
 
 export default function RecipeBrowse(props) {
   const [recipes, setRecipes] = useState([]);
@@ -25,11 +26,12 @@ export default function RecipeBrowse(props) {
       .catch(console.log("No recipes available"));
   }, [state]);
 
-  recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
+  // recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
+  recipesTest.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
 
   // Build the cards
-  const recipeItems = recipes.length
-    ? recipes.map((recipe) => (
+  const recipeItems = recipesTest.length
+    ? recipesTest.map((recipe) => (
         <RecipeCard
           key={recipe.id}
           recipe={recipe}

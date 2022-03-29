@@ -1,11 +1,12 @@
 @import '../../../../styles/variables.scss';
 
 .food-container {
-  background-color: $main-background;
+
+  margin-top: 1em;
 }
 
 .food-list {
-  // box-sizing: content-box;
+
   display: flex;
   flex-direction: column;
   border: none;
