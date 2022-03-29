@@ -5,7 +5,7 @@ export default function Ingredients(props) {
   return (
     <tr>
       <td>{ingredient.name}</td>
-      <td>{ingredient.amount}</td>
+      <td>{ingredient.amount.toFixed(2)}</td>
       <td>{ingredient.unitLong}</td>
     </tr>
   )

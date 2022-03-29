@@ -29,7 +29,7 @@ export default function RecipeBrowse(props) {
   }, [state]);
 
   recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
-
+  
   // Build the cards
   const recipeItems = recipes.length
     ? recipes.map((recipe) => (
