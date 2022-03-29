@@ -38,9 +38,19 @@ export default function FoodAdd(props) {
     const url = `http://localhost:3000/users/${user}/locations/${state.currentLocation}/foods`;
 
     axios
-      .post(url, { params: newFood })
+      .post(url, { ...newFood })
       .then((response) => console.log(response));
   };
+
+
+  function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
+  }
 
   // Fetch suggestions from server
   useEffect(() => {
@@ -74,7 +84,7 @@ export default function FoodAdd(props) {
     setNewFood((prev) => ({
       ...prev,
       quantity: foodQtyNum,
-      quantity_units: foodQtyUnit,
+      quantity_units: foodUnitOptions[foodQtyUnit],
     }));
   }, [foodQtyNum, foodQtyUnit]);
 
@@ -106,6 +116,7 @@ export default function FoodAdd(props) {
               ...prev,
               name: searchValue.length > 0 ? searchValue : "Enter a Food Name",
             }));
+            setSearchValue("");
           }}
         />
         <Button icon="barcode" text="Scan" />
@@ -115,7 +126,7 @@ export default function FoodAdd(props) {
           choices={
             suggestions.length === 0
               ? ["No Suggestions"]
-              : suggestions.map((suggestion) => suggestion.name)
+              : suggestions.map((suggestion) => toTitleCase(suggestion.name))
           }
           setterValue={(value) => {
             console.log("set Search")
