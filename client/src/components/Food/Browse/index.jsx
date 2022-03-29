@@ -10,7 +10,7 @@ export default function FoodBrowse(props) {
     : null;
 
   return selectedLocation ? (
-    <div>
+    <div className='food-container'>
       {/* <div>{<Calendar />}</div> */}
       <div>{<FoodList foods={selectedLocation.foods} />}</div>
     </div>

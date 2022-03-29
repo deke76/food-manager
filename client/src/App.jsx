@@ -21,13 +21,13 @@ export default function App(props) {
             <HeaderBar />
             <div className="content">
               <LocationList />
-              <div className="content__main">
+                <div className='content__main'>
                 <Routes>
                   <Route path="/" element={<FoodBrowse />} />
                   <Route path="/foods/add" element={<FoodAdd />} />
                   <Route path="/recipes" element={<RecipeBrowse />} />
                 </Routes>
-              </div>
+                </div>  
             </div>
             <FloatingActionButton />
           </BrowserRouter>

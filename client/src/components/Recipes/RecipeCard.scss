@@ -8,12 +8,12 @@
   flex-wrap: wrap;
   overflow-x: auto;
   gap: 15px;
-  background-color: rgba(248, 129, 93, 0.233);
+  background-color: $main-background;
 
   .recipe-card {
-    background-color: $primary-background;
+    background-color: $location-card;
     color: white;
-    border-radius: 20px;
+    border-radius: $button-radius;
     position: relative;
     transition: all 0.3s;
     text-align: center;
@@ -28,36 +28,28 @@
       flex-direction: column;
       justify-content: flex-start;
       overflow: hidden;
-      background-color: $primary-background;
-      border-radius:20px 20px 0 0;
+      background-color: $main-background;
+      border-radius: calc($button-radius / 2) calc($button-radius / 2) 0 0;
 
     }
 
     &__title{
-      padding-top: 1em;
+      padding-top: calc($spacing / 2);
     }
 
     &__img {
       box-sizing:content-box;
-      border-radius: 20px 20px 0 0;
-      width: 100%;
       object-fit: fill;
       
     }
 
     &__missing-ingredients {
       text-align: center;
-      padding: 1em;
+      padding: calc($spacing / 2);
     }
 
     div {
       font-size: small;
     }
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .location-card {
-    width: 30vw;
   }
 }

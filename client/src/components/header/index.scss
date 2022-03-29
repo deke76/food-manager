@@ -1,14 +1,15 @@
 @import '../../styles/variables.scss';
  
 .app-header {
-  background-color: #002135;
+  background-color: $header-background;
   color: white;
 
   box-sizing: border-box;
   position: fixed;
   width: 100%;
-  height: 4rem;
+  height: $header-height;
   top: 0;
+  z-index: 10;
 
   display: flex;
   flex-direction: row;
@@ -17,7 +18,7 @@
 
   font-size: 1.25em;
 
-  padding: 0.5em 1em;
+  padding: 0em 1em;
 
   .group {
     display: flex;
@@ -26,7 +27,7 @@
   }
 
   .button {
-    background-color: #2C5672;
+    background-color: $button-background;
   }
 
   .app-logo {
