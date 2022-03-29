@@ -17,7 +17,7 @@ export default function BarcodeTextField(props) {
         inputStream: {
           name: "Live",
           type: "LiveStream",
-          target: document.querySelector("#scanner-container"),
+          target: document.querySelector(".scanner-add"),
           constraints: {
             width: 480,
             height: 320,
@@ -56,7 +56,7 @@ export default function BarcodeTextField(props) {
         if (err) {
           alert("You need a camera to scan barcodes.");
           console.log(err);
-          document.querySelector("#scanner-container").innerHTML = "";
+          document.querySelector(".scanner-add").innerHTML = "";
   
           return;
         }
@@ -65,7 +65,7 @@ export default function BarcodeTextField(props) {
         Quagga.start();
   
         // Set flag to is running
-        //_scannerIsRunning = true;
+        _scannerIsRunning = true;
       }
     );
   
@@ -116,7 +116,7 @@ export default function BarcodeTextField(props) {
     Quagga.onDetected(function(result) {
       Quagga.stop();
       document.querySelector("#text-input").value = result.codeResult.code;
-      document.querySelector("#scanner-container").innerHTML = "";
+      document.querySelector(".scanner-add").innerHTML = "";
       console.log(
         "Barcode detected and processed : [" + result.codeResult.code + "]",
         result
