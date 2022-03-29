@@ -1,8 +1,4 @@
-// import { 
-//   BrowserRouter, Routes, Route, 
-//   UserProvider, StateProvider,
-//   FloatingActionButton, FoodAdd, FoodBrowse,
-//   LocationList } from "./constants";
+
   import React from 'react';
   import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
