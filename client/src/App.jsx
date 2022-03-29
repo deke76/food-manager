@@ -1,6 +1,6 @@
 import RecipeBrowse from "./components/Recipes";
 
-import UserProvider from "./providers/UserProvider";
+import { UserProvider } from "./providers/UserProvider";
 import { StateProvider } from "./providers/StateProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeaderBar from "./components/header";
