@@ -27,8 +27,7 @@ export default function App(props) {
                 <div className='content__main'>
                 <Routes>
                   <Route path="/" element={<FoodBrowse />} />
-                  <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />
-                  <Route path="/foods/barcode" element={<FoodBarcode foodName={foodName} setFoodName={setFoodName} />} />
+                  <Route path="/foods/add" element={<FoodAdd foodName={foodName} setFoodName={setFoodName} />} />                  
                   <Route path="/recipes" element={<RecipeBrowse />} />
                 </Routes>
                 </div>  
