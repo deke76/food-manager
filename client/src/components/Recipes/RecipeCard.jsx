@@ -2,7 +2,7 @@ import Ingredients from './Ingredients';
 import Button from '../buttons/actions/Button';
 import "./RecipeCard.scss";
 
-export default function LocationCard(props) {
+export default function RecipeCard(props) {
   const { recipe, onClick } = props;
   
   // Build the missing ingredients
