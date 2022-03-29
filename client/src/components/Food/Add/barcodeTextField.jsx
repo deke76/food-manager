@@ -3,7 +3,7 @@ import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
 import "./barcode.scss";
 import Button from "../../buttons/actions/Button";
-import { text } from "@fortawesome/fontawesome-svg-core";
+import { faText, faCamera } from "@fortawesome/fontawesome-svg-core";
 
 let _scannerIsRunning = false;
 
@@ -198,20 +198,20 @@ export default function BarcodeTextField(props) {
   };
 
   return (
-    <div style={{ display: "inline-block" }}>
-      <input type="text" id="text-input" />
-      <Button onClick={ () => submitBarcode(document.querySelector("#text-input").value)} text="submit" icon="camera" />
-      
-      <Link to="/foods/add">
-        <Button text="back" icon="camera" />
-      </Link>
-      <p>
-        <Button onClick={handleClick} text="scan" icon="camera"/>
-        
-        <Button onClick={uploadClick} text="upload a file" icon="camera" />
-        <input id="inputId" type="file" accept="image/*" ref={hiddenFileInput} style={{display:'none'}} />
-      </p>
-    </div>
+    <>
+      <div className='group'>
+        <input type="text" id='text-input'/>
+        <Button onClick={ () => submitBarcode(document.querySelector("#text-input").value)} icon="camera" />
+        <Link to="/foods/add">
+          <Button icon="check" />
+        </Link>
+      </div>
+      <div className='grid-container'>
+        {/* <Button onClick={handleClick} icon="camera"/> */}
+        <Button onClick={uploadClick} icon="file" text='Upload a picture' />
+        <input id="inputId" type="file" accept="image/*" ref={hiddenFileInput}  style={{display:'none'}}/>
+      </div>
+    </>
   );
 }
 

@@ -8,13 +8,10 @@ export default function FoodBarCode(props) {
   const { foodName, setFoodName } = props;
 
   return (
-    <>
-      <div id="scanner-container" />
-      <div>
-        <p style={{ display: "inline-block" }}>Barcode: </p>
-        <Bardcodetextfield style={{ display: "inline-block" }} foodName={foodName} setFoodName={setFoodName} />
+      <div className='scanner-add'>
+        <h1>Scan a UPC</h1>
+        <Bardcodetextfield foodName={foodName} setFoodName={setFoodName} />
       </div>
-    </>
   );
 
 }

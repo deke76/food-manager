@@ -12,6 +12,8 @@ import {
   faSave,
   faUser,
   faCheck,
+  faCamera,
+  faUpload
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
@@ -30,6 +32,8 @@ export default function Button(props) {
       {icon === "save" && <FontAwesomeIcon icon={faSave} />}
       {icon === "profile" && <FontAwesomeIcon icon={faUser} />}
       {icon === "check" && <FontAwesomeIcon icon={faCheck} />}
+      {icon === "camera" && <FontAwesomeIcon icon={faCamera} />}
+      {icon === "file" && <FontAwesomeIcon icon={faUpload} />}
     </div>
   );
 
