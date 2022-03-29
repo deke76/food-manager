@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const userContext = createContext();
 
-export default function UserProvider(props) {
+export function UserProvider(props) {
   const [user, setUser] = useState(1);
 
 
