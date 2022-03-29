@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Food routes
   get "/foods", to: "foods#all"
   get "/foods/autocomplete", to: "foods#autocomplete"
+  get "/foods/barcode/:barcode", to: "foods#barcode"
   
   # User Routes
   resources :users do
