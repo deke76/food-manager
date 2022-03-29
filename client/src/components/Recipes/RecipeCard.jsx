@@ -3,7 +3,7 @@ import Button from '../buttons/actions/Button';
 import "./RecipeCard.scss";
 import axios from 'axios';
 
-export default function LocationCard(props) {
+export default function RecipeCard(props) {
   const { recipe, onClick } = props;
 
   const recipeMailer = function(user) {
