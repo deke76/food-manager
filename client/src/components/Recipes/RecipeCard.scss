@@ -1,12 +1,12 @@
 @import '../../styles/variables.scss';
 
 .recipe-wrapper {
-  padding: 20px;
   transition: all 0.5s;
   margin-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
-  overflow-x: auto;
+  align-self: center;
+  
   gap: 15px;
   background-color: $main-background;
 

@@ -6,8 +6,8 @@
   box-sizing: border-box;
 
   position: fixed;
-  top: 4rem;
-  width: 100vw;
+  top: calc($header-height + $spacing / 2);
+  width: 100%;
   z-index: 10;
 
   display: flex;

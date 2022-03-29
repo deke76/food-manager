@@ -4,9 +4,6 @@ import axios from "axios";
 
 import RecipeCard from "./RecipeCard"
 
-
-// import { recipes } from "./testData";
-
 export default function RecipeBrowse(props) {
   const [recipes, setRecipes] = useState([]);
   const { state } = useContext(stateContext);

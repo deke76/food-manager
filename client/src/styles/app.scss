@@ -1,19 +1,23 @@
+@import './variables.scss';
+
 .content {
   margin-top: 2em;
   padding-top: 0.5em;
 
+
   &__main {
     margin-top: 6em;
     padding-top: 0.5em;
+  
   }
 }
 
 html {
   box-sizing: border-box;
+  background-color: $main-background;
 }
 *, *:before, *:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  
 }
