@@ -5,7 +5,7 @@ import { userContext } from "../../providers/UserProvider";
 import { stateContext } from "../../providers/StateProvider";
 
 import LocationCard from "./locationCard";
-import LocationCardNew from "./locationCardNew"
+import LocationCardNew from "./locationCardNew";
 
 import "./locationList.scss";
 
@@ -68,6 +68,10 @@ export default function LocationList(props) {
               <LocationCard
                 key={index}
                 location={location}
+                items={
+                  state.foods.filter((food) => food.location_id === location.id)
+                    .length
+                }
                 selected={location.id === state.currentLocation}
                 onClick={() => {
                   setShowCards(false);
@@ -95,6 +99,11 @@ export default function LocationList(props) {
           collapsed
           selected
           onClick={() => setShowCards(true)}
+          items={
+            state.foods.filter(
+              (food) => food.location_id === selectedLocation.id
+            ).length
+          }
         />
       )}
     </div>
