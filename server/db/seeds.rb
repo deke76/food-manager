@@ -69,6 +69,13 @@ food_id = 1
   user_id += 1
 end
 
+User.create!(
+  first_name: 'Darcy',
+  last_name: 'Lauder',
+  email: 'darcy.lauder@shaw.ca',
+  password: '123456'
+)
+
 #create locations
 
 # create simple foods
