@@ -6,3 +6,10 @@
     margin-top: 8em;
   }
 }
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}

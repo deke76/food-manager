@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarcode } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 
 import { stateContext } from "./../../../providers/StateProvider";
@@ -24,7 +22,7 @@ export default function FoodAdd(props) {
   const { user } = useContext(userContext);
 
   const defaultFood = {
-    name: "Add Food Item...",
+    name: "New Food Item",
     quantity: 1,
     quantity_units: "ea",
     date_purchased: moment().format("YYYY-MM-DD"),
@@ -34,9 +32,9 @@ export default function FoodAdd(props) {
   const [newFood, setNewFood] = useState(defaultFood);
   const foodUnitOptions = ["ea", "oz", "gal", "L", "kg", "lb"];
 
-  // const save = () => {
-  //   axios.post
-  // }
+  const save = () => {
+    console.log(newFood);
+  };
 
   // Fetch suggestions from server
   useEffect(() => {
@@ -46,9 +44,15 @@ export default function FoodAdd(props) {
 
       axios
         .get(url, { params })
-        .then((response) => setSuggestions(response.data))
+        .then((response) => {
+          if (Array.isArray(response.data)) {
+            setSuggestions(response.data);
+          } else {
+            setSuggestions([{ name: "Out of points" }]);
+          }
+        })
         .catch((e) => {
-          console.error(e.stack);
+          console.error("could not fetch suggestions");
           setSuggestions([]);
         });
     } else {
@@ -57,7 +61,7 @@ export default function FoodAdd(props) {
   }, [searchValue]);
 
   // set newFood state whenever qty counter changes
-  const [showFoodQty, setShowFoodQty] = useState(false)
+  const [showFoodQty, setShowFoodQty] = useState(false);
   const [foodQtyNum, setFoodQtyNum] = useState(1);
   const [foodQtyUnit, setFoodQtyUnit] = useState(0);
   useEffect(() => {
@@ -66,7 +70,7 @@ export default function FoodAdd(props) {
       quantity: foodQtyNum,
       quantity_units: foodQtyUnit,
     }));
-  },[foodQtyNum, foodQtyUnit]);
+  }, [foodQtyNum, foodQtyUnit]);
 
   // useEffect(() => {
   //   suggestions &&
@@ -74,14 +78,15 @@ export default function FoodAdd(props) {
   //     setFoodName(suggestions[selectedSuggestion].name.toUpperCase());
   // }, [selectedSuggestion, suggestions]);
 
-  return defaultFood ? (
+  return (
     <div className="food-add">
       <h1>{newFood.name}</h1>
-      <div className="food-add__input">
+      <div className="group">
         <input
           type="text"
           value={searchValue}
           onChange={(e) => {
+            console.log(suggestions);
             setSelectedSuggestion(null);
             setSearchValue(e.target.value);
           }}
@@ -89,74 +94,72 @@ export default function FoodAdd(props) {
           onBlur={() => setShowSuggestions(false)}
           placeholder="Search for food..."
         />
-        <Button icon="barcode"/>
+        <Button icon="barcode" text="Scan" />
       </div>
-      {showSuggestions &&
-        (suggestions.length > 0 ? (
-          <SelectOneDropdown
-            selected={selectedSuggestion}
-            setSelected={setSelectedSuggestion}
-            choices={suggestions.map((suggestion) => suggestion.name)}
-            onClickCallback={() => setShowSuggestions(false)}
+      {showSuggestions && (
+        <SelectOneDropdown
+          selected={selectedSuggestion}
+          setSelected={setSelectedSuggestion}
+          choices={
+            suggestions.length === 0
+              ? ["No Suggestions"]
+              : suggestions.map((suggestion) => suggestion.name)
+          }
+          onClickCallback={() => setShowSuggestions(false)}
+        />
+      )}
+
+      <div className="grid-container">
+
+        <div className="label">Date Purchased</div>
+        <input
+          type="date"
+          value={newFood.date_purchased}
+          onChange={(event) =>
+            setNewFood((prev) => ({
+              ...prev,
+              date_purchased: event.target.value,
+            }))
+          }
+        />
+
+        <div className="label">Date Expires</div>
+        <input
+          type="date"
+          value={newFood.date_expires}
+          onChange={(event) =>
+            setNewFood((prev) => ({
+              ...prev,
+              date_expires: event.target.value,
+            }))
+          }
+        />
+        
+        <div className="label">Quantity</div>
+        <div className="input">
+          <Counter
+            value={foodQtyNum}
+            setValue={setFoodQtyNum}
+            minValue={1}
+            maxValue={20}
           />
-        ) : (
-          <div>No Suggestions</div>
-        ))}
-      <div className="food-add__details">
-        <div className="group">
-          <label>Date Purchased</label>
-          <input
-            type="date"
-            value={newFood.date_purchased}
-            onChange={(event) =>
-              setNewFood((prev) => ({
-                ...prev,
-                date_purchased: event.target.value,
-              }))
-            }
-          />
+          <span onClick={() => setShowFoodQty((prev) => !prev)}>
+            {foodUnitOptions[foodQtyUnit]}
+          </span>
         </div>
-        <div className="group">
-          <label>Date Expires</label>
-          <input
-            type="date"
-            value={newFood.date_expires}
-            onChange={(event) =>
-              setNewFood((prev) => ({
-                ...prev,
-                date_expires: event.target.value,
-              }))
-            }
-          />
-        </div>
-        <div className="group">
-          <label>Quantity</label>
-          <div className="group">
-            <Counter
-              value={foodQtyNum}
-              setValue={setFoodQtyNum}
-              minValue={0}
-              maxValue={100}
-            />
-            <div onClick={() => setShowFoodQty((prev) => !prev)}>
-              {foodUnitOptions[foodQtyUnit]}
-            </div>
-          </div>
-        </div>
-        {showFoodQty && (
-          <SelectOneDropdown
-            selected={foodQtyUnit}
-            setSelected={setFoodQtyUnit}
-            choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
-            onClickCallback={() => setShowFoodQty(false)}
-          />
-        )}
+
       </div>
-      <div className="group">
-        <button>SAVE</button>
-      </div>
+
+      {showFoodQty && (
+        <SelectOneDropdown
+          selected={foodQtyUnit}
+          setSelected={setFoodQtyUnit}
+          choices={foodUnitOptions.map((foodUnitOption) => foodUnitOption)}
+          onClickCallback={() => setShowFoodQty(false)}
+        />
+      )}
+
+      <Button icon="save" text="Save" onClick={save} />
     </div>
-  ) : (
-    <div>Error: Could not read data</div>
   );
 }
