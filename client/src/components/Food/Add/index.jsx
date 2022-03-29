@@ -9,11 +9,7 @@ import SelectOneDropdown from "../../buttons/selectOne"
 import { stateContext } from "../../../providers/StateProvider";
 import { userContext } from "../../../providers/UserProvider";
 
-<<<<<<< Updated upstream
 import FoodBarCode from "./foodBarcode";
-=======
-import  FoodBarCode from "./foodBarcode";
->>>>>>> Stashed changes
 
 import "./index.scss";
 

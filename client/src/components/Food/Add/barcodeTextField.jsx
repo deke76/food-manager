@@ -11,6 +11,7 @@ export default function BarcodeTextField(props) {
   // let history = useNavigate();
   
   const startScanner = () => {
+    // console.log("Quagga", Quagga)
     Quagga.init(
       {
         inputStream: {
