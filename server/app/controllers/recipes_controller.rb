@@ -7,7 +7,7 @@ class RecipesController < FoodsController
     res = Net::HTTP.get_response(uri)
     render json: res.body
   end
-  
+
   def show
     id = params[:id]
     uri = URI("https://api.spoonacular.com/recipes/#{id}/information")
@@ -18,7 +18,9 @@ class RecipesController < FoodsController
   end
 
   def email
-    render json: params
+    @user = User.find(params[:id])
+    puts 'User is @user'
+    render json: @user
   end
 end
 
