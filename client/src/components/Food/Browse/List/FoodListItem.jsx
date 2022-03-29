@@ -1,10 +1,13 @@
-import {
-  axios, classNames, moment,
-  React, useContext, useEffect, useState,
-  userContext,
-  Counter } from "../../../../constants";
 
-  import "./FoodListItem.scss";
+import Counter from "../../../buttons/counter"
+import { userContext } from "../../../../providers/UserProvider";
+
+import axios from "axios";
+import classNames from "classnames";
+import moment from "moment";
+import { useEffect, useState, useContext } from "react";
+
+import "./FoodListItem.scss";
 
 export default function FoodListItem(props) {
   const { food } = props;

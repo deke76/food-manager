@@ -1,6 +1,6 @@
-import {
-  useContext, stateContext,
-  Calendar, FoodList } from '../../../constants';
+import FoodList from "./List/FoodList";
+import { stateContext } from "../../../providers/StateProvider";
+import { useContext } from "react";
 
 export default function FoodBrowse(props) {
   const { state } = useContext(stateContext);

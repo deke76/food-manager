@@ -1,7 +1,6 @@
-import { 
-  classNames,
-  Button } from "../../constants";
-  
+import classNames from "classnames";
+
+import Button from "./../buttons/actions/Button"
 import "./locationCard.scss";
 
 export default function LocationCard(props) {

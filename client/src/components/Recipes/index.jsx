@@ -1,8 +1,9 @@
-import { 
-  axios, React,
-  useContext, useState, useEffect,
-  stateContext,
-  RecipeCard } from "../../constants";
+import { useState, useContext, useEffect } from "react";
+import { stateContext } from "./../../providers/StateProvider";
+import axios from "axios";
+
+import RecipeCard from "./RecipeCard"
+
 
 // import { recipes } from "./testData";
 
@@ -27,9 +28,7 @@ export default function RecipeBrowse(props) {
       .catch(console.log("No recipes available"));
   }, [state]);
 
-  console.log(recipes);
-
-  recipes.sort((a,b) => a.missedIngredientCount - b.missedIngredientCount);
+  recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
 
   // Build the cards
   const recipeItems = recipes.length

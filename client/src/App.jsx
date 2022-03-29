@@ -1,13 +1,15 @@
-import { 
-  BrowserRouter, Routes, Route, 
-  UserProvider, StateProvider,
-  FloatingActionButton, FoodAdd, FoodBrowse,
-  HeaderBar, LocationList } from "./constants";
+import RecipeBrowse from "./components/Recipes";
 
-  import RecipeBrowse from "./components/Recipes";
-  
-  import "./styles/app.scss";
+import { UserProvider } from "./providers/UserProvider";
+import { StateProvider } from "./providers/StateProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HeaderBar from "./components/header";
+import LocationList from "./components/Locations/locationList";
+import FoodAdd from "./components/Food/Add";
+import FoodBrowse from "./components/Food/Browse";
+import FloatingActionButton from "./components/buttons/fab";
 
+import "./styles/app.scss";
 
 // Main application file
 export default function App(props) {
@@ -20,15 +22,15 @@ export default function App(props) {
             <HeaderBar />
             <div className="content">
               <LocationList />
-              <div className='content__main'>
-                  <Routes>
+              <div className="content__main">
+                <Routes>
                   <Route path="/" element={<FoodBrowse />} />
                   <Route path="/foods/add" element={<FoodAdd />} />
                   <Route path="/recipes" element={<RecipeBrowse />} />
                 </Routes>
               </div>
             </div>
-            <FloatingActionButton/>
+            <FloatingActionButton />
           </BrowserRouter>
         </StateProvider>
       </UserProvider>

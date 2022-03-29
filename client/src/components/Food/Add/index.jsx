@@ -1,15 +1,13 @@
-import {
-  axios,
-  moment,
-  useContext,
-  useEffect,
-  useState,
-  stateContext,
-  userContext,
-  Button,
-  Counter,
-  SelectOneDropdown,
-} from "../../../constants";
+import axios from "axios";
+import moment from "moment";
+import { useContext, useState, useEffect } from "react";
+import Counter from "../../buttons/counter";
+
+import Button from "../../buttons/actions/Button";
+import SelectOneDropdown from "../../buttons/selectOne"
+
+import { stateContext } from "../../../providers/StateProvider";
+import { userContext } from "../../../providers/UserProvider";
 
 import "./index.scss";
 
