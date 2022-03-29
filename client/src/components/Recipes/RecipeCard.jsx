@@ -1,4 +1,5 @@
 import Ingredients from './Ingredients';
+import Button from '../buttons/actions/Button';
 import "./RecipeCard.scss";
 
 export default function LocationCard(props) {
@@ -18,7 +19,9 @@ export default function LocationCard(props) {
         <img src={recipe.image} className='recipe-card__img'  alt='' />
       </article>
       <h4 className="recipe-card__title">{recipe.title}</h4>
-      <h4 className='recipe-card__missing-ingredients'>You're missing these ingredients.</h4>
+      <h4 className='recipe-card__missing-ingredients'>
+        <Button icon='email' linkTo='' />Missing Ingredients
+        <Button icon='check' linkTo='' /></h4>
       <table>
         <tbody>
           <tr>

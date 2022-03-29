@@ -13,7 +13,8 @@ import {
   faUser,
   faCheck,
   faCamera,
-  faUpload
+  faUpload,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
@@ -34,6 +35,7 @@ export default function Button(props) {
       {icon === "check" && <FontAwesomeIcon icon={faCheck} />}
       {icon === "camera" && <FontAwesomeIcon icon={faCamera} />}
       {icon === "file" && <FontAwesomeIcon icon={faUpload} />}
+      {icon === 'email' && <FontAwesomeIcon icon={faEnvelope} />}
     </div>
   );
 

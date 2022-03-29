@@ -46,8 +46,16 @@
     }
 
     &__missing-ingredients {
-      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
       padding: calc($spacing / 2);
+
+      .button {
+        background-color: $main-background;
+        color: $button-background;
+      }
     }
 
     div {
