@@ -58,6 +58,11 @@
       }
     }
 
+    &__feedback {
+      padding: $spacing;
+      font-style: italic;
+    }
+
     div {
       font-size: small;
     }

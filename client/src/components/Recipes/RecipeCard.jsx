@@ -32,6 +32,9 @@ export default function LocationCard(props) {
           { ingredients }
         </tbody>
       </table>
+      <div className='recipe-card__feedback'>
+        <h3>{recipe.likes} likes!</h3>
+      </div>
     </div>
   );
 }
