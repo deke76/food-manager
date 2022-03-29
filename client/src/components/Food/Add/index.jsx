@@ -9,6 +9,8 @@ import SelectOneDropdown from "../../buttons/selectOne"
 import { stateContext } from "../../../providers/StateProvider";
 import { userContext } from "../../../providers/UserProvider";
 
+import FoodBarCode from "./foodBarcode";
+
 import "./index.scss";
 
 export default function FoodAdd(props) {
@@ -120,10 +122,11 @@ export default function FoodAdd(props) {
             setSearchValue("");
           }}
         />
-        <a href='/foods/barcode'>
           <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
-        </a>
       </div>
+        {showBarcode && (
+          <FoodBarCode />
+        )}
       {showSuggestions && (
         <SelectOneDropdown
           choices={
