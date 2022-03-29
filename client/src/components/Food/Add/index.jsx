@@ -125,7 +125,7 @@ export default function FoodAdd(props) {
           <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
       </div>
         {showBarcode && (
-          <FoodBarCode />
+          <FoodBarCode foodName={searchValue} setFoodName={setSearchValue} />
         )}
       {showSuggestions && (
         <SelectOneDropdown

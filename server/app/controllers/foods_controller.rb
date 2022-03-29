@@ -55,6 +55,7 @@ class FoodsController < ApplicationController
     upc = params[:barcode]
     uri = URI("https://world.openfoodfacts.org/api/v0/product/#{upc}.json")    
     res = Net::HTTP.get_response(uri)
+    puts res.body
     render json: res.body
   end
 
