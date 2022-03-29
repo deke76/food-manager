@@ -207,7 +207,7 @@ export default function BarcodeTextField(props) {
         </Link>
       </div>
       <div className='grid-container'>
-        {/* <Button onClick={handleClick} icon="camera"/> */}
+        <Button onClick={handleClick} icon="camera"/>
         <Button onClick={uploadClick} icon="file" text='Upload a picture' />
         <input id="inputId" type="file" accept="image/*" ref={hiddenFileInput}  style={{display:'none'}}/>
       </div>
