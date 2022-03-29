@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { stateContext } from "./../../providers/StateProvider";
+import axios from "axios";
 
 import RecipeCard from "./RecipeCard"
 
@@ -27,8 +27,6 @@ export default function RecipeBrowse(props) {
       .then((response) => setRecipes(response.data))
       .catch(console.log("No recipes available"));
   }, [state]);
-
-  console.log(recipes);
 
   recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
 
