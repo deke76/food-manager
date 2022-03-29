@@ -15,6 +15,6 @@ export default function FoodBrowse(props) {
       <div>{<FoodList foods={selectedLocation.foods} />}</div>
     </div>
   ) : (
-    <div>Could not fetch data</div>
+    <div>Could not fetch data from location {state}</div>
   );
 }

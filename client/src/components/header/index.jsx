@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { userContext } from "../../providers/UserProvider";
 import { Link } from "react-router-dom";
 import Button from "../buttons/actions/Button";
+import Counter from "../buttons/counter";
 
 import "./index.scss";
-import Counter from "../buttons/counter";
 
 export default function HeaderBar(props) {
   const { user, setUser } = useContext(userContext);

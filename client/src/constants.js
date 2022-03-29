@@ -25,7 +25,7 @@ import FoodAdd from './components/Food/Add';
 import FoodBrowse from './components/Food/Browse'
 import FoodList from './components/Food/Browse/List/FoodList';
 import FoodListItem from './components/Food/Browse/';
-import HeaderBar from './components/header'
+import HeaderBar from './components/header/index'
 import Ingredients from './components/Recipes/Ingredients';
 import LinkButton from './components/buttons/link';
 import LocationList from './components/Locations/locationList';
