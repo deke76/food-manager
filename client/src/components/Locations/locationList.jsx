@@ -21,7 +21,7 @@ export default function LocationList(props) {
       setState((prev) => ({
         ...prev,
         locations: prev.locations.filter((location) => location.id !== id),
-        foods: prev.foods.filter(food => food.location_id !== id),
+        foods: prev.foods.filter((food) => food.location_id !== id),
         currentLocation:
           id === prev.currentLocation
             ? prev.locations[0].id
@@ -70,8 +70,10 @@ export default function LocationList(props) {
                 key={index}
                 location={location}
                 items={
-                  state.foods.filter((food) => food.location_id === location.id && food.quantity > 0)
-                    .length
+                  state.foods.filter(
+                    (food) =>
+                      food.location_id === location.id && food.quantity > 0
+                  ).length
                 }
                 selected={location.id === state.currentLocation}
                 onClick={() => {
@@ -102,7 +104,8 @@ export default function LocationList(props) {
           onClick={() => setShowCards(true)}
           items={
             state.foods.filter(
-              (food) => food.location_id === selectedLocation.id && food.quantity > 0
+              (food) =>
+                food.location_id === selectedLocation.id && food.quantity > 0
             ).length
           }
         />
