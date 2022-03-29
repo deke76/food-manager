@@ -1,16 +1,15 @@
-import React from 'react';
-import moment from 'moment';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import moment from 'moment';
 import reportWebVitals from './reportWebVitals';
 import classNames from 'classnames';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { locationContext } from './providers/LocationProvider';
-import { userContext } from './providers/UserProvider';
+import { userContext, UserProvider } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
-import UserProvider from './providers/UserProvider';
 import { StateProvider, stateContext } from './providers/StateProvider';
 
 

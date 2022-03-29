@@ -4,7 +4,7 @@ import {
   FloatingActionButton, FoodAdd, FoodBrowse,
   LocationList } from "./constants";
 
-  import { HeaderBar } from "./components/header";
+  import HeaderBar from "./components/header"
   import RecipeBrowse from "./components/Recipes";
   
   import "./styles/app.scss";
