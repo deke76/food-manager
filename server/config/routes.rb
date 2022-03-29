@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   get "/locations", to: "locations#all"
 
   # Recipe Routes
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :email]
 
 end

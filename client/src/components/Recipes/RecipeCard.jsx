@@ -1,9 +1,17 @@
 import Ingredients from './Ingredients';
 import Button from '../buttons/actions/Button';
 import "./RecipeCard.scss";
+import axios from 'axios';
 
 export default function LocationCard(props) {
   const { recipe, onClick } = props;
+
+  const recipeMailer = function(user) {
+    const url = 'http://recipes/email';
+    axios.get(url)
+      .then(res => console.log(res))
+      .catch(res => console.log('No user with that email exists'))
+  }
   
   // Build the missing ingredients
   const ingredients = 
@@ -20,7 +28,7 @@ export default function LocationCard(props) {
       </article>
       <h4 className="recipe-card__title">{recipe.title}</h4>
       <h4 className='recipe-card__missing-ingredients'>
-        <Button icon='email' linkTo='' />Missing Ingredients
+        <Button icon='email' onClick={console.log('test)')} />Missing Ingredients
         <Button icon='check' linkTo='' /></h4>
       <table>
         <tbody>

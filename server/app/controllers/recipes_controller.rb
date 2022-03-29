@@ -17,6 +17,8 @@ class RecipesController < FoodsController
     render json: res.body
   end
 
- 
+  def email
+    render json: params
+  end
 end
 

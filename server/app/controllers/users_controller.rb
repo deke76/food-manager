@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-
+  def email
+    render json: params
+  end
+  
   # def show
   #   locations = Location.where(user_id: params[:id])
   #   foods = Food.where(user_id: params[:id])
