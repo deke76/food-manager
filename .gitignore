@@ -26,6 +26,7 @@
 # Ignore master key for decrypting credentials and more.
 /server/config/master.key
 /server/.env
+/server/Gemfile.lock
 .DS_store
 .env
 /server/Gemfile.lock
