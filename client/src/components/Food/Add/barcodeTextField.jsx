@@ -38,16 +38,16 @@ export default function BarcodeTextField(props) {
           ],
           debug: {
             showCanvas: true,
-            showPatches: true,
-            showFoundPatches: true,
-            showSkeleton: true,
-            showLabels: true,
-            showPatchLabels: true,
-            showRemainingPatchLabels: true,
+            showPatches: false,
+            showFoundPatches: false,
+            showSkeleton: false,
+            showLabels: false,
+            showPatchLabels: false,
+            showRemainingPatchLabels: false,
             boxFromPatches: {
-              showTransformed: true,
-              showTransformedBox: true,
-              showBB: true
+              showTransformed: false,
+              showTransformedBox: false,
+              showBB: false
             }
           }
         }
