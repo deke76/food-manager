@@ -1,9 +1,9 @@
-import React from "react";
-import { useContext, useState, useEffect } from "react";
-import { locationContext } from "../../providers/LocationProvider";
+import { useState, useContext, useEffect } from "react";
+import { stateContext } from "./../../providers/StateProvider";
 import axios from "axios";
-import useFetchServer from "../../hooks/useFetchServer";
-import RecipeCard from './RecipeCard'
+
+import RecipeCard from "./RecipeCard"
+
 
 // import { recipes } from "./testData";
 
@@ -17,8 +17,16 @@ export default function RecipeBrowse(props) {
   const ingredients = foodItems ? foodItems.map( item => item.name ).join(',+') : [];
   
   useEffect(() => {
+    const selectedLocation = state
+      ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+      : null;
+
+    const ingredients = selectedLocation
+      ? selectedLocation.foods.map((item) => item.name).join(",+")
+      : [];
+
     const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
-    
+
     return axios
       .get(url)
       .then((response) => setRecipes(response.data))
@@ -27,18 +35,19 @@ export default function RecipeBrowse(props) {
     
   console.log(recipes.length);
   // Build the cards
-  const recipeItems = recipes.length 
-    ? recipes.map(recipe => 
-      <RecipeCard
-        key={recipe.id}
-        recipe={recipe}
-        onClick={() => window.location.assign(`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`)}
-      />)
+  const recipeItems = recipes.length
+    ? recipes.map((recipe) => (
+        <RecipeCard
+          key={recipe.id}
+          recipe={recipe}
+          onClick={() =>
+            window.location.assign(
+              `http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`
+            )
+          }
+        />
+      ))
     : [];
 
-  return (
-    <div className='recipe-wrapper'>
-      {recipeItems}
-    </div>
-  )
+  return <div className="recipe-wrapper">{recipeItems}</div>;
 }

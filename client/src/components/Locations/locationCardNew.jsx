@@ -1,7 +1,8 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import Button from "../buttons/actions/Button";
 
 export default function LocationCardNew(props) {
   const { onSave, newLocation, setNewLocation } = props;
@@ -13,7 +14,7 @@ export default function LocationCardNew(props) {
   return (
     <div className={classes} onClick={() => setShowForm(true)}>
       {showForm && (
-        <div>
+        <>
           <header>
             <h4 className="location-card__title">
               <input
@@ -62,18 +63,16 @@ export default function LocationCardNew(props) {
                 }
               />
             </div>
+            <Button
+              icon="save"
+              onClick={(event) => {
+                event.stopPropagation();
+                setShowForm(false);
+                onSave();
+              }}
+            />
           </article>
-          <div
-            className="location-card__button"
-            onClick={(event) => {
-              event.stopPropagation();
-              setShowForm(false);
-              onSave();
-            }}
-          >
-            save
-          </div>
-        </div>
+        </>
       )}
 
       {!showForm && (

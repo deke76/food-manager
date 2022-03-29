@@ -1,4 +1,18 @@
 .content {
-  margin-top: 40px;
+  margin-top: 2em;
   padding-top: 0.5em;
+
+  &__main {
+    margin-top: 8em;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  
 }

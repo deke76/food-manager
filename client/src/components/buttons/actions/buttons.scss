@@ -1,43 +1,24 @@
-$height: 12px;
-
 .button {
-  border-radius: 3px;
-  transition: ease-in-out 0.2s;
-  
-  width: min-content;
-  padding: 4px;
-
-  font-size: $height;
-  color: rgba(55, 53, 47, 0.4);
-
-  &:hover {
-    background-color: rgba(55, 53, 47, 0.1);
-  }
+  // background-color: red;
+  aspect-ratio: 1;
+  height: 40px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
-  
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // padding-left: 5px;
-  }
+  justify-content: center;
 
-  cursor: pointer;
+  border-radius: 20px;
 
-  &.open svg {
-    transform: rotateZ(90deg);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  &.text {
+    aspect-ratio: auto;
+    width: fit-content;
+    padding: 0 15px;
+    gap: 10px;
   }
 
   svg {
-    width: $height;
-    height: $height;
-    display: block;
-    flex-shrink: 0;
-    backface-visibility: hidden;
-    transition: transform 200ms ease-out 0s;
-    opacity: 1;
+    height: 20px;
   }
 }

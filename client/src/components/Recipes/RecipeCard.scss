@@ -20,7 +20,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     height: 75vh;
     width: 90vw;
 
@@ -28,10 +28,11 @@
       background-color: $primary-background;
       display:flex;
       flex-direction: column;
-      justify-content:flex-start;
+      justify-content: flex-start;
       overflow: hidden;
-      width: 100%;
-      border-radius: 20px 20px 0 0;
+      background-color: $primary-background;
+      border-radius:20px 20px 0 0;
+
     }
 
     &__title{

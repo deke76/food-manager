@@ -1,25 +1,37 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import "./buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  faCaretRight,
-  faPen,
   faAnglesLeft,
   faAnglesRight,
+  faUtensils,
+  faBarcode,
+  faTrash,
+  faSave,
+  faUser,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
-  const { onClick, icon, text, open } = props;
-  const classes = classNames("button", { open });
-  return (
+  const { onClick, linkTo, icon, text } = props;
+  const classes = classNames("button", { text: text !== undefined });
+
+  const body = (
     <div onClick={onClick} className={classes}>
+      {text !== undefined && <span className="btn-text">{text}</span>}
       {icon === "plus" && <FontAwesomeIcon icon={faPlus} />}
-      {icon === "pen" && <FontAwesomeIcon icon={faPen} />}
-      {icon === "caret" && <FontAwesomeIcon icon={faCaretRight} />}
       {icon === "left" && <FontAwesomeIcon icon={faAnglesLeft} />}
       {icon === "right" && <FontAwesomeIcon icon={faAnglesRight} />}
-      {text !== undefined && <div className="btn-text">{text}</div>}
+      {icon === "recipe" && <FontAwesomeIcon icon={faUtensils} />}
+      {icon === "barcode" && <FontAwesomeIcon icon={faBarcode} />}
+      {icon === "delete" && <FontAwesomeIcon icon={faTrash} />}
+      {icon === "save" && <FontAwesomeIcon icon={faSave} />}
+      {icon === "profile" && <FontAwesomeIcon icon={faUser} />}
+      {icon === "check" && <FontAwesomeIcon icon={faCheck} />}
     </div>
   );
+
+  return linkTo ? <Link to={linkTo}>{body}</Link> : body;
 }

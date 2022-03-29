@@ -1,42 +1,37 @@
-// import { useState } from "react";
+import RecipeBrowse from "./components/Recipes";
+
+import { UserProvider } from "./providers/UserProvider";
+import { StateProvider } from "./providers/StateProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HeaderBar from "./components/header";
+import LocationList from "./components/Locations/locationList";
+import FoodAdd from "./components/Food/Add";
+import FoodBrowse from "./components/Food/Browse";
+import FloatingActionButton from "./components/buttons/fab";
 
 import "./styles/app.scss";
-
-import UserProvider from "./providers/UserProvider";
-import LocationProvider from "./providers/LocationProvider";
-
-import HeaderBar from "./components/header";
-import NavBar from "./components/nav/NavBar";
-
-import FoodAdd from "./components/Food/Add";
-
-import FoodBrowse from "./components/Food/Browse";
-import LocationList from "./components/Locations/Browse/locationList";
-import RecipeBrowse from "./components/Recipes";
-import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
 export default function App(props) {
   return (
     <div>
       <UserProvider>
-        <LocationProvider>
+        <StateProvider>
           <BrowserRouter>
             <HeaderBar />
             <div className="content">
-            <FloatingActionButton linkTo="/foods/add" />
-            <LocationList />
-              <Routes>
-                <Route path="/" element={<FoodBrowse />} />
-                <Route path="/foods/add" element={<FoodAdd />} />
-                <Route path="/locations" element={<LocationList />} />
-                <Route path='/recipes' element={<RecipeBrowse />} />
-              </Routes>
+              <LocationList />
+              <div className="content__main">
+                <Routes>
+                  <Route path="/" element={<FoodBrowse />} />
+                  <Route path="/foods/add" element={<FoodAdd />} />
+                  <Route path="/recipes" element={<RecipeBrowse />} />
+                </Routes>
+              </div>
             </div>
-            <NavBar />
+            <FloatingActionButton />
           </BrowserRouter>
-        </LocationProvider>
+        </StateProvider>
       </UserProvider>
     </div>
   );

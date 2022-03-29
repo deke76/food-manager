@@ -1,12 +1,21 @@
-.floating-action-button {
+
+$colour: #002135;
+
+.fab-container {
   position: fixed;
-  bottom: 60px;
-  right: 30px;
+  display: flex;
+  flex-direction: column;
+
+  bottom: 2em;
+  right: 2em;
+
+  gap: 2em;
   z-index: 10;
 
-  color: #03045E;
-
-  svg {
-    height: 50px;
+  .button {
+    color: white;
+    background-color: $colour;
+    transform: scale(1.5);
   }
+
 }

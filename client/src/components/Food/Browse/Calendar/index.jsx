@@ -1,21 +1,16 @@
 import classNames from "classnames";
 import moment from "moment";
 import { useContext, useState } from "react";
-import { locationContext } from "../../../../providers/LocationProvider";
-import useFetchServer from '../../../../hooks/useFetchServer'
 
 import Button from "../../../buttons/actions/Button";
 import CalendarDay from "./CalendarDay";
 
 import "./Calendar.scss";
+import { stateContext } from "../../../../providers/StateProvider";
 
 export default function Calendar(props) {
-  // list of objects with date attribute
-  // const { events } = props;
-  const { locationID } = useContext(locationContext);
-  const { responseData: events } = useFetchServer(
-    `locations/${locationID}/foods`
-  );
+
+  const { state } = useContext(stateContext);
 
   // First day of calendar
   const [firstDay, setFirstDay] = useState(moment().startOf("week"));
@@ -34,9 +29,13 @@ export default function Calendar(props) {
   });
   const weekElements = [];
   const firstWeek = firstDay.week();
-  
 
-  if (events !== null) {
+  if (state !== null) {
+    const selectedLocation = state
+      ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+      : null;
+
+    const events = selectedLocation.foods;
     // iterate over four weeks and each day of week to build table
 
     for (let w = 0; w < 6; w++) {
@@ -46,7 +45,9 @@ export default function Calendar(props) {
       for (let d = 0; d < 7; d++) {
         // Create a new date object for current day in week
         const day = thisWeek.day(d);
-        const dayEvents = events.filter((e) => day.isSame(moment(e.date_expires), "day"));
+        const dayEvents = events.filter((e) =>
+          day.isSame(moment(e.date_expires), "day")
+        );
 
         dayElements.push(
           <CalendarDay
@@ -62,7 +63,6 @@ export default function Calendar(props) {
     }
   }
 
-  
   return (
     <div className="calendar">
       <header className="header">

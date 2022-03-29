@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import useFetchServer from "../../../hooks/useFetchServer";
-import { locationContext } from "../../../providers/LocationProvider";
 import FoodList from "./List/FoodList";
-import Calendar from "./Calendar";
+import { stateContext } from "../../../providers/StateProvider";
+import { useContext } from "react";
 
 export default function FoodBrowse(props) {
-  const { locationID } = useContext(locationContext);
-  const { responseData: foodItems } = useFetchServer(
-    `locations/${locationID}/foods`
-  );
+  const { state } = useContext(stateContext);
 
-  return (
+  const selectedLocation = state
+    ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+    : null;
+
+  return selectedLocation ? (
     <div>
-      <div>{foodItems && <Calendar />}</div>
-      <div>{foodItems && <FoodList foods={foodItems} />}</div>
+      {/* <div>{<Calendar />}</div> */}
+      <div>{<FoodList foods={selectedLocation.foods} />}</div>
     </div>
+  ) : (
+    <div>Could not fetch data</div>
   );
 }
