@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 export default function Counter(props) {
-  const { value, setValue, maxValue, minValue } = props;
+  const { value, setValue, maxValue, minValue, onChange } = props;
 
   const increment = () =>
     setValue((prev) =>
@@ -19,9 +20,9 @@ export default function Counter(props) {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "2.5em"
-  }
-  
+    width: "2.5em",
+  };
+
   return (
     <div className="counter" style={styles}>
       <FontAwesomeIcon icon={faCaretLeft} onClick={decrement} />
