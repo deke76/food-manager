@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Location.create!({
+    @food = Food.create!({
       :location_id => params[:location_id],
       :name => params[:name],
       :spoon_id => params[:spoon_id],
