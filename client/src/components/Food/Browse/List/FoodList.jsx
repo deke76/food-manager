@@ -12,7 +12,7 @@ export default function FoodList(props) {
   return (
     <div className="food-list">
       {foods.map((food, index) => (
-        <FoodListItem key={index} food={food} />
+        <FoodListItem key={food.id} food={food} />
       ))}
     </div>
   );
