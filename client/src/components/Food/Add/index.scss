@@ -1,5 +1,8 @@
+@import '../../../styles/variables.scss';
+
 .food-add {
   padding: 10px 20px;
+  color: $header-background;
 
   div.grid-container {
     border-top: solid silver 1px;
@@ -10,6 +13,7 @@
 
     padding: 1em 0;
 
+    color: $header-background;
     // & > .label {
     //   align
     // }
@@ -28,7 +32,7 @@
 
   input, div.input {
     height: 40px;
-
+    color: $header-background;
     background-color: whitesmoke;
     border-radius: 20px;
     border: none;
@@ -48,7 +52,7 @@
   }
 
   .button {
-    background-color: #2C5672;
+    background-color: $button-background;
     color: white;
   }
 
