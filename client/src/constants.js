@@ -8,9 +8,8 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { locationContext } from './providers/LocationProvider';
-import { userContext } from './providers/UserProvider';
+import { UserProvider, userContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
-import UserProvider from './providers/UserProvider';
 import { StateProvider, stateContext } from './providers/StateProvider';
 
 

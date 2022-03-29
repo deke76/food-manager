@@ -1,9 +1,11 @@
-import { 
-  BrowserRouter, Routes, Route, 
-  UserProvider, StateProvider,
-  FloatingActionButton, FoodAdd, FoodBrowse,
-  HeaderBar, LocationList } from "./constants";
-
+  import { BrowserRouter, Routes, Route } from 'react-router-dom';
+  import { UserProvider } from "./providers/UserProvider";
+  import { StateProvider } from "./providers/StateProvider";
+  import FloatingActionButton from "./components/buttons/fab";
+  import FoodBrowse from "./components/Food/Browse";
+  import FoodAdd from "./components/Food/Add";
+  import LocationList from "./components/Locations/locationList";
+  import HeaderBar from "./components/header";
   import RecipeBrowse from "./components/Recipes";
   
   import "./styles/app.scss";
