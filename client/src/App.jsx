@@ -1,19 +1,13 @@
-// import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { 
+  BrowserRouter, Routes, Route, 
+  UserProvider, StateProvider,
+  FloatingActionButton, FoodAdd, FoodBrowse,
+  HeaderBar, LocationList } from "./constants";
 
-import "./styles/app.scss";
+  import RecipeBrowse from "./components/Recipes";
+  
+  import "./styles/app.scss";
 
-import UserProvider from "./providers/UserProvider";
-import StateProvider from "./providers/StateProvider";
-
-import HeaderBar from "./components/header";
-
-import FoodAdd from "./components/Food/Add";
-
-import FoodBrowse from "./components/Food/Browse";
-import LocationList from "./components/Locations/locationList";
-import RecipeBrowse from "./components/Recipes";
-import FloatingActionButton from "./components/buttons/fab";
 
 // Main application file
 export default function App(props) {

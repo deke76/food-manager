@@ -1,24 +1,26 @@
-import { useContext, useEffect, useState } from "react";
-
-import { stateContext } from "./../../../providers/StateProvider";
-import { userContext } from "../../../providers/UserProvider";
-
-import Counter from "../../buttons/counter";
-import SelectOneDropdown from "../../buttons/selectOne";
+import {
+  axios,
+  moment,
+  useContext,
+  useEffect,
+  useState,
+  stateContext,
+  userContext,
+  Button,
+  Counter,
+  SelectOneDropdown,
+} from "../../../constants";
 
 import "./index.scss";
-import axios from "axios";
-import moment from "moment";
-import Button from "../../buttons/actions/Button";
 
 export default function FoodAdd(props) {
   // Search values
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [selectedSuggestion, setSelectedSuggestion] = useState(null);
+  // const [selectedSuggestion, setSelectedSuggestion] = useState(null);
 
-  const { state } = useContext(stateContext);
+  const { state, setState } = useContext(stateContext);
   const { user } = useContext(userContext);
 
   const defaultFood = {
@@ -33,7 +35,11 @@ export default function FoodAdd(props) {
   const foodUnitOptions = ["ea", "oz", "gal", "L", "kg", "lb"];
 
   const save = () => {
-    console.log(newFood);
+    const url = `http://localhost:3000/users/${user}/locations/${state.currentLocation}/foods`;
+
+    axios
+      .post(url, { params: newFood })
+      .then((response) => console.log(response));
   };
 
   // Fetch suggestions from server
@@ -86,31 +92,40 @@ export default function FoodAdd(props) {
           type="text"
           value={searchValue}
           onChange={(e) => {
-            console.log(suggestions);
-            setSelectedSuggestion(null);
+            // setSelectedSuggestion(null);
             setSearchValue(e.target.value);
           }}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
+          // onBlur={() => setShowSuggestions(false)}
           placeholder="Search for food..."
+        />
+        <Button
+          icon="check"
+          onClick={() => {
+            setNewFood((prev) => ({
+              ...prev,
+              name: searchValue.length > 0 ? searchValue : "Enter a Food Name",
+            }));
+          }}
         />
         <Button icon="barcode" text="Scan" />
       </div>
       {showSuggestions && (
         <SelectOneDropdown
-          selected={selectedSuggestion}
-          setSelected={setSelectedSuggestion}
           choices={
             suggestions.length === 0
               ? ["No Suggestions"]
               : suggestions.map((suggestion) => suggestion.name)
           }
-          onClickCallback={() => setShowSuggestions(false)}
+          setterValue={(value) => {
+            console.log("set Search")
+            setSearchValue(value)
+          }}
+          onClickCallback={() => {setShowSuggestions(false)}}
         />
       )}
 
       <div className="grid-container">
-
         <div className="label">Date Purchased</div>
         <input
           type="date"
@@ -134,7 +149,7 @@ export default function FoodAdd(props) {
             }))
           }
         />
-        
+
         <div className="label">Quantity</div>
         <div className="input">
           <Counter
@@ -147,7 +162,6 @@ export default function FoodAdd(props) {
             {foodUnitOptions[foodQtyUnit]}
           </span>
         </div>
-
       </div>
 
       {showFoodQty && (

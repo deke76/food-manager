@@ -1,4 +1,4 @@
-import Button from "../buttons/Button";
+import { Button } from "../../../constants";
 
 export default function FoodRead(props) {
   return (

@@ -11,7 +11,7 @@ import { locationContext } from './providers/LocationProvider';
 import { userContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router';
 import UserProvider from './providers/UserProvider';
-import StateProvider, { stateContext } from './providers/StateProvider';
+import { StateProvider, stateContext } from './providers/StateProvider';
 
 
 // Components
@@ -25,10 +25,12 @@ import FoodAdd from './components/Food/Add';
 import FoodBrowse from './components/Food/Browse'
 import FoodList from './components/Food/Browse/List/FoodList';
 import FoodListItem from './components/Food/Browse/';
-import HeaderBar from './components/Navigation/header'
+import HeaderBar from './components/header'
 import Ingredients from './components/Recipes/Ingredients';
 import LinkButton from './components/buttons/link';
-import LocationList from './components/Food/Browse'
+import LocationList from './components/Locations/locationList';
+import LocationCard from './components/Locations/locationCard';
+import LocationCardNew from './components/Locations/locationCardNew';
 import RecipeBrowse from './components/Recipes';
 import RecipeCard from './components/Recipes/RecipeCard';
 import SelectOneDropdown from './components/buttons/selectOne';
@@ -90,6 +92,8 @@ export {
   Ingredients,
   Link, 
   LinkButton,
+  LocationCard,
+  LocationCardNew,
   LocationList,
   locationContext, 
   moment, 

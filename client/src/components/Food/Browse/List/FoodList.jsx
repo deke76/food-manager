@@ -1,6 +1,7 @@
-import moment from "moment";
-import React from "react";
-import FoodListItem from "./FoodListItem";
+import { 
+  moment,
+  React,
+  FoodListItem } from "../../../../constants";
 
 import "./FoodList.scss";
 
