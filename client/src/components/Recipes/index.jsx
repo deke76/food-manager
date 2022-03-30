@@ -40,11 +40,6 @@ export default function RecipeBrowse(props) {
         <RecipeCard
           key={recipe.id}
           recipe={recipe}
-          onClick={() =>
-            window.location.assign(
-              `http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`
-            )
-          }
         />
       ))
     : [];
