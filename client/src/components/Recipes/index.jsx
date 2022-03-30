@@ -10,13 +10,9 @@ export default function RecipeBrowse(props) {
   const { state } = useContext(stateContext);
 
   useEffect(() => {
-    const selectedLocation = state
-      ? state.foods.filter((loc) => loc.id === state.currentLocation)[0]
-      : null;
-
-    const ingredients = selectedLocation
-      ? selectedLocation.foods.map((item) => item.name).join(",+")
-      : [];
+    const ingredients = (state !== null)
+      ? state.foods.filter( food => food.location_id === state.currentLocation)
+      : [] ;
 
     const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
 
