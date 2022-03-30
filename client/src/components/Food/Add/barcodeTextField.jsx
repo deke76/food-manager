@@ -17,7 +17,7 @@ export default function BarcodeTextField(props) {
         inputStream: {
           name: "Live",
           type: "LiveStream",
-          target: document.querySelector("#scanner-container"),
+          target: document.querySelector(".scanner-add"),
           constraints: {
             width: 480,
             height: 320,
@@ -38,16 +38,16 @@ export default function BarcodeTextField(props) {
           ],
           debug: {
             showCanvas: true,
-            showPatches: true,
-            showFoundPatches: true,
-            showSkeleton: true,
-            showLabels: true,
-            showPatchLabels: true,
-            showRemainingPatchLabels: true,
+            showPatches: false,
+            showFoundPatches: false,
+            showSkeleton: false,
+            showLabels: false,
+            showPatchLabels: false,
+            showRemainingPatchLabels: false,
             boxFromPatches: {
-              showTransformed: true,
-              showTransformedBox: true,
-              showBB: true
+              showTransformed: false,
+              showTransformedBox: false,
+              showBB: false
             }
           }
         }
@@ -56,7 +56,7 @@ export default function BarcodeTextField(props) {
         if (err) {
           alert("You need a camera to scan barcodes.");
           console.log(err);
-          document.querySelector("#scanner-container").innerHTML = "";
+          document.querySelector(".scanner-add").innerHTML = "";
   
           return;
         }
@@ -65,7 +65,7 @@ export default function BarcodeTextField(props) {
         Quagga.start();
   
         // Set flag to is running
-        //_scannerIsRunning = true;
+        _scannerIsRunning = true;
       }
     );
   
@@ -115,8 +115,11 @@ export default function BarcodeTextField(props) {
   
     Quagga.onDetected(function(result) {
       Quagga.stop();
+      console.log("result.codeResult.code", result.codeResult.code);
       document.querySelector("#text-input").value = result.codeResult.code;
-      document.querySelector("#scanner-container").innerHTML = "";
+      // Send result to the server
+      submitBarcode(result.codeResult.code);
+      document.querySelector(".scanner-add").innerHTML = "";
       console.log(
         "Barcode detected and processed : [" + result.codeResult.code + "]",
         result
@@ -137,6 +140,7 @@ export default function BarcodeTextField(props) {
     fetch(`http://localhost:3000/foods/barcode/${barcode}`)
     .then(response => response.json())
     .then(data => props.setFoodName(data.product.product_name)) // data.title
+    document.querySelector(".scanner-add").innerHTML = "";
   }
 
 

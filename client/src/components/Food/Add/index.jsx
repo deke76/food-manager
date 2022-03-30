@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import Counter from "../../buttons/counter";
 
 import Button from "../../buttons/actions/Button";
-import SelectOneDropdown from "../../buttons/selectOne"
+import SelectOneDropdown from "../../buttons/selectOne";
 
 import { stateContext } from "../../../providers/StateProvider";
 import { userContext } from "../../../providers/UserProvider";
@@ -36,23 +36,20 @@ export default function FoodAdd(props) {
 
   // Barcode scanner
   const [showBarcode, setShowBarcode] = useState();
-  
+
   const save = () => {
     const url = `http://localhost:3000/users/${user}/locations/${state.currentLocation}/foods`;
 
-    axios
-      .post(url, { ...newFood })
-      .then((response) => console.log(response));
+    axios.post(url, { ...newFood }).then((response) => {
+      setState((prev) => ({ ...prev, foods: [...prev.foods, response.data] }));
+      console.log(response);
+    });
   };
 
-
   function toTitleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }
-    );
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 
   // Fetch suggestions from server
@@ -111,7 +108,7 @@ export default function FoodAdd(props) {
           onFocus={() => setShowSuggestions(true)}
           // onBlur={() => setShowSuggestions(false)}
           placeholder="Search for food..."
-        />  
+        />
         <Button
           icon="check"
           onClick={() => {
@@ -122,11 +119,11 @@ export default function FoodAdd(props) {
             setSearchValue("");
           }}
         />
-          <Button onClick={() => setShowBarcode(true)} icon="barcode"/>
+        <Button onClick={() => setShowBarcode(true)} icon="barcode" />
       </div>
-        {showBarcode && (
-          <FoodBarCode foodName={searchValue} setFoodName={setSearchValue} />
-        )}
+      {showBarcode && (
+        <FoodBarCode foodName={searchValue} setFoodName={setSearchValue} />
+      )}
       {showSuggestions && (
         <SelectOneDropdown
           choices={
@@ -135,10 +132,12 @@ export default function FoodAdd(props) {
               : suggestions.map((suggestion) => toTitleCase(suggestion.name))
           }
           setterValue={(value) => {
-            console.log("set Search")
-            setSearchValue(value)
+            console.log("set Search");
+            setSearchValue(value);
           }}
-          onClickCallback={() => {setShowSuggestions(false)}}
+          onClickCallback={() => {
+            setShowSuggestions(false);
+          }}
         />
       )}
 
@@ -190,7 +189,7 @@ export default function FoodAdd(props) {
         />
       )}
 
-      <Button icon="save" text="Save" onClick={save} />
+      <Button icon="save" text="Save" onClick={save} linkTo={"/"}/>
     </div>
   );
 }
