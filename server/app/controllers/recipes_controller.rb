@@ -19,7 +19,6 @@ class RecipesController < FoodsController
 
   def email
     @user = User.find(params[:id])
-    puts @user.email
     ShoppingListMailer.with(email: @user.email).shopping_email.deliver_now
     render json: @user.email
   end
