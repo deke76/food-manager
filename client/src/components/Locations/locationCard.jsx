@@ -4,7 +4,7 @@ import Button from "./../buttons/actions/Button"
 import "./locationCard.scss";
 
 export default function LocationCard(props) {
-  const { location, selected, onClick, onDelete, newCard, collapsed } = props;
+  const { location, selected, onClick, onDelete, items, collapsed } = props;
   const classes = classNames("location-card", {
     selected,
     collapsed,
@@ -14,7 +14,7 @@ export default function LocationCard(props) {
       <header>
         <h4 className="location-card__title">{location.name}</h4>
         <div className="quantity">
-          {location.foods.length} items
+          {items} items
         </div>
       </header>
       {!collapsed && (
