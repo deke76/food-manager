@@ -9,22 +9,40 @@ export default function RecipeCard(props) {
   const { recipe, onClick } = props;
   const { state } = useContext(stateContext);
 
-  const recipeMailer = function(user) {
-    const id = state.locations[0].user_id;
-    const url = `http://localhost:3000/recipes/email?id=${id}`;
-    console.log(url);
-    axios.get(url)
-      .then(res => console.log(res.data.email))
-      .catch(res => console.log("You're email isn't in our database, please check your information."))
-  }
-  
-  // Build the missing ingredients
-  const ingredients = 
+    const recipeMailer = function(user) {
+      const id = state.locations[0].user_id;
+
+      // build the shopping list
+      const arrShoppingList = 
+      recipe.missedIngredients.map(ingredient => ({
+        name: ingredient.name,
+        amount: ingredient.amount,
+        units: ingredient.unitShort
+      }));
+      const tempShoppingList = [];
+      arrShoppingList.forEach((ingredient) => {
+        tempShoppingList.push(`name=${ingredient.name}`);
+        tempShoppingList.push(`amount=${ingredient.amount}`);
+        tempShoppingList.push(`unit=${ingredient.units}`);
+      })
+      const strShoppingList = tempShoppingList.join('&');
+
+      // send the missing ingredients to the server
+      const url = `http://localhost:3000/recipes/email?id=${id}&ingredients=${strShoppingList}`;
+      console.log(url);
+      axios.get(url)
+        .then(res => console.log(res.data))
+        .catch(res => console.log("You're email isn't in our database, please check your information."))
+    }
+
+    // build the missing ingredients list
+    const ingredients = 
     recipe.missedIngredients.map(ingredient =>
       <Ingredients
         key={ingredient.id}
         ingredient={ingredient}
       />);
+    
 
   return (
     <div className={'recipe-card'}>

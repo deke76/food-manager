@@ -11,7 +11,7 @@ export default function RecipeBrowse(props) {
 
   useEffect(() => {
     const selectedLocation = state
-      ? state.locations.filter((loc) => loc.id === state.currentLocation)[0]
+      ? state.foods.filter((loc) => loc.id === state.currentLocation)[0]
       : null;
 
     const ingredients = selectedLocation
