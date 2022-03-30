@@ -35,4 +35,9 @@
   .details {
     font-size: small;
   }
+
+  &.expired .details {
+    color: rgb(235, 61, 55);
+    font-weight: bold;
+  }
 }
