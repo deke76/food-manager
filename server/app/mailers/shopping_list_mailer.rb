@@ -3,10 +3,13 @@ class ShoppingListMailer < ApplicationMailer
   layout 'mailer'
   
   def shopping_email
-    @user = params
-    
-    @url = 'http://pantryful.com'
-    mail(to: @user[:email], subject: "Your grocery list")
+    @user = params[:user]
+    @url = 'pantryful.com'
+    @ingredients = params[:ingredients]
+    @email = params[:email]
+    mail(to: @email, subject: "Your grocery list", ingredients: @ingredients)
     render json: @user
   end
+
+  
 end

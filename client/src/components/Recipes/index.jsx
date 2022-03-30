@@ -15,7 +15,7 @@ export default function RecipeBrowse(props) {
       : [] ;
 
     const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
-
+    console.log(url);
     return axios
       .get(url)
       .then((response) => setRecipes(response.data))

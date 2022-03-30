@@ -19,8 +19,18 @@ class RecipesController < FoodsController
 
   def email
     @user = User.find(params[:id])
-    ShoppingListMailer.with(email: @user.email).shopping_email.deliver_now
-    render json: @user.email
+    @ingredients = params[:ingredients].split(',')
+    puts @user[:first_name]
+    puts '**********************************'
+    puts ingredient_parser @ingredients
+    puts '**********************************'
+    ShoppingListMailer.with(email: @user[:email], ingredients: @ingredients, user: @user).shopping_email.deliver_now
+    render json: @ingredients
+  end
+
+  def ingredient_parser input
+    input.each do
+      puts {key} - puts {value}
+    emd
   end
 end
-
