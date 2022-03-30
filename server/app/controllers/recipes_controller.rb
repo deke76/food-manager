@@ -7,7 +7,7 @@ class RecipesController < FoodsController
     res = Net::HTTP.get_response(uri)
     render json: res.body
   end
-  
+
   def show
     id = params[:id]
     uri = URI("https://api.spoonacular.com/recipes/#{id}/information")
@@ -17,6 +17,23 @@ class RecipesController < FoodsController
     render json: res.body
   end
 
- 
-end
+  def email
+    @user = User.find(params[:id])
+    @ingredients_string = params[:ingredients].split(',')
+    # puts @user[:first_name]
+    # puts '**********************************'
+    @ingredients = ingredient_parser @ingredients_string
+    # puts @ingredients
+    # puts '**********************************'
+  
+    ShoppingListMailer.with(email: @user[:email], ingredients: @ingredients, user: @user).shopping_email.deliver_now
+    render json: @ingredients
+  end
 
+  def ingredient_parser input
+    output = []
+    input.each do
+      output.push( input )
+    end  
+  end
+end

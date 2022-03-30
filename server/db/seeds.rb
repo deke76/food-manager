@@ -69,10 +69,133 @@ food_id = 1
   user_id += 1
 end
 
-#create locations
+User.create!(
+  first_name: 'Darcy',
+  last_name: 'Lauder',
+  email: 'darcy.lauder@shaw.ca',
+  password: '123456'
+)
+rand(1..5).times do
+  location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
+  location_storage = ["Fridge", "Freezer", "Pantry", "Closet", "Cooler"].sample
+  
+  puts 'Creating locations...'
+  Location.create!({
+    user_id: user_id,
+    name: "#{location_structure} - #{location_storage}",
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    # temperature: rand(-18.0..20.0),
+    country: Faker::Address.country 
+  })
 
-# create simple foods
+  rand(6..20).times do
+    food_name = [Faker::Food.spice, Faker::Food.ingredient, Faker::Food.vegetables, Faker::Food.fruits].sample
+    
+    puts 'Creating foods...'
+    Food.create!({
+      user_id: user_id,  
+      location_id: location_id,
+      name: food_name,
+      quantity: Faker::Number.between(from: 1, to: 6),
+      quantity_units: 'ea',
+      price_cents: Faker::Number.between(from: 100, to: 2000),
+      date_purchased: Faker::Date.backward(days: 5),
+      date_expires: Faker::Date.forward(days: 10),
+    })
 
-# setup rails test seed data
-# if Rails.env.test?
-# FoodItem.create ...
+    food_id += 1
+  end
+  location_id += 1
+end
+
+user_id += 1
+
+User.create!(
+  first_name: 'Riley',
+  last_name: 'Paul',
+  email: 'rileypaul96@gmail.com',
+  password: '123456'
+)
+rand(1..5).times do
+  location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
+  location_storage = ["Fridge", "Freezer", "Pantry", "Closet", "Cooler"].sample
+  
+  puts 'Creating locations...'
+  Location.create!({
+    user_id: user_id,
+    name: "#{location_structure} - #{location_storage}",
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    # temperature: rand(-18.0..20.0),
+    country: Faker::Address.country 
+  })
+
+  rand(6..20).times do
+    food_name = [Faker::Food.spice, Faker::Food.ingredient, Faker::Food.vegetables, Faker::Food.fruits].sample
+    
+    puts 'Creating foods...'
+    Food.create!({
+      user_id: user_id,  
+      location_id: location_id,
+      name: food_name,
+      quantity: Faker::Number.between(from: 1, to: 6),
+      quantity_units: 'ea',
+      price_cents: Faker::Number.between(from: 100, to: 2000),
+      date_purchased: Faker::Date.backward(days: 5),
+      date_expires: Faker::Date.forward(days: 10),
+    })
+
+    food_id += 1
+  end
+  location_id += 1
+end
+
+user_id += 1
+
+User.create!(
+  first_name: 'Stanislav',
+  last_name: 'Plotnikov',
+  email: 'splotnikov74@gmail.com',
+  password: '123456'
+)
+rand(1..5).times do
+  location_structure = ["Home", "Apartment", "Taco Truck", "Cabin", "Basement"].sample
+  location_storage = ["Fridge", "Freezer", "Pantry", "Closet", "Cooler"].sample
+  
+  puts 'Creating locations...'
+  Location.create!({
+    user_id: user_id,
+    name: "#{location_structure} - #{location_storage}",
+    street_address: Faker::Address.street_address,
+    postal: Faker::Address.zip,
+    province: Faker::Address.state_abbr,
+    city: Faker::Address.city,
+    # temperature: rand(-18.0..20.0),
+    country: Faker::Address.country 
+  })
+
+  rand(6..20).times do
+    food_name = [Faker::Food.spice, Faker::Food.ingredient, Faker::Food.vegetables, Faker::Food.fruits].sample
+    
+    puts 'Creating foods...'
+    Food.create!({
+      user_id: user_id,  
+      location_id: location_id,
+      name: food_name,
+      quantity: Faker::Number.between(from: 1, to: 6),
+      quantity_units: 'ea',
+      price_cents: Faker::Number.between(from: 100, to: 2000),
+      date_purchased: Faker::Date.backward(days: 5),
+      date_expires: Faker::Date.forward(days: 10),
+    })
+
+    food_id += 1
+  end
+  location_id += 1
+end
+

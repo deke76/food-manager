@@ -23,7 +23,7 @@ export default function HeaderBar(props) {
       <span className="group">
         <Button icon="profile" onClick={toggleProfileChanger} />
         {showProfileChanger && (
-          <Counter value={user} setValue={setUser} minValue={1} maxValue={20} />
+          <Counter value={user} setValue={setUser} minValue={1} maxValue={23} />
         )}
       </span>
     </nav>
