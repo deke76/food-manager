@@ -9,25 +9,34 @@ export default function RecipeBrowse(props) {
   const [recipes, setRecipes] = useState([]);
   const { state } = useContext(stateContext);
 
-  useEffect(() => {
-    const ingredients = (state !== null)
-      ? state.foods.filter( food => food.location_id === state.currentLocation)
-      : [] ;
+  console.log(state);
+  const ingredients = (state !== null)
+    ? state.foods
+        .filter(food => food.location_id === state.currentLocation)
+        .map(food => food.name)
+    : [] ;
+  // console.log(ingredients);
+  const url = `http://localhost:3000/recipes?ingredients=${ingredients.join(',+')}`;
+  console.log('Axios GET request - to Rails API (Spoonacular)');
+  axios
+    .get(url)
+    .then((response) => {
+      if (response.data.code === 402) setRecipes(recipesTest);
+      else setRecipes(response.data);
+    })
+    .catch((response) => {
+      console.log(response);
+      setRecipes(recipesTest);
+    });
 
-    const url = `http://localhost:3000/recipes?ingredients=${ingredients}`;
-    console.log(url);
-    return axios
-      .get(url)
-      .then((response) => setRecipes(response.data))
-      .catch(console.log("No recipes available"));
-  }, [state]);
 
   // recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
-  recipesTest.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
+  // console.log(recipes);
+  recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
 
   // Build the cards
-  const recipeItems = recipesTest.length
-    ? recipesTest.map((recipe) => (
+  const recipeItems = recipes.length
+    ? recipes.map((recipe) => (
         <RecipeCard
           key={recipe.id}
           recipe={recipe}

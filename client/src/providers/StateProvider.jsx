@@ -47,7 +47,7 @@ export function StateProvider(props) {
   }, [user]);
 
   useEffect(() => {
-    console.log("state", state);
+    // console.log("state", state);
   }, [state]);
 
   // const incrementUser = () => setUser((prev) => (prev < 20 ? prev + 1 : prev));
