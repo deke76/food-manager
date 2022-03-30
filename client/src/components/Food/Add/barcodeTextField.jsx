@@ -145,16 +145,6 @@ export default function BarcodeTextField(props) {
       if (data.status == 0) alert("not detected")
       else props.setFoodName(data.product.product_name) // data.title
     })
-
-//     {code: '11335085', status: 0, status_verbose: 'product not found'}
-// code: "11335085"
-// status: 0
-// status_verbose: "product not found"
-
-    // .then((response) => {
-    //   if (response.data.code === 402) setRecipes(recipesTest);
-    //   else setRecipes(response.data);
-    // })
     document.querySelector(".scanner-add").innerHTML = "";
   }
 
