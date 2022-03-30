@@ -115,8 +115,10 @@ export default function BarcodeTextField(props) {
   
     Quagga.onDetected(function(result) {
       Quagga.stop();
-      console.log("result.codeResult.code", result.codeResult.code)
+      console.log("result.codeResult.code", result.codeResult.code);
       document.querySelector("#text-input").value = result.codeResult.code;
+      // Send result to the server
+      submitBarcode(result.codeResult.code);
       document.querySelector(".scanner-add").innerHTML = "";
       console.log(
         "Barcode detected and processed : [" + result.codeResult.code + "]",
