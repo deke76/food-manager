@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
 import "./barcode.scss";
@@ -9,9 +9,12 @@ let _scannerIsRunning = false;
 
 export default function BarcodeTextField(props) {
   // let history = useNavigate();
-  
+  const {setShow} = props
+
+  const [scannerIsRunning, setScannerIsRunning] = useState(false);
+
   const startScanner = () => {
-    // console.log("Quagga", Quagga)
+    
     Quagga.init(
       {
         inputStream: {
@@ -65,7 +68,7 @@ export default function BarcodeTextField(props) {
         Quagga.start();
   
         // Set flag to is running
-        _scannerIsRunning = true;
+        setScannerIsRunning(true);
       }
     );
   
@@ -119,7 +122,8 @@ export default function BarcodeTextField(props) {
       document.querySelector("#text-input").value = result.codeResult.code;
       // Send result to the server
       submitBarcode(result.codeResult.code);
-      document.querySelector(".scanner-add").innerHTML = "";
+      // document.querySelector(".scanner-add").innerHTML = "";
+      setShow(false);
       console.log(
         "Barcode detected and processed : [" + result.codeResult.code + "]",
         result
@@ -128,7 +132,7 @@ export default function BarcodeTextField(props) {
   }
   
   const handleClick = () => {
-    if (_scannerIsRunning) {
+    if (scannerIsRunning) {
       Quagga.stop();
     } else {
       startScanner();
@@ -139,8 +143,11 @@ export default function BarcodeTextField(props) {
     console.log("Submit barcode");
     fetch(`http://localhost:3000/foods/barcode/${barcode}`)
     .then(response => response.json())
-    .then(data => props.setFoodName(data.product.product_name)) // data.title
-    document.querySelector(".scanner-add").innerHTML = "";
+    .then((data) => {
+      if (data.status == 0) alert("not detected")
+      else props.setFoodName(data.product.product_name) // data.title
+    })
+    setShow(false);
   }
 
 
