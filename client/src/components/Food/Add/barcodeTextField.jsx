@@ -139,6 +139,7 @@ export default function BarcodeTextField(props) {
     console.log("Submit barcode");
     fetch(`http://localhost:3000/foods/barcode/${barcode}`)
     .then(response => response.json())
+    .catch(error => alert("not detected"))
     .then(data => props.setFoodName(data.product.product_name)) // data.title
     document.querySelector(".scanner-add").innerHTML = "";
   }
