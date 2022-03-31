@@ -1,0 +1,25 @@
+  
+  <div class='recipe-card'>
+    <h1>Thanks for checking out <%= @url %>, <%= @user[:first_name] %></h1>
+    <p>Seems like you need a few things to make your recipe</p>
+    <table>
+      <thead>
+        <tr>
+          <td class='name'>Ingredient</td>
+          <td class='amount'>Quantity</td>
+          <td>Units</td>
+        </tr>
+      <tbody>  
+        <% i = 0 %>
+        <% (@ingredients.length / 3).times do %>
+          <tr>
+            <%  (@ingredients.length / 5).times do %>
+            <td><%= @ingredients[i] %></td>
+            <%    i += 1 %>
+          <%  end %>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+    

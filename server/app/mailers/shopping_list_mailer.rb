@@ -6,9 +6,6 @@ class ShoppingListMailer < ApplicationMailer
     @user = params[:user]
     @url = 'pantryful.com'
     @ingredients = params[:ingredients]
-    # puts '***************************************'
-    # puts @ingredients
-    # puts '***************************************'
     @email = params[:email]
     mail(to: @email, subject: "Your grocery list", ingredients: @ingredients)
     render json: @user

@@ -47,7 +47,7 @@ class FoodsController < ApplicationController
     uri = URI('https://api.spoonacular.com/food/ingredients/autocomplete')
     spoonacular_query = { :apiKey => ENV['SPOONACULAR_API'], :number => 10, :query => params[:query] }
     uri.query = URI.encode_www_form(spoonacular_query)
-    res = Net::HTTP.get_response(uri)
+    # res = Net::HTTP.get_response(uri)
     render json: res.body
   end
 

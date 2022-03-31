@@ -16,22 +16,22 @@ export default function RecipeCard(props) {
 
     // // build the shopping list
     const ingredientName = ingredients.map((ingredient) => ingredient.name);
-    const ingredientAmount = ingredients.map((ingredient) => ingredient.amount);
+    const ingredientAmount = ingredients.map((ingredient) => ingredient.amount < 1 ? ingredient.amount.toFixed(2) : ingredient.amount );
     const ingredientUnits = ingredients.map(
-      (ingredient) => ingredient.unitShort
+      (ingredient) => ingredient.unitShort === '' ? 'ea' : ingredient.unitShort
     );
     const shoppingList = [];
 
-    for (let i = 1; i <= ingredientName.length; i++) {
-      shoppingList.push(`ingredient${i}=${ingredientName[i - 1]}`);
-      shoppingList.push(`amount${i}=${ingredientAmount[i - 1]}`);
-      shoppingList.push(`units${i}=${ingredientUnits[i - 1]}`);
+    for (let i = 0; i < ingredientName.length; i++) {
+      shoppingList.push(ingredientName[i]);
+      shoppingList.push(ingredientAmount[i]);
+      shoppingList.push(ingredientUnits[i]);
     }
 
-    // console.log(shoppingList.join('&'));
+    console.log(shoppingList);
     // send the missing ingredients to the server
     const url = `http://localhost:3000/recipes/email?id=${id}&ingredients=${shoppingList}`;
-    // console.log(url);
+    console.log(url);
     axios
       .get(url)
       .then((res) => console.log(res.data))
@@ -80,16 +80,18 @@ export default function RecipeCard(props) {
         <article className="recipe-card__feedback">
           <Button
             icon="email"
-            onClick={() => recipeMailer(recipe.missedIngredients)}
+            onClick={(event) => {
+              event.preventDefault();
+              recipeMailer(recipe.missedIngredients)
+            }}
           />
-          {/* <Button icon="check" text="I made this!" /> */}
           <Button
             icon="heart"
             className={liked ? "red" : ""}
             onClick={(event) => {
-              event.preventDefault()
-              setLiked((prev) => !prev)
-              console.log("liked")
+              event.preventDefault();
+              setLiked((prev) => !prev);
+              console.log("liked");
             }}
           />
           <h3>{numLikes} likes!</h3>
