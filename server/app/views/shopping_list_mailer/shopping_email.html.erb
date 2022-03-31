@@ -1,7 +1,10 @@
   
   <div class='recipe-card'>
-    <h1>Thanks for checking out <%= @url %>, <%= @user[:first_name] %></h1>
-    <p>Seems like you need a few things to make your recipe</p>
+    <div class='info'>
+      <h1>Hey <%= @user[:first_name] %>,</h1>
+      <h3>Thanks for checking out <%= @url %></h3>
+      <p>Seems like you need a few things to make your recipe</p>
+    </div>  
     <table>
       <thead>
         <tr>
