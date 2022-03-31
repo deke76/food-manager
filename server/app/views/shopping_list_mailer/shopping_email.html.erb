@@ -3,26 +3,30 @@
     <div class='info'>
       <h1>Hey <%= @user[:first_name] %>,</h1>
       <h3>Thanks for checking out <%= @url %></h3>
-      <p>Seems like you need a few things to make your recipe</p>
+      <p>Seems like you need a few things to make <%= @title %></p>
     </div>  
     <table>
       <thead>
         <tr>
-          <td class='name'>Ingredient</td>
-          <td class='amount'>Quantity</td>
-          <td>Units</td>
+          <td class='name'><h5>Ingredient</h5></td>
+          <td class='amount'><h5>Quantity</h5></td>
+          <td></td>
         </tr>
       <tbody>  
         <% i = 0 %>
+        <% right = 1 %>
         <% (@ingredients.length / 3).times do %>
           <tr>
             <%  (@ingredients.length / 5).times do %>
             <td><%= @ingredients[i] %></td>
-            <%    i += 1 %>
+            <% i += 1 %>
+            <% right += 3%>
           <%  end %>
           </tr>
         <% end %>  
       </tbody>
+      <img src='<%= @image %>' />
     </table>
+    <h4>You can check out the recipe at <a href='<%= @recipe_url %>'>Spoonacular</a>
   </div>
     

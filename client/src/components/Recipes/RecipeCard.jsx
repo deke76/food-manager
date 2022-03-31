@@ -14,6 +14,7 @@ export default function RecipeCard(props) {
 
   const recipeMailer = function (ingredients) {
     const id = state.locations[0].user_id;
+    console.log(recipe);
 
     // // build the shopping list
     const ingredientName = ingredients.map((ingredient) => ingredient.name);
@@ -30,7 +31,7 @@ export default function RecipeCard(props) {
     }
 
     // send the missing ingredients to the server
-    const url = `http://localhost:3000/recipes/email?id=${id}&ingredients=${shoppingList}`;
+    const url = `http://localhost:3000/recipes/email?id=${id}&title=${recipe.title}&image=${recipe.image}&recipeid=${recipe.id}&ingredients=${shoppingList}`;
 
     axios
       .get(url)

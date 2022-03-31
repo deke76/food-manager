@@ -20,7 +20,12 @@ class RecipesController < FoodsController
   def email
     @user = User.find(params[:id])
     @ingredients = params[:ingredients].split(',')
-    ShoppingListMailer.with(email: @user[:email], ingredients: @ingredients, user: @user).shopping_email.deliver_now
+    @title = params[:title]
+    @image = params[:image]
+    @id = params[:id]
+    @recipeid = params[:recipeid]
+    puts @recipeid
+    ShoppingListMailer.with(email: @user[:email], ingredients: @ingredients, user: @user, title: @title, image: @image, recipeid: @recipeid).shopping_email.deliver_now
     render json: @ingredients
   end
 end
