@@ -33,8 +33,16 @@ export default function RecipeBrowse(props) {
     });
   }, []);
       
-  // Build the cards
+  // const sortRecipes = function(index) {
+  //   console.log('used ingredients clicked');
+  //   const usedIngredients = [].concat(recipes)
+  //     .sort((a, b) => a.usedIngredientCount - b.usedIngredientCount);
+  //   setRecipes((prev) => (prev.sort((a, b) => a.usedIngredientCount - b.usedIngredientCount)));
+  // };
+  
   recipes.sort((a, b) => a.missedIngredientCount - b.missedIngredientCount);
+  
+  // Build the cards
   const recipeItems = recipes.length
     ? recipes.map((recipe) => (
         <RecipeCard

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { stateContext } from "./../../providers/StateProvider";
 import Ingredients from "./Ingredients";
+import UsedIngredients from './UsedIngredients';
 import Button from "../buttons/actions/Button";
 import "./RecipeCard.scss";
 import axios from "axios";
@@ -8,7 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function RecipeCard(props) {
-  const { recipe} = props;
+  const { recipe, onClick } = props;
   const { state } = useContext(stateContext);
 
   const recipeMailer = function (ingredients) {
@@ -28,10 +29,9 @@ export default function RecipeCard(props) {
       shoppingList.push(ingredientUnits[i]);
     }
 
-    console.log(shoppingList);
     // send the missing ingredients to the server
     const url = `http://localhost:3000/recipes/email?id=${id}&ingredients=${shoppingList}`;
-    console.log(url);
+
     axios
       .get(url)
       .then((res) => console.log(res.data))
@@ -54,6 +54,11 @@ export default function RecipeCard(props) {
   const ingredients = recipe.missedIngredients.map((ingredient) => (
     <Ingredients key={ingredient.id} ingredient={ingredient} />
   ));
+  
+  // build the used ingredients list
+  const usedIngredients = recipe.usedIngredients.map((ingredient) =>
+    <UsedIngredients key={ingredient.id} ingredient={ingredient} />)
+  
 
   return (
     <a
@@ -69,12 +74,18 @@ export default function RecipeCard(props) {
           <p>{recipe.description}</p>
         </header>
         <article className="recipe-card__missing-ingredients">
-          <h3>Missing Ingredients</h3>
+          <h3>Missing Ingredients ({ingredients.length})</h3>
           <table>
             <thead>
             </thead>
             <tbody className="recipe-card__missing-ingredients__table">{ingredients}</tbody>
           </table>
+          <div className='recipe-card__used-ingredients'>
+            <h3>Used Ingredients ({usedIngredients.length})</h3>
+            <div className="ingredient-card-wrapper">
+              {usedIngredients}
+            </div>
+          </div>
         </article>
 
         <article className="recipe-card__feedback">
