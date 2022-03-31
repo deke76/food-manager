@@ -5,11 +5,13 @@ export default function Ingredients(props) {
   const amount = ingredient.amount < 1.00
                 ? ingredient.amount.toFixed(2)
                 : ingredient.amount;
+  const unit = ingredient.unitLong === '' ? 'ea' : ingredient.unitLong;
+
   return (
     <tr>
-      <td>{ingredient.name}</td>
-      <td>{amount}</td>
-      <td>{ingredient.unitLong}</td>
+      <td className='name'>{ingredient.name}</td>
+      <td className='amount'>{amount}</td>
+      <td className='units'> {unit}</td>
     </tr>
   )
 };

@@ -72,13 +72,8 @@ export default function RecipeCard(props) {
           <h3>Missing Ingredients</h3>
           <table>
             <thead>
-              <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Units</th>
-              </tr>
             </thead>
-            <tbody>{ingredients}</tbody>
+            <tbody className="recipe-card__missing-ingredients__table">{ingredients}</tbody>
           </table>
         </article>
 

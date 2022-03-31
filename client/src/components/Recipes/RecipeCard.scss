@@ -15,31 +15,16 @@
     background-color: $location-card;
     color: white;
     border-radius: $button-radius;
-    
     width: 90vw;
     font-size: small;
-    
-    // position: relative;
-    // transition: all 0.3s;
-    // text-align: center;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    
+        
     &__details {
-      padding: $spacing;
-      // display:flex;
-      // flex-direction: column;
-      // justify-content: flex-start;
-      // overflow: hidden;
-      // background-color: $main-background;
-      // border-radius: calc($button-radius / 2) calc($button-radius / 2) 0 0;
-
+      padding: 0.5em 1em;
     }
 
-  //   &__title{
-  //     padding-top: calc($spacing / 4);
-  //   }
+    &__title{
+      text-align: center;
+    }
 
     &__img {
       box-sizing:content-box;
@@ -50,26 +35,29 @@
       
     }
 
-  //   &__missing-ingredients {
-  //     display: flex;
-  //     flex-direction: row;
-  //     align-items: center;
-  //     justify-content: space-evenly;
-  //     padding: calc($spacing / 2);
+    &__missing-ingredients {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: calc($spacing / 2);
+    }
 
-  //     .button {
-  //       background-color: $main-background;
-  //       color: $button-background;
-  //     }
-  //   }
+    table {
+      width: 100%;
+      
+      td.name {
+        flex-wrap: wrap;
+      }
+      td.amount {
+        padding-right: 2px;
+      }
+    }
 
     &__feedback {
-      // padding: $spacing;
-      
+      padding: 0 1em 1em 1.5em;
       display: flex;
       align-items: center;
       gap: $card-gap;
-
       font-style: italic;
     }
 
@@ -83,7 +71,7 @@
     }
 
     article {
-      padding-top: $spacing;
+      padding-top: calc($spacing / 2);
     }
 
   }
