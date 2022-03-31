@@ -1,5 +1,6 @@
   
   <div class='recipe-card'>
+    <img src='<%= @image %>' />
     <div class='info'>
       <h1>Hey <%= @user[:first_name] %>,</h1>
       <h3>Thanks for checking out <%= @url %></h3>
@@ -8,9 +9,9 @@
     <table>
       <thead>
         <tr>
-          <td class='name'><h5>Ingredient</h5></td>
-          <td class='amount'><h5>Quantity</h5></td>
-          <td></td>
+          <td class='name'><h4>Ingredient</h4></td>
+          <td class='amount'><h4>Quantity</h4></td>
+          <td class='units'></td>
         </tr>
       <tbody>  
         <% i = 0 %>
@@ -25,7 +26,6 @@
           </tr>
         <% end %>  
       </tbody>
-      <img src='<%= @image %>' />
     </table>
     <h4>You can check out the recipe at <a href='<%= @recipe_url %>'>Spoonacular</a>
   </div>
