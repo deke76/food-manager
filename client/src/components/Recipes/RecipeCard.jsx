@@ -14,7 +14,6 @@ export default function RecipeCard(props) {
 
   const recipeMailer = function (ingredients) {
     const id = state.locations[0].user_id;
-    console.log(recipe);
 
     // // build the shopping list
     const ingredientName = ingredients.map((ingredient) => ingredient.name);
