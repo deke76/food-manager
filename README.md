@@ -26,7 +26,7 @@ React v18.0, Javascript v15.14, HTML 5, webpack v5.70, Ruby v3.0.2, Rails v6.1.5
 
 ### Screenshots
 
-* ![Adding Food](docs/'Adding Food.gif')
-* ![Adding Location](docs/'Adding Location.gif')
-* ![Recipe Suggestions](docs/'Recipe Suggestion.gif')
-* ![Scanning Food](docs/'Scanning Barcode.gif')
+![Adding Food](docs/'Adding Food.gif')
+![Adding Location](docs/'Adding Location.gif')
+![Recipe Suggestions](docs/'Recipe Suggestion.gif')
+![Scanning Food](docs/'Scanning Barcode.gif')
