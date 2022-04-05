@@ -1,6 +1,10 @@
+// import modules
 import classNames from "classnames";
 
-import Button from "./../buttons/actions/Button"
+// import React components
+import { Button } from "../Constants";
+
+// import stylesheets
 import "./locationCard.scss";
 
 export default function LocationCard(props) {

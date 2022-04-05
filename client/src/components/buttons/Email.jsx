@@ -1,7 +1,10 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import modules
 import { Link } from "react-router-dom";
 
+// import React components
+import { faPlusCircle, FontAwesomeIcon } from "../Constants";
+
+// import style sheets
 import "./fab.scss"
 
 export default function EmailButton(props) {

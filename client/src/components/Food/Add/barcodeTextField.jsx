@@ -1,9 +1,13 @@
+// import modules
 import React, { useEffect, useState } from "react";
 import {useNavigate, Link} from "react-router-dom"
 import Quagga from "quagga"; // ES6
-import "./barcode.scss";
+
+// import React comnponents
 import Button from "../../buttons/actions/Button";
-import { faText, faCamera } from "@fortawesome/fontawesome-svg-core";
+
+// import style sheets
+import "./barcode.scss";
 
 let _scannerIsRunning = false;
 

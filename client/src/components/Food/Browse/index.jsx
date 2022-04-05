@@ -1,6 +1,7 @@
-import FoodList from "./List/FoodList";
-import { stateContext } from "../../../providers/StateProvider";
+// import modules
 import { useContext } from "react";
+
+import { FoodList, stateContext } from "../../Constants";
 
 export default function FoodBrowse(props) {
   const { state } = useContext(stateContext);

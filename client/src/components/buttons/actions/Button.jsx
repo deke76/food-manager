@@ -1,8 +1,10 @@
-import classNames from "classnames";
+// import modules
 import { Link } from "react-router-dom";
-import "./buttons.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
+import classNames from "classnames";
+
+// import React components
+import { 
+  FontAwesomeIcon,
   faPlus,
   faAnglesLeft,
   faAnglesRight,
@@ -16,7 +18,10 @@ import {
   faUpload,
   faEnvelope,
   faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+} from "../../Constants";
+
+// import style sheets
+import "./buttons.scss";
 
 export default function Button(props) {
   const { onClick, linkTo, icon, text, className } = props;

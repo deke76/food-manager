@@ -1,7 +1,11 @@
+// import modules
 import React from "react";
 import Quagga from "quagga"; // ES6
-import Button from "../../buttons/actions/Button";
 
+// import React components
+import { Button } from "../../Constants";
+
+//import style sheets
 import './barcode.scss';
 import './index.scss';
 

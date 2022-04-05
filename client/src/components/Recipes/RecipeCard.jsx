@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { stateContext } from "./../../providers/StateProvider";
-import Ingredients from "./Ingredients";
-import UsedIngredients from './UsedIngredients';
-import Button from "../buttons/actions/Button";
-import "./RecipeCard.scss";
+// import modules
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+
+// import React components
+import { Button, Ingredients, UsedIngredients, stateContext } from "../Constants";
+
+// import style sheets
+import "./RecipeCard.scss";
+
 
 export default function RecipeCard(props) {
   const { recipe, onClick } = props;

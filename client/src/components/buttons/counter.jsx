@@ -1,6 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+// import modules
 import { useEffect } from "react";
+
+// import React components
+import { FontAwesomeIcon, faCaretLeft, faCaretRight } from "../Constants";
 
 export default function Counter(props) {
   const { value, setValue, maxValue, minValue, onChange } = props;

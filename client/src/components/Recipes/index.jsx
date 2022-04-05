@@ -1,9 +1,10 @@
+// import modules
 import { useState, useContext, useEffect } from "react";
-import { stateContext } from "./../../providers/StateProvider";
 import axios from "axios";
 
-import RecipeCard from "./RecipeCard"
-import { recipesTest } from './testData'
+// import React Components
+import { RecipeCard, recipesTest, stateContext } from "../Constants";
+
 
 export default function RecipeBrowse(props) {
   const [recipes, setRecipes] = useState([]);

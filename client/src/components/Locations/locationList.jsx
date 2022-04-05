@@ -1,12 +1,11 @@
+// import modules
 import axios from "axios";
 import { useContext, useState } from "react";
 
-import { userContext } from "../../providers/UserProvider";
-import { stateContext } from "../../providers/StateProvider";
+// import React components
+import { LocationCard, LocationCardNew, stateContext, userContext } from "../Constants";
 
-import LocationCard from "./locationCard";
-import LocationCardNew from "./locationCardNew";
-
+// import style sheets
 import "./locationList.scss";
 
 export default function LocationList(props) {

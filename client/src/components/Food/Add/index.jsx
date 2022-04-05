@@ -1,16 +1,12 @@
+// import modules
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
-import { useContext, useState, useEffect } from "react";
-import Counter from "../../buttons/counter";
 
-import Button from "../../buttons/actions/Button";
-import SelectOneDropdown from "../../buttons/selectOne";
+// import React components
+import { Button, Counter, FoodBarCode, SelectOneDropdown, stateContext, userContext } from "../../Constants";
 
-import { stateContext } from "../../../providers/StateProvider";
-import { userContext } from "../../../providers/UserProvider";
-
-import FoodBarCode from "./foodBarcode";
-
+// import style sheets
 import "./index.scss";
 
 export default function FoodAdd(props) {

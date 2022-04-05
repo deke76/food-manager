@@ -1,4 +1,7 @@
+// import modules
 import { Link } from "react-router-dom";
+
+//import style sheets
 import "./selectOne.scss";
 
 export default function SelectOneDropdown(props) {

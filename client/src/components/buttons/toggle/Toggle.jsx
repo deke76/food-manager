@@ -1,4 +1,7 @@
+// import modules
 import classNames from "classnames";
+
+// import style sheets
 import "./Toggle.scss";
 
 export default function Toggle(props) {

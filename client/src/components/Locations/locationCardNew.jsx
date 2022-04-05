@@ -1,8 +1,9 @@
-import classNames from "classnames";
+// import modules
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import Button from "../buttons/actions/Button";
+import classNames from "classnames";
+
+// import React components
+import { Button, faPlusCircle, FontAwesomeIcon } from "../Constants";
 
 export default function LocationCardNew(props) {
   const { onSave, newLocation, setNewLocation } = props;

@@ -1,4 +1,7 @@
-import Button from "./actions/Button";
+// import React components
+import { Button } from "../Constants";
+
+// import style sheets
 import "./fab.scss";
 
 export default function FloatingActionButton(props) {

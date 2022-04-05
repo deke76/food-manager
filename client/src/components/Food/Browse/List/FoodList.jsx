@@ -1,6 +1,10 @@
+// import modules
 import moment from "moment";
+
+//import React components
 import FoodListItem from "./FoodListItem";
 
+// import style sheets
 import "./FoodList.scss";
 
 export default function FoodList(props) {
