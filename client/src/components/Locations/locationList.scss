@@ -1,19 +1,19 @@
 @import "../../styles/variables.scss";
 
 .locations-wrapper {
-  padding: 20px;
-  background-color: #f999708f;
+  padding: 1em;
+  background-color: $add-background;
   box-sizing: border-box;
 
   position: fixed;
-  top: 4rem;
-  width: 100vw;
+  top: calc($header-height + $spacing / 2);
+  width: 100%;
+  z-index: 10;
 
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
-  gap: 15px;
+  gap: $card-gap;
 
   // .single-location {
   //   display: flex;

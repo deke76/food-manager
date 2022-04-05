@@ -1,8 +1,11 @@
-import { 
-  axios,
-  useContext, useState,
-  userContext, stateContext,
-  LocationCard, LocationCardNew } from "../../constants";
+import axios from "axios";
+import { useContext, useState } from "react";
+
+import { userContext } from "../../providers/UserProvider";
+import { stateContext } from "../../providers/StateProvider";
+
+import LocationCard from "./locationCard";
+import LocationCardNew from "./locationCardNew";
 
 import "./locationList.scss";
 
@@ -18,6 +21,7 @@ export default function LocationList(props) {
       setState((prev) => ({
         ...prev,
         locations: prev.locations.filter((location) => location.id !== id),
+        foods: prev.foods.filter((food) => food.location_id !== id),
         currentLocation:
           id === prev.currentLocation
             ? prev.locations[0].id
@@ -45,7 +49,7 @@ export default function LocationList(props) {
       .then((response) => {
         setState((prev) => ({
           ...prev,
-          locations: [...prev.locations, { ...response.data, foods: [] }],
+          locations: [...prev.locations, response.data],
         }));
 
         setNewLocation(defaultLocation);
@@ -65,6 +69,12 @@ export default function LocationList(props) {
               <LocationCard
                 key={index}
                 location={location}
+                items={
+                  state.foods.filter(
+                    (food) =>
+                      food.location_id === location.id && food.quantity > 0
+                  ).length
+                }
                 selected={location.id === state.currentLocation}
                 onClick={() => {
                   setShowCards(false);
@@ -92,6 +102,12 @@ export default function LocationList(props) {
           collapsed
           selected
           onClick={() => setShowCards(true)}
+          items={
+            state.foods.filter(
+              (food) =>
+                food.location_id === selectedLocation.id && food.quantity > 0
+            ).length
+          }
         />
       )}
     </div>

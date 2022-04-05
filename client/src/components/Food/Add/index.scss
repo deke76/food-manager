@@ -1,6 +1,13 @@
-.food-add {
-  padding: 10px 20px;
+@import '../../../styles/variables.scss';
 
+.food-add {
+  margin-top: 1em;
+  padding: 10px 20px;
+  
+  h1 {
+    text-align: center;
+  }
+  
   div.grid-container {
     border-top: solid silver 1px;
     display: grid;
@@ -10,6 +17,7 @@
 
     padding: 1em 0;
 
+    color: $header-background;
     // & > .label {
     //   align
     // }
@@ -23,12 +31,11 @@
     justify-content: space-between;
     gap: 10px;
     margin: 15px 0;
-
   }
 
   input, div.input {
     height: 40px;
-
+    color: $header-background;
     background-color: whitesmoke;
     border-radius: 20px;
     border: none;
@@ -48,7 +55,7 @@
   }
 
   .button {
-    background-color: #2C5672;
+    background-color: $button-background;
     color: white;
   }
 

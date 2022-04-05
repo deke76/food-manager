@@ -1,63 +1,100 @@
 @import '../../styles/variables.scss';
 
 .recipe-wrapper {
-  padding: 20px;
   transition: all 0.5s;
-  margin-bottom: 2em;
+  margin-top: $spacing;
+  margin-bottom: $spacing;
   display: flex;
-  flex-wrap: wrap;
-  overflow-x: auto;
-  gap: 15px;
-  background-color: rgba(248, 129, 93, 0.233);
+  flex-direction: column;
+  align-items: center;
+  gap: $card-gap;
+  background-color: $main-background;
 
   .recipe-card {
-    background-color: $primary-background;
+    background-color: $location-card;
     color: white;
-    border-radius: 20px;
-    position: relative;
-    transition: all 0.3s;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 75vh;
+    border-radius: $button-radius;
     width: 90vw;
-
+    font-size: small;
+        
     &__details {
-      display:flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      overflow: hidden;
-      background-color: $primary-background;
-      border-radius:20px 20px 0 0;
-
+      padding: 0.5em 1em;
     }
 
     &__title{
-      padding-top: 1em;
+      text-align: center;
     }
 
     &__img {
       box-sizing:content-box;
-      border-radius: 20px 20px 0 0;
-      width: 100%;
       object-fit: fill;
-      
+      width: 100%;
+      border-radius: $button-radius $button-radius 0 0;
     }
 
     &__missing-ingredients {
-      text-align: center;
-      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: calc($spacing / 2);
     }
 
-    div {
-      font-size: small;
+    &__used-ingredients {
+      padding-top: 1em;
+    }
+
+    
+    &__feedback {
+      padding: 0 1em 1em 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 2em;
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      padding-top: 0.25em;
+      
+      td.name {
+        flex-wrap: wrap;
+      }
+      td.amount {
+        padding-right: 2px;
+      }
+    }
+    
+    article {
+      padding-top: calc($spacing / 4);
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    .button {
+      color: $button-background;
+      background-color: white;
+
+      &.red {
+        color: red;
+      }
     }
   }
 }
 
-@media only screen and (min-width: 600px) {
-  .location-card {
-    width: 30vw;
-  }
+.ingredient-card-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows:(1em, auto);
+  gap: 1em;
+  padding-top: 0.5em;
+}
+
+.used-ingredient__card {
+  display: flex;
+  align-items: stretch;
+  text-align: center;
+  padding: 0.5em;
+  border-radius:10px;
 }

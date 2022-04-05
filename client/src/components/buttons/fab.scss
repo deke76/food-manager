@@ -1,5 +1,4 @@
-
-$colour: #002135;
+@import '../../styles/variables.scss';
 
 .fab-container {
   position: fixed;
@@ -14,7 +13,7 @@ $colour: #002135;
 
   .button {
     color: white;
-    background-color: $colour;
+    background-color: $button-background;
     transform: scale(1.5);
   }
 

@@ -10,9 +10,8 @@ const locationBuilder = (locations, foods) => {
     foods: foods.filter((food) => food.location_id === location.id),
   }));
 
-
   // const result = {};
-  
+
   // locations.forEach((location) => {
   //   result[location.id] = {
   //     ...location,
@@ -30,30 +29,26 @@ export function StateProvider(props) {
       axios.get(`http://localhost:3000/users/${user}/locations`),
       axios.get(`http://localhost:3000/users/${user}/foods`),
     ]).then((all) => {
-      const locations = locationBuilder(all[0].data, all[1].data);
+      // const locations = locationBuilder(all[0].data, all[1].data);
+
+      console.log();
+
+      const locations = all[0].data;
+      const foods = all[1].data;
       const currentLocation = locations.length > 0 ? locations[0].id : null;
 
       setState((prev) => ({
         ...prev,
         locations,
+        foods,
         currentLocation,
       }));
-
     });
   }, [user]);
-  
+
   useEffect(() => {
-    console.log("state", state);
-
-    // send state back to database?
-
-
-    // setState((prev) => ({
-    //   ...prev,
-    //   currentLocation,
-    // }));
-
-  },[state])
+    // console.log("state", state);
+  }, [state]);
 
   // const incrementUser = () => setUser((prev) => (prev < 20 ? prev + 1 : prev));
   // const decrementUser = () => setUser((prev) => (prev > 1 ? prev - 1 : prev));

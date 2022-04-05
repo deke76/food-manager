@@ -1,7 +1,13 @@
 @import '../../../../styles/variables.scss';
 
+.food-container {
+  margin-top: 1.5em;
+}
+
 .food-list {
-  // box-sizing: content-box;
-  width: 80%;
-  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin-bottom: 200px;
 }

@@ -12,11 +12,15 @@ import {
   faSave,
   faUser,
   faCheck,
+  faCamera,
+  faUpload,
+  faEnvelope,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Button(props) {
-  const { onClick, linkTo, icon, text } = props;
-  const classes = classNames("button", { text: text !== undefined });
+  const { onClick, linkTo, icon, text, className } = props;
+  const classes = classNames("button", className, { text: text !== undefined });
 
   const body = (
     <div onClick={onClick} className={classes}>
@@ -30,6 +34,10 @@ export default function Button(props) {
       {icon === "save" && <FontAwesomeIcon icon={faSave} />}
       {icon === "profile" && <FontAwesomeIcon icon={faUser} />}
       {icon === "check" && <FontAwesomeIcon icon={faCheck} />}
+      {icon === "camera" && <FontAwesomeIcon icon={faCamera} />}
+      {icon === "file" && <FontAwesomeIcon icon={faUpload} />}
+      {icon === "email" && <FontAwesomeIcon icon={faEnvelope} />}
+      {icon === "heart" && <FontAwesomeIcon icon={faHeart} />}
     </div>
   );
 

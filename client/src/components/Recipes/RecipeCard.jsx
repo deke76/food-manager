@@ -1,34 +1,113 @@
-import Ingredients from './Ingredients';
+import { useContext } from "react";
+import { stateContext } from "./../../providers/StateProvider";
+import Ingredients from "./Ingredients";
+import UsedIngredients from './UsedIngredients';
+import Button from "../buttons/actions/Button";
 import "./RecipeCard.scss";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function RecipeCard(props) {
   const { recipe, onClick } = props;
+  const { state } = useContext(stateContext);
+
+  const recipeMailer = function (ingredients) {
+    const id = state.locations[0].user_id;
+
+    // // build the shopping list
+    const ingredientName = ingredients.map((ingredient) => ingredient.name);
+    const ingredientAmount = ingredients.map((ingredient) => ingredient.amount < 1 ? ingredient.amount.toFixed(2) : ingredient.amount );
+    const ingredientUnits = ingredients.map(
+      (ingredient) => ingredient.unitShort === '' ? 'ea' : ingredient.unitShort
+    );
+    const shoppingList = [];
+
+    for (let i = 0; i < ingredientName.length; i++) {
+      shoppingList.push(ingredientName[i]);
+      shoppingList.push(ingredientAmount[i]);
+      shoppingList.push(ingredientUnits[i]);
+    }
+
+    // send the missing ingredients to the server
+    const url = `http://localhost:3000/recipes/email?id=${id}&title=${recipe.title}&image=${recipe.image}&recipeid=${recipe.id}&ingredients=${shoppingList}`;
+
+    axios
+      .get(url)
+      .then((res) => console.log(res.data))
+      .catch((res) =>
+        console.log(
+          "You're email isn't in our database, please check your information."
+        )
+      );
+  };
+
+  const [liked, setLiked] = useState(false);
+  const [numLikes, setNumLikes] = useState(recipe.likes);
+
+  useEffect(() => {
+    liked && setNumLikes(recipe.likes + 1)
+    !liked && setNumLikes(recipe.likes)
+  },[liked, recipe.likes])
+
+  // build the missing ingredients list
+  const ingredients = recipe.missedIngredients.map((ingredient) => (
+    <Ingredients key={ingredient.id} ingredient={ingredient} />
+  ));
   
-  // Build the missing ingredients
-  const ingredients = 
-    recipe.missedIngredients.map(ingredient =>
-      <Ingredients
-        key={ingredient.id}
-        ingredient={ingredient}
-      />);
+  // build the used ingredients list
+  const usedIngredients = recipe.usedIngredients.map((ingredient) =>
+    <UsedIngredients key={ingredient.id} ingredient={ingredient} />)
+  
 
   return (
-    <div className={'recipe-card'} onClick={onClick}>
-      <article className="recipe-card__details">
-        <img src={recipe.image} className='recipe-card__img'  alt='' />
-      </article>
-      <h4 className="recipe-card__title">{recipe.title}</h4>
-      <h4 className='recipe-card__missing-ingredients'>You're missing these ingredients.</h4>
-      <table>
-        <tbody>
-          <tr>
-            <th><h5>Name</h5></th>
-            <th><h5>Quantity</h5></th>
-            <th><h5>Units</h5></th>
-          </tr>
-          { ingredients }
-        </tbody>
-      </table>
-    </div>
+    <a
+      href={`http://spoonacular.com/recipes/${recipe.title}-${recipe.id}`}
+      target="_blank"
+      rel="noreferrer"
+      className={"recipe-card"}
+    >
+      <img src={recipe.image} className="recipe-card__img" alt="" />
+      <div className="recipe-card__details">
+        <header>
+          <h1 className="recipe-card__title">{recipe.title}</h1>
+          <p>{recipe.description}</p>
+        </header>
+        <article className="recipe-card__missing-ingredients">
+          <h3>Missing Ingredients ({ingredients.length})</h3>
+          <table>
+            <thead>
+            </thead>
+            <tbody className="recipe-card__missing-ingredients__table">{ingredients}</tbody>
+          </table>
+          <div className='recipe-card__used-ingredients'>
+            <h3>Used Ingredients ({usedIngredients.length})</h3>
+            <div className="ingredient-card-wrapper">
+              {usedIngredients}
+            </div>
+          </div>
+        </article>
+
+        <article className="recipe-card__feedback">
+          <Button
+            icon="email"
+            onClick={(event) => {
+              event.preventDefault();
+              recipeMailer(recipe.missedIngredients)
+            }}
+          />
+          <Button
+            icon="heart"
+            className={liked ? "red" : ""}
+            onClick={(event) => {
+              event.preventDefault();
+              setLiked((prev) => !prev);
+              console.log("liked");
+            }}
+          />
+          <h3>{numLikes} likes!</h3>
+        </article>
+      </div>
+    </a>
   );
 }

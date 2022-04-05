@@ -1,0 +1,32 @@
+  
+  <div class='recipe-card'>
+    <img src='<%= @image %>' />
+    <div class='info'>
+      <h1>Hey <%= @user[:first_name] %>,</h1>
+      <h3>Thanks for checking out <%= @url %></h3>
+      <p>Seems like you need a few things to make <%= @title %></p>
+    </div>  
+    <table>
+      <thead>
+        <tr>
+          <td class='name'><h4>Ingredient</h4></td>
+          <td class='amount'><h4>Quantity</h4></td>
+          <td class='units'></td>
+        </tr>
+      <tbody>  
+        <% i = 0 %>
+        <% right = 1 %>
+        <% (@ingredients.length / 3).times do %>
+          <tr>
+            <%  (@ingredients.length / 5).times do %>
+            <td><%= @ingredients[i] %></td>
+            <% i += 1 %>
+            <% right += 3%>
+          <%  end %>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+    <h4>You can check out the recipe at <a href='<%= @recipe_url %>'>Spoonacular</a>
+  </div>
+    
